@@ -1,0 +1,324 @@
+<!doctype html>
+
+<html>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script>
+	  Reveal.initialize({
+	    plugins: [ RevealMarkdown ]
+	  });
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>KI & Gesellschaft – neuronale Netze</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #bacce8
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+	        p {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 160%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 40%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<!--<div class="heading" style="font-size: 200%;">Künstliche Intelligenz und Gesellschaft</div>-->
+				<img src="img/KI_und_gesellschaft.svg" width="100%">
+				<div class="heading" style="font-size: 150%; padding-top:2% !important; text-align:center">Vorlesung 2: neuronale Netze</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Rückblick Vorlesung 1</div>
+				<ul class="outside">
+					<li style="padding-bottom: 2% !important; font-size: 70%;"><em><b>Frage:</b> Wie können wir "künstliche Intelligenz" definieren? Was sind Beispiele für Anwendungen?</em><br><span class="fragment" data-fragment-index="1"><b>Antwort:</b> Methoden die es Maschinen ermöglichen, ihr Umfeld wahrzunehmen und Lernen und Intelligenz zu verwenden um Aktionen zu setzen um ein definiertes Ziel zu erreichen. Beispiele sind: handgeschriebene Zahlen erkennen, Text generieren, Inhalte auswählen, ...</span></li>
+
+					<li style="padding-bottom: 2% !important; font-size: 70%;"><em><b>Frage:</b> Was ist "Klassifizierung"? Wie funktioniert die "Pipeline" für überwachtes Lernen?<br></em><span class="fragment" data-fragment-index="1"><b>Antwort:</b> Klassifizierung weist einer Beobachtung (Datenpunkt) eine Klasse zu, z.B. eine von 10 möglichen Ziffern. Um einen Algorithmus des überwachten Lernens für Klassifizierung zu trainieren, brauchen wir Beispielbeobachtungen mit richtigen Klassenlabels.</span></li>
+
+					<li style="font-size: 70%;"><em><b>Frage:</b> Wie funktioniert ein Entscheidungsbaum?</em><br><span class="fragment" data-fragment-index="1"><b>Antwort:</b> Attribute von Beobachtungen sind Knoten des Entscheidungsbaums, Kanten sind Bereiche von Attributwerten, "Blätter" sind Klassenlabel. Zur Klassifizierung einer Beobachtung durchlaufen wir den Entscheidungsbaum von oben nach unten und biegen an jedem Knoten rechts oder links ab, je nach Attributwert der Beobachtung.</span></li>
+				</ul>
+			</section>
+			<section>
+				<div class="heading" style="padding-bottom: 1% !important;">Überblick über die heutige Vorlesung</div>
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<ul class="outside">
+							<li style="padding-bottom: 1% !important; font-size: 80%;">Neuronale Netze</li>
+							<li style="padding-bottom: 1% !important; font-size: 80%;">Performance von Algorithmen</li>
+							<li style="padding-bottom: 1% !important; font-size: 80%;">Underfitting, overfitting, Bias, Varianz</li>
+							<li style="padding-bottom: 1% !important; font-size: 80%;">Datentypen & Datenprobleme</li>
+							<li style="font-size: 80%;">Regression</li>
+						</ul>
+					</div>
+					<div class="column1to1_2">
+						<p style="color: grey; padding-bottom: 0% !important; font-size:55%; padding-top:0% !important; text-align: right;">3Blue1Brown videos: <a href="https://www.youtube.com/watch?v=aircAruvnKk">What is a neural network?</a>, <a href="https://www.youtube.com/watch?v=IHZwWFHWa-w">Gradient Descent</a>, <a href="https://www.youtube.com/watch?v=Ilg3gGewQ5U">Backpropagation</a>.</p>
+						<p style="color: grey; padding-bottom: 3% !important;  font-size:55%; text-align: right;"><a href="https://medium.com/@abhishekjainindore24/a-comprehensive-guide-to-performance-metrics-in-machine-learning-4ae5bd8208ce">A guide to performance metrics in machine learning</a></p>
+						<p style="color: grey;  font-size:55%; text-align: right;">Statquest machine learning fundamentals: <a href="https://www.youtube.com/watch?v=EuBBz3bI-aA">Bias and Variance</a></p>
+						<p style="color: grey;  font-size:55%; text-align: right; padding-top: 12% !important;">Machine Learning Mastery: <a href="https://machinelearningmastery.com/regression-metrics-for-machine-learning/#:~:text=There%20are%20three%20error%20metrics,Mean%20Absolute%20Error%20(MAE)">Regression Metrics</a></p>
+						<p style="color:grey; text-align: right; font-size: 55%; padding-top: 0.5% !important">[Weiterführende Inhalte]</p>
+					</div>
+				</div>
+				<p class="fragment" data-fragment-index="0" style="padding-top: 1.5% !important; color:grey; font-size: 85%;"><b>Lernziele</b></p>
+				<ul class="outside">
+					<li class="fragment" data-fragment-index="0" style="color: grey; font-size: 85%;">Verstehen wie ein neuronales Netz funktioniert.</li>
+					<li class="fragment" data-fragment-index="0"  style="color: grey; font-size: 85%;">Die Performance von einem machine learning Algorithmus messen.</li>
+					<li class="fragment" data-fragment-index="0"  style="color: grey; font-size: 85%;">Verstehen wie man underfitting und overfitting beim Training vermeidet.</li>
+					<li class="fragment" data-fragment-index="0"  style="color: grey; font-size: 85%;">Einen Übberblick über verschiedene Datentypen und mögliche Datenprobleme haben.</li>
+				</ul>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<div class="heading">Neuronale Netze</div>
+				<ul class="outside">
+					<li style="font-size: 80%; padding-bottom: 1% !important;">Ein Algorithmus für maschinelles Lernen zur Klassifizierung:</li>
+					<ul class="outside">
+						<li style="font-size: 80%; padding-bottom:1% !important">Nimmt die <b>Attribute</b> <em>x<sub>i</sub></em> einer unbekannten Beobachtung als Eingabe (Input)</li>
+						<li style="font-size: 80%; padding-bottom:1% !important">Sagt die <b>Klasse</b> <em>y<sub>i</sub></em> der Beobachtung voraus (Ausgabe, Output).</li>
+						<li style="font-size: 80%; padding-bottom:2% !important"><b>Lernt</b> aus Trainingsdaten um seine <b>Performance</b> zu steigern.</li>
+					</ul>
+					<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-bottom: 1% !important;">Letzte Vorlesung: verschiedene Algorithmen für Klassifizierung:</li>
+						<ul class="outside">
+							<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-bottom:1% !important">Naive Bayes</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-bottom:1%!important"><em>k</em> nächste Nachbarn</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-bottom:2% !important">Entscheidungsbäume</li>
+						</ul>
+					<li class="fragment" data-fragment-index="1" style="font-size: 80%">Jetzt: neuronale Netze als mächtige und flexible <em>Architektur</em> für Algorithmen des maschinellen Lernens.</li>
+			</section>
+			<section>
+				<div class="heading">Das Perzeptron</div>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/neural_net_1.svg" width="90%">
+					<img class="fragment current-visible" data-fragment-index="0" src="img/neural_net_2.svg" width="90%">
+					<img class="fragment current-visible" data-fragment-index="1" src="img/neural_net_3.svg" width="90%">
+					<img class="fragment" data-fragment-index="2" src="img/neural_net_4.svg" width="90%">
+				</div>
+				<div class="reference" style="text-align: right;">Inspiriert von: YouTube Science Buddies <a href="https://www.youtube.com/watch?v=SV2huMdNs9c">Super Simple Neural Network Explanation</a>.</div>
+			</section>
+			<section>
+				<div class="heading">Soll ich heute Abend ausgehen?</div>
+				<ul class="outside">
+					<li style="font-size: 90%; padding-top:2% !important">Eingaben:</li>
+					<ul class="outside">
+						<li style="font-size: 90%;">Regnet es draußen?</li>
+						<li style="font-size: 90%;">Gehen meine Freunde aus?</li>
+						<li style="font-size: 90%; padding-bottom:2% !important">Habe ich Geld übrig?</li>
+					</ul>
+					<li style="font-size: 90%; padding-bottom: 2% !important;">Ausgabe: Ausgehen? (ja oder nein)</li>
+					<li style="font-size: 90%;">Einfacher Algorithmus: Wenn zwei oder mehr Eingaben "ja", gehe ich aus.</li>
+				</ul>
+			</section>
+			<section>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/neural_net_5.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="0" src="img/neural_net_6.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="1" src="img/neural_net_7.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="2" src="img/neural_net_8.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="3" src="img/neural_net_9.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="4" src="img/neural_net_10.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="5" src="img/neural_net_11.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="6" src="img/neural_net_12.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="7" src="img/neural_net_13.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="8" src="img/neural_net_14.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="9" src="img/neural_net_15.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="10" src="img/neural_net_16.svg" width="100%">
+					<img class="fragment" data-fragment-index="11" src="img/neural_net_17.svg" width="100%">
+				</div>
+				<div class="reference" style="text-align: right; padding-top: 2% !important;">Inspiriert von: YouTube Science Buddies <a href="https://www.youtube.com/watch?v=SV2huMdNs9c">Super Simple Neural Network Explanation</a>.</div>
+			</section>
+			<section>
+				<div class="heading">Neuronales Netz zur Bilderkennung</div>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/neural_net_image_0.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="0" src="img/neural_net_image_1.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="1" src="img/neural_net_image_3.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="2" src="img/neural_net_image_4.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="3" src="img/neural_net_image_5.svg" width="100%">
+					<img class="fragment" data-fragment-index="4" src="img/neural_net_image_6.svg" width="100%">
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Zusammenfassung</div>
+				<ul class="outside">
+					<li style="font-size: 80%; padding-top:2% !important; padding-bottom:1.5% !important">Neuronale Netze bestehen aus einzelnen Neuronen (Perzeptronen).</li>
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 1.5% !important; font-size: 80%;">Einzelne Neurone erhalten <b>Eingaben</b> und errechnen mit Hilfe einer <b>Aktivierungsfunktion</b> eine <b>Ausgabe</b>.</li>
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 1.5% !important; font-size: 80%;">Ausgaben werden an  Neurone in der nächsten <b>Schicht</b> (layer) des neuronalen Netzes weitergegeben bis die Ausgabeschicht (ouptut layer) erreicht ist.</li>
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 1.5% !important; font-size: 80%;">Die Eingabeschicht (input layer) erhält die <b>Attribute einer Beobachtung</b> <em>x<sub>i</sub></em> als Eingabe. Die Ausgabeschicht (output layer) gibt eine der möglichen <b>Klassen</b> <em>y<sub>i</sub></em> aus.</li>
+					<li class="fragment" data-fragment-index="1" style="font-size: 80%; padding-bottom:1.5% !important">Die Wichtigkeit von Eingaben kann über <b>Gewichte</b> modifiziert werden.</li>
+					<li class="fragment" data-fragment-index="1" style="font-size: 80%;">Beim <b>Training</b> von neuronalen Netzen werden die Gewichte angepasst, bis die Ausgabe <b>optimal</b> ist.</li>
+				</ul>
+			</section>
+		</section>
+
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1200, //used to be 960
+  				height: 700,
+  				slideNumber: 'c',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+	</body>
+</html>
+
