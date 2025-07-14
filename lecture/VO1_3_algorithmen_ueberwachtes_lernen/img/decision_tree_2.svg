@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="148.08661mm"
+   height="46.488419mm"
+   viewBox="0 0 148.08661 46.488419"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="decision_tree_2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.587745"
+     inkscape:cx="239.59084"
+     inkscape:cy="152.83577"
+     inkscape:window-width="2560"
+     inkscape:window-height="1440"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid8137"
+       originx="-19.957429"
+       originy="-50.430994" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="RoundedArrow"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="RoundedArrow"
+       markerWidth="6.1347523"
+       markerHeight="5.9304953"
+       viewBox="0 0 6.1347524 5.9304951"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="m -0.21114562,-4.1055728 6.42229122,3.21114561 a 1,1 90 0 1 0,1.78885438 L -0.21114562,4.1055728 A 1.236068,1.236068 31.717474 0 1 -2,3 v -6 a 1.236068,1.236068 148.28253 0 1 1.78885438,-1.1055728 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path1367" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-19.95743,-50.430993)">
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="path234"
+       cx="90.30629"
+       cy="57.01651"
+       rx="19.75655"
+       ry="6.5855169" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       x="90.221886"
+       y="59.541763"
+       id="text1570"><tspan
+         sodipodi:role="line"
+         id="tspan1568"
+         style="font-weight:bold;font-size:7.05556px;fill:#ffffff;fill-opacity:1;stroke-width:0.5"
+         x="90.221886"
+         y="59.541763">FARBE</tspan></text>
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="ellipse2558"
+       cx="56.084862"
+       cy="77.346298"
+       rx="19.75655"
+       ry="6.5855169" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       x="56.000458"
+       y="79.871552"
+       id="text2562"><tspan
+         sodipodi:role="line"
+         id="tspan2560"
+         style="font-weight:bold;font-size:7.05556px;fill:#ffffff;fill-opacity:1;stroke-width:0.5"
+         x="56.000458"
+         y="79.871552">ALTER</tspan></text>
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="ellipse2564"
+       cx="132.46516"
+       cy="77.346298"
+       rx="19.75655"
+       ry="6.5855169" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       x="132.38081"
+       y="79.871552"
+       id="text2568"><tspan
+         sodipodi:role="line"
+         id="tspan2566"
+         style="font-weight:bold;font-size:7.05556px;fill:#ffffff;fill-opacity:1;stroke-width:0.5"
+         x="132.38081"
+         y="79.871552">ALTER</tspan></text>
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow)"
+       d="M 73.756815,60.613363 60.847356,69.173289"
+       id="path2624"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow)"
+       d="m 106.85576,60.613363 12.90946,8.559926"
+       id="path2941"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="60.747334"
+       y="62.71801"
+       id="text2947"><tspan
+         sodipodi:role="line"
+         id="tspan2945"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="60.747334"
+         y="62.71801">rot</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="123.17654"
+       y="62.71801"
+       id="text3523"><tspan
+         sodipodi:role="line"
+         id="tspan3521"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="123.17654"
+         y="62.71801">weiß</tspan></text>
+  </g>
+</svg>
