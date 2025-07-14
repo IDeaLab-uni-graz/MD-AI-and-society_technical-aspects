@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="134.48386mm"
+   height="19.329615mm"
+   viewBox="0 0 134.48385 19.329615"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="train_test_1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="2.8908217"
+     inkscape:cx="244.7401"
+     inkscape:cy="-80.081036"
+     inkscape:window-width="2560"
+     inkscape:window-height="1440"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid824"
+       originx="0.023846"
+       originy="4.9652649e-05" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="RoundedArrow"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="RoundedArrow"
+       markerWidth="6.1347523"
+       markerHeight="5.9304953"
+       viewBox="0 0 6.1347524 5.9304951"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="m -0.21114562,-4.1055728 6.42229122,3.21114561 a 1,1 90 0 1 0,1.78885438 L -0.21114562,4.1055728 A 1.236068,1.236068 31.717474 0 1 -2,3 v -6 a 1.236068,1.236068 148.28253 0 1 1.78885438,-1.1055728 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path1367" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0.02384588,4.9352646e-5)">
+    <rect
+       style="fill:none;stroke:#0000ff;stroke-width:0.968;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+       id="rect848"
+       width="75.032097"
+       height="7.4320984"
+       x="0.48395053"
+       y="0.48395064" />
+    <rect
+       style="fill:none;stroke:#ff0000;stroke-width:0.968;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+       id="rect952"
+       width="23.675037"
+       height="7.3340392"
+       x="76.484047"
+       y="0.5329802" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:arial;-inkscape-font-specification:arial;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#f80000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+       x="88.29142"
+       y="3.65148"
+       id="text2277"><tspan
+         sodipodi:role="line"
+         id="tspan2275"
+         style="font-size:2.46944px;text-align:center;text-anchor:middle;fill:#f80000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+         x="88.29142"
+         y="3.65148">Testdaten</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:2.46944px;text-align:center;text-anchor:middle;fill:#f80000;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+         x="88.29142"
+         y="6.1209202"
+         id="tspan2279">(Modell evaluieren)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:arial;-inkscape-font-specification:arial;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+       x="40.128845"
+       y="3.65148"
+       id="text5385"><tspan
+         sodipodi:role="line"
+         id="tspan5381"
+         style="font-size:2.46944px;text-align:center;text-anchor:middle;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+         x="40.128845"
+         y="3.65148">Trainingsdaten</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:2.46944px;text-align:center;text-anchor:middle;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+         x="40.128845"
+         y="6.1209202"
+         id="tspan5383">(Modell trainieren)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ff0000;fill-opacity:1;stroke-width:0.264583"
+       x="123.68394"
+       y="6.5821524"
+       id="text18463"><tspan
+         sodipodi:role="line"
+         style="font-size:2.46944px;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:1;stroke-width:0.264583"
+         x="123.68394"
+         y="6.5821524"
+         id="tspan18465">Auf keinen Fall für</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:2.46944px;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:1;stroke-width:0.264583"
+         x="123.68394"
+         y="9.668952"
+         id="tspan1082">das Training des </tspan><tspan
+         sodipodi:role="line"
+         style="font-size:2.46944px;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:1;stroke-width:0.264583"
+         x="123.68394"
+         y="12.755753"
+         id="tspan1084">Modells verwenden!</tspan></text>
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#RoundedArrow)"
+       d="m 103.98125,3.9687503 7.34716,2.7066312"
+       id="path878"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>

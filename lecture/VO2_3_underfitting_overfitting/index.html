@@ -1,0 +1,380 @@
+<!doctype html>
+
+<html>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script>
+	  Reveal.initialize({
+	    plugins: [ RevealMarkdown ]
+	  });
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>KI & Gesellschaft – Bias und Varianz</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #bacce8
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+	        p {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 160%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 40%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<!--<div class="heading" style="font-size: 200%;">Künstliche Intelligenz und Gesellschaft</div>-->
+				<img src="img/KI_und_gesellschaft.svg" width="100%">
+				<div class="heading" style="font-size: 150%; padding-top:2% !important; text-align:center">Vorlesung 3: Bias und Varianz</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Fehlerquellen</div>
+				<ul class="outside">
+					<li style="padding-bottom: 2% !important; padding-top: 3% !important;">Im Abschnitt über Performance Indikatoren haben wir gesehen, dass es <b>unterschiedliche Typen</b> von Fehlern gibt.</li>
+					<li style="padding-bottom: 2% !important;">Es gibt auch <b>unterschiedliche Gründe</b>, warum machine learning Modelle Fehler machen.</li>
+					<li style="padding-bottom: 4% !important;">Diese Gründe können sowohl in den <b>Trainingsdaten</b> als auch im <b>Trainingsprozess</b> liegen.</li>
+				</ul>
+				<p><em>Im Folgenden sehen wir uns die Gründe näher an.</em></p>
+			</section>
+			<section>
+				<div class="heading">Bias (Verzerrung)</div>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<ul class="outside">
+							<li style="font-size: 70%; padding-bottom:2% !important; padding-top:2% !important">Bias eines Modelles: Unterschied zwischen seiner <b>durchschnittlichen Vorhersage</b> und dem wahren Wert.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 70%;"><b>Beispiel</b></li> 
+							<ul class="outside">
+								<li class="fragment" data-fragment-index="0" style="font-size: 70%; padding-bottom: 1% !important;">Wir trainieren ein Modell darauf, Katzen und Hunde auf Bildern zu erkennen.</li>
+								<li class="fragment" data-fragment-index="0" style="font-size: 70%; padding-bottom: 1% !important">Katzen kommen im Trainingsdatensatz viel häufiger vor als Hunde.</li>
+								<li class="fragment" data-fragment-index="1" style="font-size: 70%;  padding-bottom: 1% !important">Als Resultat sagt das Modell viel wahrscheinlicher "Katze" voraus, als "Hund".</li>
+								<li class="fragment" data-fragment-index="1" style="font-size: 70%; padding-bottom: 1% !important">Das Modell hat einen Katzenbias!</li>
+							</ul>
+						</ul>
+						<img class="fragment" data-fragment-index="2" src="img/ethische_aspekte.svg" width="40%">
+						<img class="fragment" data-fragment-index="2" src="img/rechtliche_aspekte.svg" width="40%" style="padding-left: 3% !important;">
+					</div>
+					<div class="column3to2_1">
+						<img class="fragment" data-fragment-index="0" src="img/cat_dog.png" width="90%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 5%; margin-top: 0%;">
+						<div class="reference" style="text-align: right;"><span class="fragment" data-fragment-index="0" >Quelle Katzenbild: <a href="https://commons.wikimedia.org/wiki/File:Cat.png">Wikimedia Commons</a> <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA</a>.<br>Quelle Hundebild: <a href="https://commons.wikimedia.org/wiki/File:Cute_dog.jpg">Wikimedia Commons</a>, <a href="https://en.wikipedia.org/wiki/en:Creative_Commons">CC BY</a>.</span></div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<div class="heading">Varianz</div>
+						<ul class="outside">
+							<li style="font-size: 70%; padding-bottom:2% !important; padding-top:1% !important">Varianz eines Modelles: Streuung von Vorhersagen für ähnliche Eingabewerte.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 70%;"><b>Beispiel</b></li> 
+							<ul class="outside">
+								<li class="fragment" data-fragment-index="0" style="font-size: 70%; padding-bottom: 1% !important;">Wir trainieren ein Modell darauf, Ponys und Pferde auf Bildern zu erkennen.</li>
+								<li class="fragment" data-fragment-index="0" style="font-size: 70%; padding-bottom: 1% !important">In den Trainingsdaten kommen nur braune Pferde und weiße Ponys vor.</li>
+								<li class="fragment" data-fragment-index="1" style="font-size: 70%;  padding-bottom: 1% !important">Das Modell lernt, braun &rarr; Pferd sowie<br>weiß &rarr; Pony zu assoziieren.</li>
+								<li class="fragment" data-fragment-index="1" style="font-size: 70%;">Die Performance auf neuen Daten mit weißen Pferden und braunen Ponys ist extrem schlecht.</li>
+							</ul>
+							<li class="fragment" data-fragment-index="2" style="font-size: 70%; padding-top:2% !important">Zu hoher Varianz kann es auch kommen, wenn das <b>Modell zu komplex</b> ist (also viele Parameter hat) und damit zu viele Details der Trainingsdaten lernt.</li>
+						</ul>
+					</div>
+					<div class="column3to2_1">
+						<p class="fragment" data-fragment-index="0" style="font-size: 70%; text-align:center; padding-left:20%">Trainingsdaten</p>
+						<img class="fragment" data-fragment-index="0" src="img/pferd_pony_training.png" width="73%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%; padding-left: 20%;">
+						<p class="fragment" data-fragment-index="1" style="font-size: 70%; text-align:center; padding-top:0%; padding-left:20%">unbekannte Daten</p>
+						<img class="fragment" data-fragment-index="1" src="img/pferd_pony_test.png" width="73%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%; padding-left:20%">
+						<div class="reference" style="text-align: right;">
+							<span class="fragment" data-fragment-index="0">Quelle Pony weiß: <a href="https://commons.wikimedia.org/wiki/File:Sleeping_Pony.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA</a>.</span>
+							<br><span class="fragment" data-fragment-index="1">Quelle Pony Braun: <a href="https://commons.wikimedia.org/wiki/File:Dayboro_Shetland_Pony_loves_carrots-1_%2828603360412%29.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA</a>.</span>
+							<br><span class="fragment" data-fragment-index="1">Quelle Pferd weiß: <a href="https://commons.wikimedia.org/wiki/File:D%C3%BClmener_Pferd_%28132670151%29.jpeg">Wikimedia commons</a>, <a href="https://en.wikipedia.org/wiki/en:Creative_Commons">CC BY</a>.</span></div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="container3to2">
+					<div class="column3to2_1">
+						<div class="heading">Bias und Varianz</div>
+						<ul class="outside">
+							<li style="font-size: 65%; padding-bottom:4% !important; padding-top:6% !important">Im Kontext von maschinellem Lernen wird Bias auch <b>underfitting</b> genannt:</li>
+							<li style="font-size: 65%;">&rarr; der Algorithmus lernt die Verbindungen zwischen Attributen und Ausgaben nicht.</li>
+
+							<li class="fragment" data-fragment-index="0" style="font-size: 65%; padding-top: 15% !important; padding-bottom: 4% !important;">Varianz wird auch <b>overfitting</b> genannt:</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 65%;">&rarr; der Algorithmus modelliert falsche Korrelationen oder Rauschen anstatt der gewünschten Verbindungen zwischen Attributen und Ausgaben.</li>
+						</ul>
+						<div class="reference" style="padding-top: 5% !important;">Quelle Illustration: Angepasst von Scott Fortmann-Roe <a href="https://scott.fortmann-roe.com/docs/BiasVariance.html#:~:text=Bias%20measures%20how%20far%20off,model%20building%20process%20multiple%20times.">Graphical illustration of bias and variance</a>.</div>
+					</div>
+					<div class="column3to2_2">
+						<img src="img/bias_variance.svg" width="90%" style="padding-left: 10%;">
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Beispiel: Vorhersage einer Wahl</div>
+				<div class="container3to1">
+					<div class="column3to1_1">
+						<p style="font-size:60%; text-align: center;">Vorhersage für Florida 2020</p>
+						<img src="img/election_example_1.png" width="100%" style="padding-bottom: 0%; margin-bottom:0%">
+					</div>
+					<div class="column3to1_2">
+						<p style="font-size:60%; text-align: center;">tatsächliches Ergebnis</p>
+						<img src="img/election_example_2.png" width="90%" style="padding-bottom: 0%; margin-bottom:0%">
+					</div>
+				</div>
+				<p class="fragment" data-fragment-index="0" style="font-size: 73%;"><b>Mögliche Fehlerquellen</b></p>
+				<ul class="outside">
+					<li class="fragment" data-fragment-index="0" style="font-size: 73%; padding-bottom: 1% !important;"><b>Bias</b>: Attribute der Befragten wie Bildung oder Anschluss an ein Festnetztelefon wurden nicht berücksichtigt &rarr; die Vorhersage unterschätzt systematisch die Anzahl von Trum-Wähler:innen.</li>
+					<li class="fragment" data-fragment-index="1" style="font-size: 73%;"><b>Varianz</b>: Nicht genug befragte Personen, das Modell lernt die Attribute einzelner Personen &rarr; die Vorhersage wird stark von der zufälligen Auswahl der Befragten beeinflusst.
+				</ul>
+			</section>
+			<section>
+				<div class="heading" style="font-size: 140%; padding-bottom:2% !important">Beispiel: Vorhersage von Lungenentzündung</div>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<ul class="outside">
+							<li style="font-size: 80%; padding-bottom: 2% !important;"><b>Ziel</b>: Entdecken von Entzündungen auf Röntgenbildern von Lungen.</li>
+							<li style="font-size: 80%; padding-bottom:2% !important"><b>Trainingsdatensatz</b>: Röntgenbilder aus drei Spitälern.</li>
+							<li style="font-size: 80%;">Häufigkeit von Lungenentzündungen:</li>
+							<ul class="outside">
+								<li style="font-size: 80%;">Spital 1: 1.2%</li>
+								<li style="font-size: 80%;">Spital 2: 34.2%</li>
+								<li style="font-size: 80%; padding-bottom:2% !important">Spital 3: 1.0%.</li>
+							</ul>
+							<li style="font-size: 80%; padding-bottom: 2% !important;">Das machine learning Modell bekommt sowohl die Bilder als auch die <b>Metadaten</b> (welches Spital, welches Gerät, Uhrzeit etc.) zum Lernen.</li>
+							<div class="reference">Siehe auch <a href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683">Zech et al., PloS Medicine (2018)</a>.</div>
+						</ul>
+					</div>
+					<div class="column3to2_1">
+						<img src="img/lungs.svg" width="100%" style="margin-bottom: 0%; padding-bottom: 0%;">
+						<div class="reference" style="text-align: right; font-size:35%">Röntgenbilder von Lungen. Quelle: Wikimedia Commons, public domain.</div>
+						<p class="fragment" style="font-size: 80%; text-align:center; padding-top: 5% !important;"><b>Mögliche Probleme?</b></p>
+						<p class="fragment" style="font-size: 80%; padding-top: 3% !important; padding-left: 5%;"><em>Das Modell lernt <b>aus welchem Spital</b> die Bilder kommen und nicht die Charakteristika einer Lungenentzündung &rarr; <b>Bias</b>.</em></p>
+					</div>
+				</div>
+			</section>
+			<!--
+			<section>
+				<div class="heading">Kompromiss zwischen Bias und Varianz</div>
+				<img src="img/bias_variance_tradeoff.svg" width="70%">
+				<div class="reference"></div>
+			</section>
+		-->
+			<section>
+				<div class="heading" style="padding-bottom: 1% !important ;">Quellen von Bias</div>
+				<ul class="outside">
+					<li style="font-size: 75%;"><b>Auswahl von Daten</b>: Datensätze sollten die zugrundeliegende Population abbilden.</li>
+					<p style="font-size: 60%; padding-bottom:1% !important"><em>Beispiel: ein Algorithmus zur Gesichtserkennung der auf Bildern von mehrheitlich weißen Männern trainiert ist und schwarze Frauen sehr schlecht erkennt.</em></p>
+
+					<li class="fragment" data-fragment-index="0" style="font-size: 75%;"><b>Vorurteile und Korrelationen</b>: Attribute können ungewünschte Korrelationen enthalten die Vorurteile widerspiegeln.</li>
+					<p class="fragment" data-fragment-index="0" style="font-size: 60%; padding-bottom:1% !important"><em>Beispiel: ein recruiting Algorithmus der die Postleitzahl mit einbezieht und dadurch Migranten diskriminiert.</em></p>
+
+					<li class="fragment" data-fragment-index="1" style="font-size: 75%;"><b>Fehlende Informationen</b>: nicht im Datensatz enthaltene Attribute können sehr wichtig für das Resultat sein.</li>
+					<p class="fragment" data-fragment-index="1" style="font-size: 60%; padding-bottom:1% !important"><em>Beispiel: Vorhersage der Kauffreudigkeit von Kunden. Kunden aus Land X geben doppelt so viel Geld aus wie Kunden aus Land Y aber das Herkunftsland wird nicht erhoben und ist nicht für die Vorhersage verfügbar.</em></p>
+
+					<li class="fragment" data-fragment-index="2" style="font-size: 75%;"><b>Andere Datenquelle</b>: wenn die Datenquelle für die Trainingsdaten eine andere ist als für die Daten im Anwendungsfall.</li>
+					<p class="fragment" data-fragment-index="2" style="font-size: 60%;"><em>Beispiel: die Trainingsdaten für einen Bilderkennungsalgorithmus werden mit einer Nikon Kamera aufgenommen, die Daten für die Anwendung kommen alle von Canon Kameras.</em></p>
+				</ul>
+			</section>
+			<section>
+				<div class="heading">Korrekte Einschätzung der Varianz</div>
+				<p style="font-size: 70%"><em>Beim überwachten Lernen tendieren Algorithmen dazu, ihre Trainingsdaten "auswendig" zu lernen.<br>&rarr; der Vorhersagefehler auf den Trainingsdaten ist kein gutes Maß für die Varianz!</em></p>
+				<p class="fragment" data-fragment-index="0" style="font-size: 70%; padding-top:1% !important"><b>Training-Test Ansatz</b></p>
+				<ol class="outside">
+					<li class="fragment" data-fragment-index="0" style="font-size: 70%; padding-bottom:0.5% !important">Teile die Daten mit bekannten Klassen in zwei Teile, den <b>Trainingsdatensatz</b> (z.B. 80% der Daten) und den <b>Testdatensatz</b> (z.B. 20% der Daten).</li>
+					<li class="fragment" data-fragment-index="1" style="font-size: 70%; padding-bottom:0.5% !important">Trainiere das Modell nur mit dem Trainingsdatensatz.</li>
+					<li class="fragment" data-fragment-index="1" style="font-size: 70%; padding-bottom:0.5% !important">Sage mit dem trainierten Modell die Klassen im Testdatensatz voraus.</li>
+					<li class="fragment" data-fragment-index="2" style="font-size: 70%; padding-bottom:0.5% !important">Vergleiche die vorhergesagten mit den wahren Klassen.</li>
+					<li class="fragment" data-fragment-index="3" style="font-size: 70%;">(Optional) Teile einen dritten Teil ab (<b>Validierungsdaten</b>) um das Modell während der Entwicklung zu evaulieren.</li>
+				</ol>
+				<div class="r-stack">
+					<img class="fragment" data-fragment-index="0" src="img/train_test_1.svg" width=95%>
+					<img class="fragment" data-fragment-index="3" src="img/train_test_2.svg" width=95%>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Zusammenfassung</div>
+				<ul class="outside">
+					<li style="font-size: 80%;">Fehler von machine learning Modellen haben zwei Gründe:</li>
+					<ul class="outside">
+						<li style="font-size: 80%;"><b>Bias</b> (Verzerrung): eine systematische Abweichung der Modellvorhersagen vom wahren Wert.</li>
+						<li style="padding-bottom: 2% !important; font-size: 80%;"><b>Varianz</b>: eine starke Streuung von Vorhersagen für ähnliche Eingabewerte.</li>
+					</ul>
+					<li class="fragment" style="font-size: 80%; padding-bottom: 2% !important;">Gründe für Bias und Varianz können sowohl in den Trainingsdaten als auch im Trainingsprozess liegen.</li>
+					<li class="fragment" style="font-size: 80%; padding-bottom: 2% !important;">Systematische Identifikation von Verzerrungen in Trainingsdaten hilf, Modellbias zu verringern.</li>
+					<li class="fragment" style="font-size: 80%; padding-bottom: 2% !important;">Aufteilen der Daten in Training- und Testdatensatz hilft overfitting zu verhindern und die Varianz korrekt einzuschätzen.</li>
+				</ul>
+			</section>
+		</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1200, //used to be 960
+  				height: 700,
+  				slideNumber: 'c',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div>-->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+		
+	</body>
+</html>
+
