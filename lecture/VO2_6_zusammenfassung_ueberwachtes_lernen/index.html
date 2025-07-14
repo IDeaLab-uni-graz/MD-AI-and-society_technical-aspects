@@ -1,0 +1,272 @@
+<!doctype html>
+
+<html>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script>
+	  Reveal.initialize({
+	    plugins: [ RevealMarkdown ]
+	  });
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>KI & Gesellschaft – Zusammenfassung überwachtes Lernen</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #bacce8
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+	        p {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 160%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 40%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<!--<div class="heading" style="font-size: 200%;">Künstliche Intelligenz und Gesellschaft</div>-->
+				<img src="img/KI_und_gesellschaft.svg" width="100%">
+				<div class="heading" style="font-size: 125%; padding-top:2% !important; text-align:center">Vorlesung 2: Zusammenfassung Überwachtes Lernen</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading" style="padding-bottom: 1% !important;">Vorhersage von Krankheiten bei Kühen</div>
+				<div class="container3to1">
+					<div class="column3to1_1">
+						<ul class="outside">
+							<li style="font-size: 70%; padding-bottom: 4% !important;"><b>Ziel</b>: Vorhersage von Krankheiten bei Kühen basierend auf möglichst diversen Daten.</li>
+							<li style="font-size: 70%; padding-bottom: 4% !important;"><b>Herausforderung</b>: Integration von sehr unterschiedlichen Daten.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 70%;"><b>Resultat</b>: mäßige (Ketose, <em>F<sub>1</sub></em> = 0.52) bis gute (Stillbrunst, <em>F<sub>1</sub></em> = 0.74) Performance.
+						</ul>
+					</div>
+					<div class="column3to1_2">
+						<img src="img/example_cow.svg" width="100%" style="padding-top: 5% !important;">
+						<div class="reference" style="text-align: center;">Illustration der Integration verschiedener, über die Zeitaches verteilter Datenquellen. <br>Siehe auch <a href="https://academic.oup.com/jas/article/99/11/skab294/6400292?guestAccessKey=18193a4d-ca77-4ed3-8d51-7f4534f4af82">Lasser et al., <em>J. Animal. Sci.</em> (2021)</a>.</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Identifikation von Gegenredestrategien</div>
+					<div class="container3to1">
+					<div class="column3to1_1">
+						<ul class="outside">
+							<li style="font-size: 65%; padding-bottom: 3% !important; padding-top: 2% !important;"><b>Ziel</b>: Die Effektivität verschiedener Gegenredestrategien gegen Hassrede messen.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 65%; padding-bottom: 3% !important;"><b>Herausforderung</b>: sehr schwer fassbare Klassen wie z.B. Sarkasmus.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 65%;"><b>Resultat</b>: Klassifikation ist gut genug um im Mittel über den sehr großen Datensat (1.3 mio Tweets) einen Trend zu sehen.
+						</ul>
+					</div>
+					<div class="column3to1_2">
+						<img src="img/RG_vs_RI_3.svg" width="80%">
+						<img class="fragment" data-fragment-index="0" src="img/classifier_metric_details.svg" width="100%">
+						<div class="reference" style="text-align: center;"><span class="fragment" data-fragment-index="0">Performance des Klassifikators für Gegenredestrategien. Siehe auch <a href="https://arxiv.org/abs/2303.00357">Lasser & Herderich et al., <em>arXiv</em> (2024)</a>.</span></div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Klassifikation sexueller Orientierung</div>
+					<div class="container3to2">
+					<div class="column3to2_1">
+						<ul class="outside">
+							<li style="font-size: 70%; padding-bottom: 4% !important; padding-top: 2% !important;"><b>Ziel</b>: Klassifikation der sexuellen Orientierung von Bildern von einer Dating Site.</li>
+							<li style="font-size: 70%; padding-bottom: 4% !important;"><b>Resultat</b>: Der Klassifikator liefert gute Performance. Die Autoren interpretieren das als Evidenz dafür, dass sich sexuelle Orientierung in Gesichtern ablesen lässt.</li>
+							<li class="fragment" style="font-size: 70%;"><b>Kritik</b>: Es ist deutlich wahrscheinlicher, dass der Algorithmus die Orientierung und Behaarung des Gesichts erlernt hat.
+						</ul>
+					</div>
+					<div class="column3to2_2">
+						<img src="img/composite_faces.png" width="100%">
+						<div class="reference" style="text-align: center;">Quelle: <a href="https://osf.io/zn79k/">Wang & Kosinski <em>J. Pers. Soc. Psychol.</em> (2017)</a>.<br>Siehe auch: Calling Bull, <a href="https://callingbull.org/case_studies/case_study_ml_sexual_orientation.html">Machine learning about sexual orientation?</a>.</div>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Zusammenfassung</div>
+				<ul class="outside">
+					<li style="padding-bottom: 2% !important;">Mit überwachtem Lernen können wir einen Algorithmus darauf trainieren, <b>bekannte Muster wiederzuerkennen</b>.</li>
+					<li class="fragment" style="padding-bottom: 2% !important;">Es gibt <b>unterschiedliche Algorithmen</b> für überwachtes Lernen wie Naive Bayes oder Entscheidungsbäume.</li>
+					<li class="fragment" style="padding-bottom: 2% !important;">Die <b>Performance</b> von Algorithmen des überwachten Lernens messen wir mit Genauigkeit bzw. <em>F<sub>1</sub></em> Wert (Klassifikation) und der mittleren quadrierten Abweichung (Regression).</li>
+					<li class="fragment" style="padding-bottom: 2% !important;">Die Performance hängt stark von den Trainingsdaten ab. Fehlende Daten und Verzerrungen können Probleme darstellen und zu <b>Bias</b> (underfitting) und <b>Varianz</b> (overfitting) in den Ergebnissen führen.</li>
+				</ul>
+			</section>
+			<section>
+				<div class="heading">Ausblick nächste Vorlesung</div>
+				<p><em>Am 8.10. von 15:00 bis 16:45 im HS 10.11.</em></p>
+				<ul class="outside">
+					<li style="padding-top: 5% !important;"><b>Unüberwachtes Lernen</b>: wenn wir die Ausgabewerte nicht kennen und uns in großen Datensätzen orientieren müssen.</li>
+					<li style="padding-top: 4% !important;"><b>Dimensionsreduktion</b>: wenn wir einfach zu viele Attribute in unserem Datensatz haben.</li>
+					<li style="padding-top: 4% !important;"><b>Verstärkendes Lernen</b>: wenn wir uns in einer komplexen Umgebung zurechtfinden müssen.</li>
+				</ul>
+			</section>
+		</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1200, //used to be 960
+  				height: 700,
+  				slideNumber: 'c',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+		
+	</body>
+</html>
+
