@@ -1,0 +1,384 @@
+<!doctype html>
+
+<html>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script>
+	  Reveal.initialize({
+	    plugins: [ RevealMarkdown ]
+	  });
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>KI & Gesellschaft – Performance von Klassifizierungsalgorithmen</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #bacce8
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+	        p {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 160%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 40%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.container5to2{
+			    display: flex;
+			}
+			.column5to2_1 {
+			    flex: 2;
+			}
+			.column5to2_2 {
+			    flex: 5;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<!--<div class="heading" style="font-size: 200%;">Künstliche Intelligenz und Gesellschaft</div>-->
+				<img src="img/KI_und_gesellschaft.svg" width="100%">
+				<div class="heading" style="font-size: 140%; padding-top:0% !important; text-align:center">Vorlesung 2: Performance von Klassifizierungsalgorithmen</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="70%" style="padding-top: 0% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 0% !important;">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Performance</div>
+				<ul class="outside">
+					<li style="padding-bottom: 3% !important; padding-top: 1% !important; font-size: 80%;">Die <b>Performance</b> (Leistungsfähigkeit) eines Klassifizierungsalgorithmus misst, wie gut er Beobachtungen <em>x</em> den Klassen <em>y</em> zuordnen kann.</li>
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important; font-size: 80%;">Die Performance eines Algorithmus zu kennen ist an drei Stellen wichtig:</li>
+					<ol class="outside">
+						<li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important; font-size: 80%;">Um das <b>Training</b> in Richtung besserer Performance zu <b>steuern</b>.</li>
+						<li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important; font-size: 80%;"> Um das <b>Training zu beenden</b>, wenn die Performance nicht mehr besser wird.</li>
+						<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-bottom: 3% !important;">Nach Ende des Trainings, um die <b>finale Performance</b> des Algorithmus einschätzen zu können.</li>
+					</ol>
+				</ul>
+				<p class="fragment" data-fragment-index="1" style="font-size: 80%;"><em>Im Folgenden lernen wir verschiedene Wege, die Performance eines Algorithmus zu <b>messen</b></em>. </p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Beispiel: Klassifizierung von Brustkrebs</div>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<img src="img/breast_cancer.svg" width="100%" style="padding-top: 10%;">
+						<div class="reference" style="padding-top: 2% !important;">Quelle Beispielbild Brustkrebs: <a href="https://commons.wikimedia.org/wiki/File:Tumor_Breast_IM_recurrence.JPG">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA 3.0</a>.</div>
+					</div>
+					<div class="column3to2_1">
+						<img class="fragment" src="img/performance_example_1.svg" width="100%">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Performance des Klassifikators</div>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<p style="font-size: 78%; padding-bottom: 2% !important;"><b>Naiver Ansatz</b>: Rechne die Fehlerrate aus.</p>
+						<p style="font-size: 78%; padding-bottom: 2% !important;"><b>Fehlerrate</b>: Anteil an Beobachtungen die falsch klassifiziert wurden.</p>
+						<p class="fragment" data-fragment-index="0" style="font-size: 78%; padding-bottom: 5% !important;">Hier: 14 Beobachtungen, 4 Fehler = 28.6% Fehlerrate.<br>Bzw. 100% - 28.6% = 71.4% <b>Genauigkeit</b> (accuracy).</p>
+						<p class="fragment" data-fragment-index="1" style="font-size: 78%; padding-bottom: 2% !important;"><b>Problem</b>: der Klassifikator kann <b>zwei Arten</b> von Fehlern machen die  so nicht unterscheidbar sind:</p>
+						<ol class="outside">
+							<li class="fragment" data-fragment-index="1" style="font-size: 78%; padding-bottom: 1% !important;"><b>Falsch positiv</b>: in einem Bild wird Krebs erkannt obwohl keiner da ist.</li>
+							<li class="fragment" data-fragment-index="1" style="font-size: 78%; padding-bottom: 1% !important;"><b>Falsch negativ</b>: in einem Bild mit Krebs wird dieser nicht erkannt.</li>
+						</ol>
+					</div>
+					<div class="column3to2_1">
+						<div class="r-stack">
+							<img class="fragment fade-out" data-fragment-index="0" src="img/performance_example_1.svg" width="100%">
+							<img class="fragment" data-fragment-index="0" src="img/performance_example_2.svg" width="100%">
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Fehlermatrix</div>
+				<p class="fragment" data-fragment-index="0" style="font-size: 75%; padding-bottom:1% !important;">Eine 2x2 Tabelle, die den wahren und vorhergesagten Wert von Beobachtungen zusammenfasst.</p>
+				<div class="container5to2">
+					<div class="column5to2_2">
+						<div class="r-stack">
+							<img class="fragment fade-out" data-fragment-index="0" src="img/binary_classification.svg" width=70% style="padding-top: 1% !important; margin-bottom: 0%; padding-bottom: 3%;">
+							<img class="fragment current-visible" data-fragment-index="0" src="img/binary_classification.svg" width=70% style="padding-top: 1% !important; margin-bottom: 0%; padding-bottom: 3%;">
+							<img class="fragment current-visible" data-fragment-index="1" src="img/binary_classification.svg" width=70% style="padding-top: 1% !important; margin-bottom: 0%; padding-bottom: 3%;">
+							<p class="fragment" data-fragment-index="2" style="font-size: 75%; padding-top:5% !important">Berechne die<br><b>falsch positiv Rate</b>: 1 / (1 + 6) = 14.3%</p>
+							<p class="fragment" data-fragment-index="3" style="font-size: 75%; padding-bottom:3% !important; padding-top: 15% !important; padding-left: 1% !important;"><b>falsch negativ Rate</b>: 3 / (3 + 4) = 42.9%</p>
+							<p class="fragment" data-fragment-index="4" style="font-size: 75%; padding-top:23% !important"><em>Es gibt ein deutliches Ungleichgewicht zwischen falsch positiven und falsch negativen Fehlern! <span class="fragment" data-fragment-index="5">Welcher Fehler ist wichtiger?</span></em></p>
+						</div>
+						<div class="r-stack">
+							<img class="fragment current-visible" data-fragment-index="0" src="img/fehlermatrix_0.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="1" src="img/fehlermatrix_1.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="2" src="img/fehlermatrix_2.svg" width="100%">
+							<img class="fragment" data-fragment-index="3" src="img/fehlermatrix_3.svg" width="100%">
+						</div>
+					</div>
+					<div class="column5to2_1">
+						<div class="r-stack">
+							<img class="fragment current-visible" data-fragment-index="1" src="img/performance_example_2.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="2" src="img/false_positive.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="3" src="img/false_negative.svg" width="100%">
+							<img class="fragment" data-fragment-index="5" src="img/ethische_aspekte.svg">
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Häufigkeit von Klassen</div>
+				<p style="padding-bottom: 3% !important; padding-top: 2% !important;"><b>Beispiel</b>: <em>Brustkrebs Screening-Programm. Eine von 100 Frauen hat tatsächlich Brustkrebs. Das heißt: negative Fälle sind 1:100 überrepräsentiert.</em></p>
+				<ul class="outside">
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">Ein Klassifikator der immer "kein Brustkrebs" vorhersagt, hat eine Genauigkeit von 99%!</li>
+					<li class="fragment" data-fragment-index="1" style="padding-bottom: 2% !important;">Er hat allerdings eine falsch positiv Rate von 0% und eine falsch negativ Rate von 100%.</li>
+					<li class="fragment" data-fragment-index="1" >Wird nur die Genauigkeit angegeben, sieht der Klassifikator sehr gut aus. In der Realität ist er für den Anwendungsfall aber absolut unbrauchbar.</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading" style="padding-bottom: 2% !important;">Verschiedene Indikatoren für Performance</div>
+				<div class="container3to1">
+					<div class="column3to1_2">
+						<div class="r-stack">
+							<img class="fragment fade-out" data-fragment-index="0" src="img/indicators_1.svg" width="100%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+							<img class="fragment current-visible" data-fragment-index="0" src="img/indicators_2.svg" width="100%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+							<img class="fragment" data-fragment-index="1" src="img/indicators_3.svg" width="100%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+						</div>
+					</div>
+					<div class="column3to1_1">
+						<img src="img/fehlermatrix_4.svg" width="100%" style="padding-top: 45%;">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Kombinierte Maße</div>
+				<p style="font-size: 80%;">Das <em>F</em>-Maß (auch <em>F<sub>1</sub></em>-Maß) ist der harmonische Mittelwert von positivem Vorhersagewert und Sensitivität, wobei beide Werte gleich gewichtet sind. </p>
+				<img src="img/F1_score.svg" height=10%>
+				<p class="fragment" data-fragment-index="0" style="font-size: 80%; padding-top:2% !important">Allgemein: Das <em>F<sub>α</sub></em>-Maß mit unterschiedlichen Gewichten <em>α</em>. </p>
+				<img class="fragment" data-fragment-index="0" src="img/Falpha_score.svg" height=10%>
+				<p class="fragment" data-fragment-index="1" style="font-size: 80%; padding-top:2% !important"><em>F<sub>2</sub></em> gewichtet den pos. Vorhersagewert viermal so hoch wie die Sensitivität.
+					<br><em>F<sub>0.5</sub></em> gewichtet die Sensitivität viermal so hoch wie den pos. Vorhersagewert.</p>
+			</section>
+			<section>
+				<div class="heading" style="font-size: 135%;">Wann welchen Performanceindikator verwenden?</div>
+				<ul class="outside">
+					<li style="padding-bottom: 3% !important; font-size: 85%; padding-top: 2% !important;"><b>Genauigkeit</b> (accuracy): Wenn <b>Klassen gleich häufig</b> sind und falsch positive und falsch negative Fehler gleich schlimm sind.</li>
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 3% !important; font-size: 85%;"><b>Sensitivität</b> (sensitivity, recall): Wenn Klassen nicht gleich häufig und <b>falsch negative Fehler</b> besonders schlimm sind.</li>
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 3% !important; font-size: 85%;"><b>Spezifizität</b> (specificity) bzw. <b>pos. Vorhersagewert</b> (precision): Wenn Klassen nicht gleich häufig und <b>falsch positive Fehler</b> besonders schlimm sind.</li>
+					<li class="fragment" data-fragment-index="1" style="font-size: 85%;"><b><em>F<sub>1</sub></em></b>: wenn <b>Klassen nicht gleich häufig</b> und sowohl falsch positive Fehler als auch falsch negative Fehler schlimm sind.</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Zusammenfassung</div>
+				<ul class="outside">
+					<li style="padding-bottom: 2% !important; padding-top: 2% !important;">Die <b>Performance</b> eines Klassifikators zu kennen ist wichtig, um das <b>Training zu steuern</b> und die <b>Effektivität</b> des Klassifikators einzuschätzen.</li>
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">Klassifikatoren machen <b>unterschiedliche Fehler</b>: 
+						<ul class="outside">
+							<li class="fragment" data-fragment-index="0"><b>Falsch positiv</b>: eine negative Beobachtung wird als positiv klassifiziert.</li>
+							<li class="fragment" data-fragment-index="0"><b>Falsch negativ</b>: eine positive Beobachtung wird als negativ klassifiziert.</li>
+						</ul>
+					<li class="fragment" data-fragment-index="1">Je nach Wichtigkeit der verschiedenen Fehler und Balance der Klassen kommen <b>unterschiedliche Indikatoren</b> für Performance zum Einsatz:</li>
+					<ul class="outside">
+						<li class="fragment" data-fragment-index="1">Genauigkeit</li>
+						<li class="fragment" data-fragment-index="1">Sensitivität, Spezifizität, positiver Vorhersagewert</li>
+						<li class="fragment" data-fragment-index="1"><em>F<sub>1</sub></em> bzw. <em>F<sub>α</sub></em> Maß</li>
+					</ul>
+				</ul>
+			</section>
+			<section>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<div class="heading" style="padding-bottom: 3% !important;">Aufgabe (5 min)</div>
+						<p style="font-size: 80%; padding-bottom: 2% !important;">Für die wahren und vorhergesagten Werte in der Tabelle rechts:</p>
+						<ul class="outside">
+							<li style="font-size: 80%; padding-bottom: 2% !important;">Zählen Sie die falsch-positiven, falsch-negativen, richtig-positiven und richtig-negativen Vorhersagen.</li>
+							<li style="font-size: 80%; padding-bottom: 2% !important;">Berechnen Sie die Fehlerrate und Genauigkeit<br>(= 1 - Fehlerrate), Sensitivität, Spezifizität und positiven Vorhersagewert.</li>
+							<li style="font-size: 80%; padding-bottom:2% !important">Berechnen Sie den <em>F<sub>1</sub></em> Score.</li>
+							<li style="font-size: 80%;">Für welche Aufgaben eignet sich dieser Klassifikator gut bzw. eher nicht gut?</li>
+						</ul>
+					</div>
+					<div class="column3to2_1">
+						<img src="img/performance_exercise.svg" width="100%">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<div class="heading" style="padding-bottom: 3% !important;">Lösung</div>
+						<ul class="outside">
+							<li style="font-size: 70%; padding-bottom: 3% !important;"><em>f<sub>p</sub> = 4</em>;<span style="padding-left: 5%;"></span><em>f<sub>n</sub> = 1</em>;<span style="padding-left: 5%;"></span><em>r<sub>p</sub> = 6</em>;<span style="padding-left: 5%;"></span><em>r<sub>n</sub> = 3</em></li>
+							<li style="font-size: 70%; padding-bottom: 3% !important;">Fehlerrate: <em>5/14 = 0.36</em><br>Genauigkeit: <em>1 - 0.36 = 0.64</em><br>Sensitivität: <em>r<sub>p</sub> / (r<sub>p</sub> + f<sub>n</sub>) = 6/ (6 + 1) = 0.86</em><br>Spezifizität: <em>r<sub>n</sub> / (r<sub>n</sub> + f<sub>p</sub>) = 3 / (3 + 4) = 0.42</em><br>PVW: <em>r<sub>p</sub> / (r<sub>p</sub> + f<sub>p</sub>) = 6 / (6 + 4) = 0.6</em></li>
+							<li style="font-size: 70%; padding-bottom:3% !important"><em>F<sub>1</sub></em> Score: <em>2 * (PVW * Sens.) / (PVW. + Sens.)<br>= 2 * (0.6 * 0.86) / (0.6 + 0.86) = 0.71</em></li>
+							<li style="font-size: 70%;">Wenn falsch-positive Fehler nicht schlimm sind, z.B. Vorauswahl von Social Media Posts die dann noch von Menschen überprüft werden.</li>
+						</ul>
+					</div>
+					<div class="column3to2_1">
+						<img src="img/performance_exercise.svg" width="100%">
+					</div>
+				</div>
+			</section>
+		</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1200, //used to be 960
+  				height: 700,
+  				slideNumber: 'c',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+		
+	</body>
+</html>
+
