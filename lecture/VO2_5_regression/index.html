@@ -1,0 +1,301 @@
+<!doctype html>
+
+<html>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script>
+	  Reveal.initialize({
+	    plugins: [ RevealMarkdown ]
+	  });
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>KI & Gesellschaft – Regression</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #bacce8
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+	        p {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 160%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 40%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<img src="img/KI_und_gesellschaft.svg" width="100%">
+				<div class="heading" style="padding-top:2% !important; text-align:center">Vorlesung 2: Regression</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Überwachtes Lernen</div>
+				<ul class="outside">
+					<li style="font-size: 90%; padding-top: 2% !important; padding-bottom: 3% !important;">Bis jetzt haben wir nur gesehen, wie wir mit überwachtem Lernen <b>Klassen</b> vorhersagen.</li>
+					<li style="font-size: 90%; padding-bottom: 3% !important;">Wir können aber auch (kontinuierliche) <b>Zahlen</b> Vorhersagen.</li>
+					<li style="font-size: 90%">Wir bedienen uns dabei immer noch der Herangehensweise des überwachten Lernens (mit Beispieldaten zum Training des Modells) aber statt Klassifikation betreiben wir <b>Regression</b>.</li>
+				</ul>
+			</section>
+			<section>
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<div class="heading" style="padding-bottom: 2% !important; font-size: 140%;">Überwachtes Lernen:<br>Regression</div>
+						<ul class="outside">
+							<li style="padding-bottom: 3% !important;">Eine Anzahl von <em>Beobachtungen</em> mit <em>Attributen</em> und ihren<br><em>Werten</em> (<em>x<sub>1</sub>, ..., x<sub>d</sub></em>).</li>
+							<li class="fragment" data-fragment-index="0">Zu jeder Beobachtung ein <em>kontinuierlicher</em> Zielwert <em>y ∈</em> <b>R</b><br>&rarr; hier: Geschwindigkeit.</li>
+						</ul>
+						<p class="fragment" data-fragment-index="1" style="padding-top: 4% !important;"><b>Ziel</b>: Finde den korrekten <em>Zielwert</em> für eine neue Beobachtung.</p>
+						<p class="fragment" data-fragment-index="2" style="padding-top: 3% !important;">&rarr; <b>Regression</b></p>
+					</div>
+					<div class="column1to1_2">
+						<p style="text-align: center;"><b>Beispiel</b></p>
+						<div class="r-stack">
+							<p class="fragment fade-out" data-fragment-index="0" style="text-align: center; font-size: 60%;">Beobachtungen von Pferden</p>
+							<p class="fragment" data-fragment-index="0" style="text-align: center; font-size: 60% !important;"><em>Geschwindigkeit = 68 km/h</em> <em> <span style="color: white;">--</span> Geschwindigkeit = 58 km/h</em></p>
+						</div>
+						<img src="img/pferde_2.svg" width="90%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+							<p class="fragment" data-fragment-index="0" style="text-align: center; font-size: 60% !important;"><em>Geschwindigkeit = 61 km/h</em> <em> <span style="color: white;">--</span> Geschwindigkeit = 65 km/h</em></p>
+						<img src="img/pferde_3.svg" width="90%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+						<p class="fragment" data-fragment-index="1" style="padding-left: 3%;"><b>Beobachtung</b>: Pferd das 520 kg schwer und 148 cm groß ist.</p>
+						<p class="fragment" data-fragment-index="2" style="padding-left: 3%; padding-top: 1% !important; font-size: 75%">&rarr; vorhergesagte Geschwindigkeit: 66 km/h</p>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Überwachtes Lernen: Regression</div>
+				<p style="padding-bottom: 1% !important; font-size: 100%;"><em>Finde eine Gerade, die durch alle Punkte verläuft.</em></p>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/regression_0.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="0" src="img/regression_1.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="1" src="img/regression_2.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="2" src="img/regression_3.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="3" src="img/regression_4.svg" width=100%>
+					<img class="fragment" data-fragment-index="4" src="img/regression_5.svg" width=100%>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="container3to1">
+					<div class="column3to1_1">
+						<div class="heading" style="padding-top: 10% !important;">Regressions-"Pipeline"</div>
+						<p style="padding-top: 15% !important; font-size: 100%;">Trainingsphase</p>
+						<p style="padding-top: 55% !important; font-size: 100%; padding-bottom: 10%;">Anwendungsphase</p>
+					</div>
+					<div class="column3to1_2">
+						<img src="img/regression_pipeline.svg" width=100%>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Mittlere quadratische Abweichung</div>
+				<div class="r-stack">
+					<p class="fragment current-visible" data-fragment-index="0" style="font-size: 80%;"><em>Da wir keine diskreten Klassen vorhersagen, können wir auch keine Fehlerklassen wie falsch positiv oder falsch negativ erheben. &rarr; wir brauchen andere Fehlermaße.</em></p>
+					<p class="fragment current-visible" data-fragment-index="1" style="font-size: 80%;"><em>Da wir keine diskreten Klassen vorhersagen, können wir auch keine Fehlerklassen wie falsch positiv oder falsch negativ erheben. &rarr; wir brauchen andere Fehlermaße.</em></p>
+					<p class="fragment current-visible" data-fragment-index="2" style="font-size: 80%;"><em>Da wir keine diskreten Klassen vorhersagen, können wir auch keine Fehlerklassen wie falsch positiv oder falsch negativ erheben. &rarr; wir brauchen andere Fehlermaße.</em></p>
+					<p class="fragment current-visible" data-fragment-index="3" style="font-size: 80%;"><em>Da wir keine diskreten Klassen vorhersagen, können wir auch keine Fehlerklassen wie falsch positiv oder falsch negativ erheben. &rarr; wir brauchen andere Fehlermaße.</em></p>
+					<p class="fragment current-visible" data-fragment-index="4" style="font-size: 80%;"><em>Da wir keine diskreten Klassen vorhersagen, können wir auch keine Fehlerklassen wie falsch positiv oder falsch negativ erheben. &rarr; wir brauchen andere Fehlermaße.</em></p>
+					<p class="fragment current-visible" data-fragment-index="5" style="font-size: 80%;"><em>Da wir keine diskreten Klassen vorhersagen, können wir auch keine Fehlerklassen wie falsch positiv oder falsch negativ erheben. &rarr; wir brauchen andere Fehlermaße.</em></p>
+					<p class="fragment current-visible" data-fragment-index="6" style="font-size: 80%;"><em>Da wir keine diskreten Klassen vorhersagen, können wir auch keine Fehlerklassen wie falsch positiv oder falsch negativ erheben. &rarr; wir brauchen andere Fehlermaße.</em></p>
+					<p class="fragment" data-fragment-index="7" style="font-size: 80%; color:#e4684b"><em>Die Wurzel aus der mittleren quadratischen Abweichung wird auch als "root mean squared error" (RMSE) bezeichnet.</em></p>
+				</div>
+				<div class="r-stack">
+					<img class="fragment current-visible" data-fragment-index="0" src="img/MSE_1.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="1" src="img/MSE_2.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="2" src="img/MSE_3.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="3" src="img/MSE_4.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="4" src="img/MSE_5.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="5" src="img/MSE_6.svg" width=100%>
+					<img class="fragment" data-fragment-index="6" src="img/MSE_7.svg" width=100%>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Bias und Varianz einer Regression</div>
+				<p style="padding-bottom: 2% !important;"><em>Bias (underfitting) und Varianz (Overfitting) lassen sich für Regressionen sehr intuitiv verstehen.</em></p>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/under_over_1.svg" width=100%>
+					<img class="fragment" data-fragment-index="0" src="img/under_over_2.svg" width=100%>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Zusammenfassung</div>
+				<ul class="outside">
+					<li style="padding-bottom: 3% !important; padding-top: 3% !important;">Überwachtes Lernen kann sowohl zur <b>Klassifikation</b> (Vorhersage von Klassen) als auch zur <b>Regression</b> (Vorhersagen von Zahlen) genutzt werden.</li>
+					<li style="padding-bottom: 3% !important;">Regression folgt der selben Training-Vorhersage Logik wie Klassifikation.</li>
+					<li style="padding-bottom: 3% !important;">Als Maß für die Performance einer Regression verwenden wir die Wurzel aus der mittleren quadratischen Abweichung.
+				</ul>
+			</section>
+		</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1200, //used to be 960
+  				height: 700,
+  				slideNumber: 'c',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div>--> 
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+		
+	</body>
+</html>
+
