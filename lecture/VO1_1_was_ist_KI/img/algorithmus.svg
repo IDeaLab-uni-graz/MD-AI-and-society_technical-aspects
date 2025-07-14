@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="140.87886mm"
+   height="69.128624mm"
+   viewBox="0 0 140.87886 69.128624"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="algorithmus.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.829812"
+     inkscape:cx="229.80502"
+     inkscape:cy="170.78257"
+     inkscape:window-width="2560"
+     inkscape:window-height="1440"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid469"
+       originx="-10.033478"
+       originy="1.3830141e-07" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-10.033478)">
+    <rect
+       style="fill:#689cce;fill-opacity:1;stroke-width:1.12473;stroke-linecap:square"
+       id="rect448"
+       width="60.048965"
+       height="8.3762197"
+       x="61.434093"
+       y="-1.383014e-07"
+       ry="3.1249709" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1;stroke-linecap:square"
+       x="92.119812"
+       y="6.1949739"
+       id="text236"><tspan
+         sodipodi:role="line"
+         id="tspan234"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:1"
+         x="92.119812"
+         y="6.1949739">zur Straße gehen</tspan></text>
+    <rect
+       style="fill:#689cce;fill-opacity:1;stroke-width:1.398;stroke-linecap:square"
+       id="rect1004"
+       width="92.771912"
+       height="8.3762197"
+       x="45.81654"
+       y="25.472618"
+       ry="3.1249709" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1;stroke-linecap:square"
+       x="92.119812"
+       y="31.667593"
+       id="text1008"><tspan
+         sodipodi:role="line"
+         id="tspan1006"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:1"
+         x="92.119812"
+         y="31.667593">schauen, ob ein Auto kommt</tspan></text>
+    <rect
+       style="fill:#689cce;fill-opacity:1;stroke-width:1.52761;stroke-linecap:square"
+       id="rect293"
+       width="51.027351"
+       height="18.183386"
+       x="29.704435"
+       y="50.945236"
+       ry="6.7837944" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1;stroke-linecap:square"
+       x="55.879345"
+       y="57.66938"
+       id="text297"><tspan
+         sodipodi:role="line"
+         id="tspan295"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:1"
+         x="55.879345"
+         y="57.66938">stehen bleiben</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:1"
+         x="55.879345"
+         y="66.841606"
+         id="tspan351">und warten</tspan></text>
+    <rect
+       style="fill:#689cce;fill-opacity:1;stroke-width:1.52761;stroke-linecap:square"
+       id="rect403"
+       width="51.027351"
+       height="18.183386"
+       x="99.884979"
+       y="50.945236"
+       ry="6.7837944" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1;stroke-linecap:square"
+       x="126.05988"
+       y="57.66938"
+       id="text409"><tspan
+         sodipodi:role="line"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:1"
+         x="126.05988"
+         y="57.66938"
+         id="tspan407">über die</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:1"
+         x="126.05988"
+         y="66.841606"
+         id="tspan413">Straße gehen</tspan></text>
+    <path
+       style="fill:#689cce;fill-opacity:1;stroke:#689cce;stroke-width:1;stroke-linecap:square;stroke-opacity:1"
+       d="m 87.312499,18.520833 h 5.291667 L 89.958332,23.8125 Z"
+       id="path1903" />
+    <path
+       style="fill:#689cce;fill-opacity:1;stroke:#689cce;stroke-width:2;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
+       d="m 89.958332,18.520833 v -7.9375"
+       id="path1905" />
+    <path
+       style="fill:#689cce;fill-opacity:1;stroke:#689cce;stroke-width:1;stroke-linecap:square;stroke-opacity:1"
+       d="m 67.103423,42.41869 4.582718,2.645833 -4.937194,3.259801 z"
+       id="path1903-3" />
+    <path
+       style="fill:#689cce;fill-opacity:1;stroke:#689cce;stroke-width:1;stroke-linecap:square;stroke-opacity:1"
+       d="m 39.857558,33.136613 -1.455796,-5.087474 5.815373,1.087942 z"
+       id="path1903-3-5" />
+    <path
+       style="fill:#689cce;fill-opacity:1;stroke:#689cce;stroke-width:2;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
+       d="m 69.39478,43.741606 3.96875,-6.874077"
+       id="path1905-6" />
+    <path
+       style="fill:#689cce;fill-opacity:1;stroke:#689cce;stroke-width:1;stroke-linecap:square;stroke-opacity:1"
+       d="m 116.21816,42.41869 -4.58272,2.645833 4.9372,3.259801 z"
+       id="path1934" />
+    <path
+       style="fill:#689cce;fill-opacity:1;stroke:#689cce;stroke-width:2;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
+       d="m 113.9268,43.741606 -3.96875,-6.874077"
+       id="path1936" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#689cce;stroke-width:2;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
+       d="m 25.574272,60.036929 c 0,0 -41.769556,-10.744359 16.255011,-30.376201"
+       id="path1938"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#689cce;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
+       x="59.772251"
+       y="43.364006"
+       id="text2070"><tspan
+         sodipodi:role="line"
+         id="tspan2068"
+         style="fill:#689cce;fill-opacity:1;stroke:none;stroke-width:2"
+         x="59.772251"
+         y="43.364006">ja</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#689cce;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
+       x="126.12762"
+       y="43.364006"
+       id="text2126"><tspan
+         sodipodi:role="line"
+         id="tspan2124"
+         style="fill:#689cce;fill-opacity:1;stroke:none;stroke-width:2"
+         x="126.12762"
+         y="43.364006">nein</tspan></text>
+  </g>
+</svg>

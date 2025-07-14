@@ -1,0 +1,393 @@
+<!doctype html>
+
+<html>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script>
+	  Reveal.initialize({
+	    plugins: [ RevealMarkdown ]
+	  });
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>KI & Gesellschaft – Was ist KI?</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #<<
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+	        p {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 160%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 40%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<!--<div class="heading" style="font-size: 200%;">Künstliche Intelligenz und Gesellschaft</div>-->
+				<img src="img/KI_und_gesellschaft.svg" width="100%">
+				<div class="heading" style="font-size: 150%; padding-top:2% !important; text-align:center">Vorlesung 1: Was ist KI?</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading" style="padding-bottom: 1% !important;">Überblick über die heutige Vorlesung</div>
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<ul class="outside">
+							<li style="padding-bottom: 1% !important;">Was ist Künstliche Intelligenz?</li>
+							<li style="padding-bottom: 1% !important;">Wie funktioniert überwachtes Lernen (supervised learning)?</li>
+							<li style="padding-bottom: 1% !important;">Was sind Algorithmen für überwachtes Lernen?</li>
+						</ul>
+					</div>
+					<div class="column1to1_2">
+						<p style="color: grey; padding-bottom: 4% !important; font-size:55%; padding-top:2% !important; text-align: right;">Artificial Intelligence: A Modern Approach (1.1, 1.2, 1.3)</p>
+						<p style="color: grey; padding-bottom: 13% !important;  font-size:55%; text-align: right;">Artificial Intelligence: A Modern Approach (19.1 & 19.2.)</p>
+						<p style="color: grey;  font-size:55%; text-align: right;">Videos: <a href="https://www.youtube.com/watch?v=HZGCoVF3YvM">Bayes' theorem</a>, <a href="https://www.youtube.com/watch?v=0p0o5cmgLdE">K nearest neighbours</a>, <a href="https://www.youtube.com/watch?v=JcI5E2Ng6r4">Decision Trees</a></p>
+						<p style="padding-top: 6% !important; color:grey; text-align: right; font-size: 55%;">[Weiterführende Inhlate]</p>
+					</div>
+				</div>
+				<p class="fragment" data-fragment-index="0" style="padding-top: 1% !important; color:grey;"><b>Lernziele</b></p>
+				<ul class="outside">
+					<li class="fragment" data-fragment-index="0" style="color: grey;">Probleme mit <em>computational thinking</em> so zerlegen so dass sie mit Algorithmen lösbar sind.</li>
+					<li class="fragment" data-fragment-index="0"  style="color: grey;">Anwendungsgebiete und Beispiele für überwachtes Lernen (supervised learning) kennen.</li>
+					<li class="fragment" data-fragment-index="0"  style="color: grey; ">Algorithmen für überwachtes Lernen kennen.</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Künstliche Intelligenz ist ...</div>
+				<div class="container3to1">
+					<div class="column_threeway">
+						<p class="fragment" data-fragment-index="0" style="padding-top: 4% !important; font-size: 80%; margin-right:8%"><em>"... Technologien, die <span class="fragment highlight-uni-yellow" data-fragment-index="4">menschliche Fähigkeiten</span> im Sehen, Hören, Analysieren, Entscheiden und Handeln <span class="fragment highlight-uni-yellow" data-fragment-index="4">ergänzen und stärken</span>."</em></p>
+						<p class="fragment" data-fragment-index="0" style="text-align: right; font-size: 45%; padding-top: 2% !important; margin-right:8%"><span style="color:grey;">Microsoft,</span> <a href="https://news.microsoft.com/de-de/einfach-erklaert-was-ist-kuenstliche-intelligenz/">Was ist künstliche Intelligenz? Definition & Funktionen von KI</a></p>
+
+						<p class="fragment" data-fragment-index="2" style="padding-top: 8% !important; font-size: 80%; margin-right:8%"><em>"... a poor choice of words in 1954."</em></p>
+						<p class="fragment" data-fragment-index="2" style="text-align: right; font-size: 45%; padding-top: 2% !important; margin-right:8%"><span style="color:grey;">Someone on Twitter (now "X") cited by </span> <a href="https://www.ft.com/content/c1f6d948-3dde-405f-924c-09cc0dcf8c84?shareType=nongift">Sci-fi writer Ted Chiang</a></p>
+					</div>
+					<div class="column_threeway">
+						<p class="fragment" data-fragment-index="3" style="padding-top: 10% !important; font-size: 80%; margin-left:3%; margin-right: 3%;"><em>"... ein <span class="fragment highlight-uni-yellow" data-fragment-index="4">Forschungsgebiet der Informatik</span>, das Methoden & Software entwickelt & erforscht die es Maschinen ermöglichen, ihr Umfeld wahrzunehmen und Lernen und Intelligenz zu verwenden um Aktionen zu setzen die ihre <span class="fragment highlight-uni-yellow" data-fragment-index="4">Chance maximieren</span>, ein definiertes Ziel zu erreichen."</em></p>
+						<p class="fragment" data-fragment-index="3" style="text-align: right; font-size: 45%; padding-top: 2% !important; margin-left:3%; margin-right: 3%;"><span style="color:grey;">Russel & Norvig,</span> <a href="https://aima.cs.berkeley.edu/global-index.html">Artificial Intelligence: A Modern Approach</a></p>
+					</div>
+					<div class="column_threeway">
+						<p class="fragment" data-fragment-index="5" style="font-size: 80%; padding-top:10%; text-align:center; color:grey">Für wen wird KI eingesetzt und mit welchem Ziel?</p>
+						<img class="fragment" data-fragment-index="5" src="img/ethische_aspekte.svg" width=70%>
+
+						<p class="fragment" data-fragment-index="1" style="padding-top: 5% !important; font-size: 80%; margin-left:8%"><em>"... die Fähigkeit einer Maschine, <span class="fragment highlight-uni-yellow" data-fragment-index="4">menschliche Fähigkeiten</span> wie logisches Denken, Lernen, Planen und Kreativität zu <span class="fragment highlight-uni-yellow" data-fragment-index="4">imitieren</span>."</em></p>
+						<p class="fragment" data-fragment-index="1" style="text-align: right; font-size: 45%; padding-top: 2% !important; margin-left: 8%;"><span style="color:grey;">Europäisches Parlament,</span> <a href="https://www.europarl.europa.eu/topics/de/article/20200827STO85804/was-ist-kunstliche-intelligenz-und-wie-wird-sie-genutzt">Was ist künstliche Intelligenz und wie wird sie genutzt?</a></p>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Künstliche Intelligenz ist ...</div>
+				<div class="container3to1">
+					<div class="column_threeway">
+						<p class="fragment" data-fragment-index="0" style="font-size: 80%; color: #689cce; padding-top: 2% !important; margin-right:8%"><b>Methoden & Software</b><br>-Code<br>-Algorithmen<br>-Programme</p>
+						<p class="fragment" data-fragment-index="4" style="font-size: 80%; color: #ffe063; padding-top: 6% !important; margin-right:8%"><b>Chance maximieren</b><br>- Wahrscheinlichkeit<br>- Optimierung</p>
+						<p class="fragment" data-fragment-index="5" style="font-size: 80%; color: #948dc3; padding-top: 6% !important; margin-right:8%"><b>Definiertes Ziel</b><br>- Objekt greifen<br>- Zahl erkennen<br>- Text generieren<br>- Aufmerksamkeit halten</p>
+					</div>
+					<div class="column_threeway">
+						<p style="padding-top: 8% !important; font-size: 80%; margin-left:3%; margin-right: 3%;"><em>"... ein Forschungsgebiet der Informatik, das <span class="fragment highlight-uni-blue" data-fragment-index="0">Methoden & Software</span> entwickelt & erforscht die es Maschinen ermöglichen, ihr <span class="fragment highlight-uni-green" data-fragment-index="1">Umfeld wahrzunehmen</span> und <span class="fragment highlight-uni-orange" data-fragment-index="2">Lernen und Intelligenz</span> zu verwenden um <span class="fragment highlight-uni-red" data-fragment-index="3">Aktionen zu setzen</span> die ihre <span class="fragment highlight-uni-yellow" data-fragment-index="4">Chance maximieren</span>, ein <span class="fragment highlight-uni-violet" data-fragment-index="5">definiertes Ziel</span> zu erreichen."</em></p>
+						<p style="text-align: right; font-size: 45%; padding-top: 2% !important; margin-left:3%; margin-right: 3%;"><span style="color:grey;">Russel & Norvig,</span> <a href="https://aima.cs.berkeley.edu/global-index.html">Artificial Intelligence: A Modern Approach</a></p>
+					</div>
+					<div class="column_threeway">
+						<p class="fragment" data-fragment-index="2" style="font-size: 80%; color: #f6a968; padding-top: 2% !important; margin-left:8%"><b>Lernen & Intelligenz</b><br>- Aufnahme von Information<br>- Anpassung von Algorithmen</p>
+						<p class="fragment" data-fragment-index="3" style="font-size: 80%; color: #e4684b; padding-top: 4% !important; margin-left:8%"><b>Aktionen setzen</b><br>- Greifarm bewegen<br>- Wert vorhersagen<br>- Wort generieren<br>- Content auswählen</p>
+						<p class="fragment" data-fragment-index="1" style="font-size: 80%; color: #9fcb81; padding-top: 4% !important; margin-left:8%"><b>Umfeld wahrnehmen</b><br>Daten als Abbild des Umfelds</p>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="container3to1">
+					<div class="column3to1_1">
+						<div class="heading">Algorithmus</div>
+						<p style="padding-top: 15% !important;"><em>Eine eindeutige Handlungsvorschrift zur Lösung eines Problems.</em></p>
+						<p style="padding-top: 5% !important;"><em>Zusammengesetzt aus endlich vielen wohldefinierten Schritten.</em></p>
+					</div>
+					<div class="column3to1_2">
+						<div class="heading" style="padding-bottom:3% !important; color: #689cce !important; text-align: center; padding-left:2% !important"><span class="fragment" data-fragment-index="0">zum überqueren einer Straße</span></div>
+						<img class="fragment" data-fragment-index="0" src="img/algorithmus.svg" width=100% style="padding-bottom: 0%; margin-bottom:0%">
+						<div class="reference" style="text-align: right;"><span class="fragment" data-fragment-index="0">Adaptiert von Studyflix <a href="https://studyflix.de/informatik/algorithmus-4244">Was ist ein Algorithmus?</a></span></div>
+					</div>
+				</div>
+				<p class="fragment" data-fragment-index="1" style="text-align: center; padding-top: 3% !important;"><span style="color: #689cce;"><b>Programm</b></span>: Umsetzung eines Algorithmus in ausführbaren Code.</p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="container3to1">
+					<div class="column3to1_1">
+						<div class="heading">Zahlen erkennen</div>
+						<p style="padding-top:4% !important; font-size: 70%;"><b>Problem</b><br>Viele handgeschriebene Zahlen die digitalisiert werden müssen.</p>
+
+						<p class="fragment" data-fragment-index="0" style="padding-top:6% !important; font-size: 70%;">Menschen können die Zahlen sehr gut erkennen aber das <span class="fragment highlight-uni-blue" data-fragment-index="1">kostet Zeit</span>. Kann das nicht <span class="fragment highlight-uni-blue" data-fragment-index="1">automatisiert</span> werden?</p>
+						<img class="fragment" data-fragment-index="1" src="img/wirtschaftliche_aspekte.svg" width="70%" style="padding-top: 1%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+					</div>
+					<div class="column3to1_2">
+						<img src="img/erlagschein.svg" width="98%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 2%;">
+						<div class="reference" style="text-align: right; padding-right:1%">Quelle: Ilmer & Partner, <a href="https://www.illmerpartner.at/content/inhalte/aktuelles/informationen_zum_steuerrecht/sommer_2013/das_richtige_ausf%C3%BCllen_eines_finanzamtzahlscheines/index_ger.html">Informationen zum Steuerrecht</a>.</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Zahlen erkennen</div>
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<p style="padding-top:3% !important; font-size: 80%;">Wir wollen ein <span style="color: #689cce;">Programm entwickeln</span> das <span style="color: #9fcb81;">Scans von Erlagscheinen</span> als Eingabe nimmt und (digitale) <span style="color: #e4684b;">Zahlen ausgibt</span>, die mit <span style="color: #ffe063;">hoher Wahrscheinlichkeit</span> den <span style="color: #948dc3;">handgeschriebenen Zahlen entsprechen</span>.</p>
+						<p>
+							<ol class="outside">
+								<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-top: 3% !important; padding-bottom: 3% !important;"><b>Kontextwissen nutzen</b>: wir wissen wo am Scan Zahlen vorkommen, und wie viele Zahlen dort stehen sollten.</li>
+								<li class="fragment" data-fragment-index="1" style="font-size: 80%; padding-top: 3% !important; padding-bottom: 3% !important;"><b>Problem eingrenzen</b>: wir müssen nur noch einen Algorithmus entwickeln, der in einem Bild eine einzige Zahl erkennt.</li>
+							</ol>
+						</p>
+					</div>
+					<div class="column1to1_2">
+						<div class="r-stack">
+							<img class="fragment fade-out" data-fragment-index="0" src="img/erlagschein.svg" width="98%" style="padding-bottom: 0%; margin-bottom: 0%;">
+							<img class="fragment current-visible" data-fragment-index="0" src="img/erlagschein.svg" width="98%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 2%;">
+							<img class="fragment" data-fragment-index="1" src="img/numbers.svg" width="98%" style="padding-bottom: 0%; margin-bottom: 0%;">
+						</div>
+						<div class="reference" style="text-align: right; padding-right:1%">Quelle: Ilmer & Partner, <a href="https://www.illmerpartner.at/content/inhalte/aktuelles/informationen_zum_steuerrecht/sommer_2013/das_richtige_ausf%C3%BCllen_eines_finanzamtzahlscheines/index_ger.html">Informationen zum Steuerrecht</a>.</div>
+						<p class="fragment" data-fragment-index="2" style="padding-top: 3% !important; text-align: right; font-size: 80%; padding-left: 10%;"><b>Computational thinking</b>: <em>ein Problem so zerlegen, dass es mit einem Algorithmus gelöst werden kann.</em></p>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Eine einzelne Zahl erkennen</div>
+				<div class="container3to1">
+					<div class="column3to1_1">
+						<p class="fragment" data-fragment-index="0" style="padding-top: 10% !important;"><b>Eine simple Idee:</b></p>
+						<ul class="outside">
+							<li class="fragment" data-fragment-index="0" style="font-size: 75%; padding-top:3% !important">Bilder bestehen aus Pixeln.</li>
+							<li class="fragment" data-fragment-index="1" style="font-size: 75%; padding-top:6% !important">Wenn einige der Pixel schwarz bzw. weiß sind, muss das Bild eine "Neun" zeigen.</li>
+						</ul>
+						<p class="fragment" data-fragment-index="2" style="font-size: 75%; padding-top: 10% !important;"><em>Handschriften können aber sehr verschieden sein.</em></p>
+					</div>
+					<div class="column3to1_2">
+						<div class="r-stack">
+							<img class="fragment fade-out" data-fragment-index="0" src="img/nine_pixels_0.svg" width=100%>
+							<img class="fragment current-visible" data-fragment-index="0" src="img/nine_pixels_1.svg" width=100%>
+							<img class="fragment current-visible" data-fragment-index="1" src="img/nine_pixels_2.svg" width=100%>
+							<img class="fragment" data-fragment-index="2" src="img/nine_pixels_3.svg" width=100%>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="container1to1">
+					<div class="column1to1_2">
+						<div class="heading" style="color: #f6a968 !important">Maschinelles Lernen</div>
+						<p style="padding-top: 5% !important; padding-bottom:5% !important"><span style="color: #f6a968;">Aufnahme von Informationen zur Anpassung des Algorithmus.</span></p>
+						<ol class="outside">
+							<li class="fragment" data-fragment-index="0">Genügend viele gekennzeichnete ("labeled") Beispiele von Zahlen.</li>
+							<li class="fragment" data-fragment-index="1" style="padding-top: 5% !important;">Ein Algorithmus, der aus den Beispielen lernen kann.</li>
+						</ol>
+					</div>
+					<div class="column1to1_1">
+						<div class="r-stack">
+							<img class="fragment fade-out" data-fragment-index="0" src="img/numbers_1.svg" width="98%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 2%;">
+							<img class="fragment current-visible" data-fragment-index="0" src="img/numbers_2.svg" width="98%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 2%;">
+							<img class="fragment" data-fragment-index="1" src="img/numbers_2.svg" width="98%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 2%;">
+						</div>
+						<div class="reference" style="text-align: right; padding-right:1%; padding-top:5% !important">Quelle: Ilmer & Partner, <a href="https://www.illmerpartner.at/content/inhalte/aktuelles/informationen_zum_steuerrecht/sommer_2013/das_richtige_ausf%C3%BCllen_eines_finanzamtzahlscheines/index_ger.html">Informationen zum Steuerrecht</a>.</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading" style="color: #f6a968 !important">Maschinelles Lernen</div>
+				<ul class="outside">
+					<li style="padding-top: 3% !important; padding-bottom:3% !important; font-size:100%">Maschinelles Lernen ist ein Untergebiet der Künstlichen Intelligenz.</li>
+					<li class="fragment" data-fragment-index="0" style="font-size:100%">KI-Systeme nutzen maschinelles Lernen um Muster aus Daten zu extrahieren, ihre Umgebung wahrzunehmen, Entscheidungen zu treffen oder sich anzupassen.</li>
+					<li class="fragment" data-fragment-index="1" style="padding-top: 3% !important; font-size:100%"><b>Offene Fragen</b> </li>
+					<ul class="outside">
+						<li class="fragment" data-fragment-index="1" style="font-size:100%">Was für Algorithmen für maschinelles Lernen gibt es?</li>
+						<li class="fragment" data-fragment-index="1" style="font-size:100%">Wie lernen sie?</li>
+					</ul>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Zusammenfassung</div>
+				<ul class="outside">
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important; padding-top: 2% !important; font-size: 110%;">Künstliche Intelligenz hat viele Definitionen.</li>
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;  font-size: 110%;">Im Kern: Algorithmen die aus Daten lernen können um Probleme zu lösen.</li>
+					<li class="fragment" data-fragment-index="1" style="padding-bottom: 2% !important;  font-size: 110%;">Beispiel: Zahlen auf Erlagschein erkennen.</li>
+					<li class="fragment" data-fragment-index="2" style="font-size: 110%;">Beispiel für</li>
+					<ul class="outside">
+						<li class="fragment" data-fragment-index="2"><b>Überwachtes Lernen</b> (supervised learning) <em>Lernen aus Beispielen</em>.</li>
+						<li class="fragment" data-fragment-index="2"><b>Klassifizierung</b>: <em>Erkennen von Klassenzugehörigkeit von Beispielen</em>.</li>
+						<li class="fragment" data-fragment-index="2"><b>Computer Vision</b>: <em>Anwendungsgebiet für maschinelles Lernen</em>.</li>
+					</ul>
+				</ul>
+			</section>
+		</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1200, //used to be 960
+  				height: 700,
+  				slideNumber: 'c',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+	</body>
+</html>
+
