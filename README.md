@@ -1,5 +1,6 @@
-# MD-AI-and-society_technical-aspects
-Teaching materials for the technical aspects of the micro-degree "AI and Society" taught at the University of Graz in the winter semester 2024/25.
+# Micro-degree AI and Society – technical aspects
+Teaching materials for the technical aspects of the micro-degree [AI and Society](https://www.uni-graz.at/de/studium/microcredential/ki/) taught at the University of Graz in the winter semester 2024/25.
+Note that the materials are provided in German for now and will be translated throughout summer 2025.
 
 ## Lectures
 * Lecture 1
@@ -29,28 +30,28 @@ Teaching materials for the technical aspects of the micro-degree "AI and Society
  
 ## Course
 * Course 1
-  * [Einführung in Jupyter Notebooks](https://colab.research.google.com/drive/1Dz8yCVGOVD5l52EKYWBnbrIIDzqJwKfm?usp=sharing)
-  * [Python Grundlagen 1](https://colab.research.google.com/drive/16jp0vxpbKs_0KXr9NUd8MLdnNdUWLocp?usp=sharing)
-  * [Hausaufgaben](https://colab.research.google.com/drive/1X4Oi8aHxR3u9awHFfMmYIqS4v4ETmUFv?usp=sharing)
+  * [Einführung in Jupyter Notebooks](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/01_jupyter_intro.ipynb)
+  * [Python Grundlagen 1](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/01_python_grundlagen_1.ipynb)
+  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/01_hausaufgaben.ipynb)
 
 * Course 2
-  * [Python Grundlagen 2](https://colab.research.google.com/drive/1qS07P8EvBKrjWLz8LzLAJ5mW8MIYNDG1?usp=sharing)
-  * [Python Grundlagen 3](https://colab.research.google.com/drive/1ZGqXh_t5fvGDXD3ZhGDzCmK7Yc3xagbZ?usp=sharing)
-  * [Hausaufgaben](https://colab.research.google.com/drive/1dwyhXduzfPSCbyWOVawsxOGGfkGoKOO-?usp=sharing)
+  * [Python Grundlagen 2](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/02_python_grundlagen_2.ipynb)
+  * [Python Grundlagen 3](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/02_python_grundlagen_3.ipynb)
+  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/03_hausaufgaben.ipynb)
 
 * Course 3
-  * [Python Grundlagen 4](https://colab.research.google.com/drive/1Foi5obpE0y7MfwoEdgzFNDjXZDegJ6Vq?usp=sharing)
-  * [Überwachtes Lernen 1](https://colab.research.google.com/drive/1NLaaAx8uhYOZBeOceoyC_oZOSEUyxcXs?usp=sharing)
-  * [Hausaufgaben](https://colab.research.google.com/drive/1urZXFM8pWhW9MV6J8ssuVSFAEcYK8eju?usp=sharing)
+  * [Python Grundlagen 4](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/03_python_grundlagen_4.ipynb)
+  * [Überwachtes Lernen 1](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/03_ueberwachtes_lernen_1.ipynb)
+  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/03_hausaufgaben.ipynb)
 
 * Course 4
-  * [Überwachtes Lernen 2](https://colab.research.google.com/drive/16wBhcXL4XLnqSSVw7Pefj0beTbL6-vKN?usp=sharing)
-  * [Hausaufgaben](https://colab.research.google.com/drive/1myBeee7BfPWCjxdqWL5gZk8buOz4gRpZ?usp=sharing)
+  * [Überwachtes Lernen 2](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/04_ueberwachtes_lernen_2.ipynb)
+  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/04_hausaufgaben.ipynb)
 
 * Course 5
-  * [Unüberwachtes Lernen](https://colab.research.google.com/drive/1Y5RNiKdzAjxKLLcSzD3q-ip5IMf6gbmw?usp=sharing)
-  * [Hausaufgaben](https://colab.research.google.com/drive/1sdDyGrwca9UIqw1QxwLF8Zk-_AI9NkeI?usp=sharing)
+  * [Unüberwachtes Lernen](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/05_unueberwachtes_lernen.ipynb)
+  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/05_hausaufgaben.ipynb)
 
 * Course 6
-  * [Natürliche Sprachverarbeitung](https://colab.research.google.com/drive/1aJ8RWYl5K69MW9vhmABM9G1yRJ5VqI20?usp=sharing)
+  * [Natürliche Sprachverarbeitung](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/06_natural_language_processing.ipynb)
 
