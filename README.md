@@ -3,6 +3,38 @@ Teaching materials for the technical aspects of the micro-degree [AI and Society
 Note that the materials are provided in German for now and will be translated throughout summer 2025.
 
 ## Lectures
+### English
+* Lecture 1
+  * 1.0 [Intro to Lecture 1](https://janalasser.at/lectures/MD_KI/VO1_0_intro/)
+  * 1.1 [What is AI?](https://janalasser.at/lectures/MD_KI/VO1_1_what_is_AI/)
+  * 1.2 [Supervised Learning](https://janalasser.at/lectures/MD_KI/VO1_2_supervised_learning/)
+  * 1.3 [Algorithms for Supervised Learning](https://janalasser.at/lectures/MD_KI/VO1_3_algorithms_supervised_learning/)
+* Lecture 2
+  * 2.0 [Intro to Lecture 2](https://janalasser.at/lectures/MD_KI/VO2_0_intro/)
+  * 2.1 [Neural Networks](https://janalasser.at/lectures/MD_KI/VO2_1_neural_nets/)
+  * 2.2 [Performance of Classification Algorithms](https://janalasser.at/lectures/MD_KI/VO2_2_performance/)
+  * 2.3 [Bias and Variance](https://janalasser.at/lectures/MD_KI/VO2_3_bias_variance/)
+  * 2.4 [Data Types and Data Problems](https://janalasser.at/lectures/MD_KI/VO2_4_data/)
+  * 2.5 [Regression](https://janalasser.at/lectures/MD_KI/VO2_5_regression/)
+  * 2.6 [Summary Supervised Learning](https://janalasser.at/lectures/MD_KI/VO2_6_summary_supervised%20learning/)
+* Lecture 3
+  * 3.0 [Intro to Lecture 3](https://janalasser.at/lectures/MD_KI/VO3_0_intro/)
+  * 3.1 [Unsupervised Learning](https://janalasser.at/lectures/MD_KI/VO3_1_unsupervised_learning/)
+  * 3.2 [Distance & Similarity Measures](https://janalasser.at/lectures/MD_KI/VO3_2_distance_measures/)
+  * 3.3 [Data Transformations](https://janalasser.at/lectures/MD_KI/VO3_3_data_transformations/)
+  * 3.4 [Algorithms for Unsupervised Learning](https://janalasser.at/lectures/MD_KI/VO3_4_algorithms_unsupervised_learning/)
+  * 3.5 [Summary Unsupervised Learning](https://janalasser.at/lectures/MD_KI/VO3_5_summary_unsupervised_learning/)
+  * 3.6 [Reinforcement Learning](https://janalasser.at/lectures/MD_KI/VO3_6_reinforcement_learning/)
+* Lecture 4
+  * 4.0 [Intro to Lecture 4: LLMs and Recommender Systems](https://janalasser.at/lectures/MD_KI/VO4_0_intro/)
+  * 4.1 [Text as Data](https://janalasser.at/lectures/MD_KI/VO4_1_text_as_data/)
+  * 4.2 [Predicting Sequences](https://janalasser.at/lectures/MD_KI/VO4_2_predicting_sequences/)
+  * 4.3 [Generative Language Models](https://janalasser.at/lectures/MD_KI/VO4_3_generative_language_models/)
+  * 4.4 [Introduction to Recommender Systems](https://janalasser.at/lectures/MD_KI/VO4_4_introduction_recommender_systems/)
+  * 4.5 [Building Recommender Systems](https://janalasser.at/lectures/MD_KI/VO4_5_building_recommender_systems/)
+  * 4.6 [The Recommender System of X](https://janalasser.at/lectures/MD_KI/VO4_6_recommender_system_X/)
+
+### German
 * Lecture 1
   * 1.1 [Was ist KI?](https://janalasser.at/lectures/MC_KI/VO1_1_was_ist_KI/)
   * 1.2 [Überwachtes Lernen](https://janalasser.at/lectures/MC_KI/VO1_2_ueberwachtes_lernen/)
