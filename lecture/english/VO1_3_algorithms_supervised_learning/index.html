@@ -1,0 +1,353 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AI & Society 1.3 – Algorithms for Supervised Learning</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #<<
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+			html, body {
+			    height: 100%;
+			    margin: 0; 
+			    overflow: hidden; 
+			}
+			.reveal img{
+				height: auto;
+			}
+
+	        p {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+			}
+	        .title-heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 2% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:center;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 70%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+		<section>
+			<section>
+				<img src="img/title_slide.svg">
+			</section>
+			<section>
+				<div class="title-heading" style="padding-bottom: 3% !important;">Micro-Degree Artificial Intelligence and Society</div>
+				<div class="title-heading" style="font-size: 200% !important; padding-bottom: 3% !important;">– Technical Aspects of AI –</div>
+				<div class="title-heading" style="padding-bottom: 5% !important;">Lecture 1.3: Algorithms for Supervised Learning</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="70%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<div class="heading" style="font-size: 140%; padding-bottom:3% !important"><span class="fragment" data-fragment-index="0">A Simple Baseline</span></div>
+						<ul class="outside">
+							<li class="fragment" data-fragment-index="1"><b>Frequency-based</b> guessing as the simplest algorithm for classification. Calculate probabilities of the classes <em>P</em>:</li>
+							<p class="fragment" data-fragment-index="1" style="padding-left: 5%; font-size: 120%; padding-top: 2% !important;"><em>P (good) = 3/5</em></p>
+							<p class="fragment" data-fragment-index="1" style="padding-left: 5%; font-size: 120%;"><em>P (bad) = 2/5</em></p>
+							<p class="fragment" data-fragment-index="1" style="padding-left: 5%; font-size: 120%; padding-top:2% !important; padding-bottom:3% !important">&rarr; classify <span style="color: #e4684b;"><b>"good"</b></span></p>
+							<li class="fragment" data-fragment-index="2">Improvement with <b>conditional probabilities</b> of the classes:</li>
+							<p class="fragment" data-fragment-index="2" style="padding-left: 5%; font-size: 120%;"><em>P (red | good) = 1/3</em></p>
+							<p class="fragment" data-fragment-index="2" style="padding-left: 5%; font-size: 120%;"><em>P (young | good) = 1/3</em></p>
+							<p class="fragment" data-fragment-index="3" style="padding-left: 5%; font-size: 120%;"><em>P (red | bad) = 1/2</em></p>
+							<p class="fragment" data-fragment-index="3" style="padding-left: 5%; font-size: 120%;"><em>P (young | bad) = 1/2</em></p>
+						</ul>
+					</div>
+					<div class="column1to1_2">
+						<p style="text-align:center">What quality is the unknown wine?</p>
+						<div class="r-stack"> 
+							<img class="fragment fade-out" data-fragment-index="0" src="img/wine_example_1.svg" width="100%" style="padding-bottom: 1%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%;">
+							<img class="fragment fade-in" data-fragment-index="0" src="img/wine_example_2.svg" width="100%" style="padding-bottom: 1%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%;">
+						</div>
+						<p class="fragment" data-fragment-index="4" style="font-size: 120%; padding-left: 10%;"><em>P (good) ⋅ P (red | good) ⋅ P (young | good)</em></p>
+						<p class="fragment" data-fragment-index="4" style="font-size: 120%; padding-left: 15%;"><em>= 3/5 ⋅ 1/3 ⋅ 1/3 = <b>1/15</b></em></p>
+						<p class="fragment" data-fragment-index="5" style="font-size: 120%; padding-top:3.5% !important;  padding-left: 10%;"><em>P (bad) ⋅ P (red | bad) ⋅ P (young | bad)</em></p>
+						<p class="fragment" data-fragment-index="5" style="font-size: 120%; padding-left: 15%;"><em>= 2/5 ⋅ 1/2 ⋅ 1/2 = <b>1/10</b></em></p>
+						<p class="fragment" data-fragment-index="6" style="font-size: 120%; padding-top:3.5% !important;  padding-left: 10%;"><em><b>1/10</b> is greater than <b>1/15</b></em> &rarr; classify <span style="color: #e4684b;"><b>"bad"</b></span></p>
+					</div>
+				</div>
+				<div class="reference" style="text-align: center; padding-top:2% !important; font-size: 120%;"><span class="fragment" data-fragment-index="6"><em>Classification with conditional probabilities is based on Bayes' Theorem and is also called "Naive Bayes".</em></span></div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading" style="padding-bottom: 1.5% !important;">K Nearest Neighbors</div>
+				<div class="container1to1">
+					<div class="column1to1_2">
+						<ul class="outside">
+							<li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">Define a <b>distance measure</b> between the data points (observations).</li>
+							<li class="fragment" data-fragment-index="4" style="padding-bottom: 2% !important;">Define a number <em>k</em>.</li>
+							<li class="fragment" data-fragment-index="4" style="padding-bottom:2% !important">To classify a new observation:</li>
+							<ul class="outside">
+								<li class="fragment" data-fragment-index="4" style="padding-bottom: 2% !important;">Find the <em>k</em> nearest neighbors.</li>
+								<li class="fragment" data-fragment-index="5" style="padding-bottom: 2% !important;">Choose the class that the majority of the nearest neighbors has (majority vote).</li>
+								<li class="fragment" data-fragment-index="7">Optional: <b>weight</b> by the distance of the data points: closer neighbors have more influence.</li>
+							</ul>
+						</ul>
+					</div>
+					<div class="column1to1_1">
+						<p style="text-align:center">What color is the new observation?</p>
+						<div class="r-stack">
+							<img class="fragment fade-out" data-fragment-index="0" src="img/KnnClassification_0.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="0" src="img/KnnClassification_1.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="1" src="img/KnnClassification_2.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="2" src="img/KnnClassification_3.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="3" src="img/KnnClassification_4.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="4" src="img/KnnClassification_5.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="5" src="img/KnnClassification_6.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="6" src="img/KnnClassification_7.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="7" src="img/KnnClassification_8.svg" width="100%">
+							<img class="fragment current-visible" data-fragment-index="8" src="img/KnnClassification_9.svg" width="100%">
+							<img class="fragment" data-fragment-index="9" src="img/KnnClassification_10.svg" width="100%">
+						</div>
+						<div class="reference" style="text-align: center;">Adapted from <a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm#/media/File:KnnClassification.svg">Wikipedia</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Some Observations about <em>k</em> Nearest Neighbors</div>
+				<div class="container1to1">
+					<div class="column1to1_2">
+						<ul class="outside">
+							<li style="padding-bottom: 3% !important; padding-top: 2% !important; font-size: 140%;">Depending on the definition of the algorithm (weighted vs. unweighted), the algorithm's result changes.</li>
+							<li style="padding-bottom: 3% !important; font-size: 140%;">Depending on the choice of <em>k</em>, the result also changes.</li>
+							<li class="fragment" data-fragment-index="0" style="padding-bottom: 3% !important; font-size: 140%;"><em>k</em> is also called a <b>hyperparameter</b> of the algorithm. Hyperparameters are used to control the algorithm's functionality.</li>
+							<li class="fragment" data-fragment-index="1" style="padding-bottom: 3% !important; font-size: 140%;">Hyperparameters must be adapted (tuned) to the characteristics of the dataset. In the example on the right, <em>k=12</em> would be meaningless, as there are only 11 data points.</li>
+						</ul>
+					</div>
+					<div class="column1to1_1">
+						<img src="img/KnnClassification_11.svg" width="100%">
+						<div class="reference" style="text-align: center;">Adapted from <a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm#/media/File:KnnClassification.svg">Wikipedia</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></div>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="container1to1">
+					<div class="column1to1_2">
+						<div class="heading" style="font-size: 150%;">Decision Trees</div>
+						<ul class="outside">
+							<li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important; padding-top: 2% !important;">Each <b>internal node</b> is an attribute.</li>
+							<li class="fragment" data-fragment-index="1" style="padding-bottom: 2% !important">Each <b>edge</b> is a value (or range of values) of the source node.</li>
+							<li class="fragment" data-fragment-index="2" style="padding-bottom: 2% !important">Each <b>leaf node</b> is a class label.</li>
+							<li class="fragment" data-fragment-index="3">Classification: Traversing the decision tree from top to bottom.</li>
+						</ul>
+					</div>
+					<div class="column1to1_1">
+						<img src="img/wine_example_decision_tree.svg" width="100%" style="padding-top: 0%; margin-top:0%; padding-bottom: 3%; margin-bottom: 0%;">
+					</div>
+				</div>
+				<div class="r-stack">
+					<img class="fragment current-visible" data-fragment-index="0" src="img/decision_tree_1.svg" width="70%" style="padding-top: 1%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+					<img class="fragment current-visible" data-fragment-index="1" src="img/decision_tree_2.svg" width="70%" style="padding-top: 1%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+					<img class="fragment" data-fragment-index="2" src="img/decision_tree_3.svg" width="70%" style="padding-top: 1%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+				</div>
+			</section>
+			<section>
+				<div class="heading">Machine <span style="color: #f6a968;">Learning</span></div>
+				<ul class="outside">
+					<li>So far, we have not processed any data to adapt the algorithm.</li>
+					<li class="fragment" data-fragment-index="0" style="padding-top: 2% !important;">We <b>train</b> the algorithm by adjusting the <span style="color: #f6a968;">thresholds</span> (parameters) based on the training data until the classes are optimally separated.</li>
+				</ul>
+				<img class="fragment" data-fragment-index="0" src="img/decision_tree_4.svg" width="100%">
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">No Free Lunch Theorem</div>
+				<p style="padding-top: 3% !important;">Which machine learning algorithm is best for classification?</p>
+				<p class="fragment" data-fragment-index="0" style="padding-left: 10%; padding-right: 10%; padding-top: 3% !important;"><em>Without having substantive information about the modeling problem, there is no single model that will always do better than any other model. Because of this, a strong case can be made to try a wide variety of techniques, then determine which model to focus on.</em></p>
+				<p class="fragment" data-fragment-index="0" style="text-align: right; padding-top:3% !important; font-size:90%; color: grey; padding-bottom: 10% !important;">[David Wolpert, <a href="https://direct.mit.edu/neco/article-abstract/8/7/1341/6016/The-Lack-of-A-Priori-Distinctions-Between-Learning">The Lack of a priori Distinctions Between Learning Algorithms</a> (1996)]</p>
+			</section>
+			<section>
+				<div class="heading">Summary</div>
+				<ul class="outside">
+					<li style="padding-top:2% !important">There are various algorithms for supervised learning. Examples include:</li>
+					<ul class="outside">
+						<li>Naive Bayes</li>
+						<li><em>k</em> nearest neighbours</li>
+						<li style="padding-bottom: 2% !important;">Decision trees</li>
+					</ul>
+					<li class="fragment" style="padding-bottom: 2% !important;">There is no "best" algorithm, but before a complicated algorithm is trained, it makes sense to have a simple <b>baseline</b> for comparison (e.g., Naive Bayes).</li>
+					<li class="fragment" style="padding-bottom: 2% !important">"Learning" or <b>training</b> of an algorithm takes place by adjusting the parameters based on the training data until an optimal result is achieved.</li>
+					<li class="fragment"><b>Hyperparameters</b> (like the <em>k</em> in "<em>k</em> nearest neighbors") must be chosen such that they are meaningful for a given dataset.</li>
+				</ul>
+			</section>
+			<section>
+				<div class="heading">Outlook</div>
+				<p style="padding-top: 2% !important;">In the next set of inputs, we will learn about ...</p>
+				<ul class="outside">
+					<li style="padding-top: 1.5% !important;">... <b>neural nets</b> as a powerful architecture for machine learning algorithms. (Lecture 2.1)</li>
+					<li style="padding-top: 1.5% !important;">... how to measure the <b>performance</b> of classification algorithms. (Lecture 2.2)</li>
+					<li style="padding-top: 1.5% !important;">... <b>problems that can occur during algorithm training</b>, namely underfitting, overfitting, bias, and variance. (Lecture 2.3)</li>
+					<li style="padding-top: 1.5% !important;">... more about <b>training data</b>, namely about different data types, and problems that can occur with data. (Lecture 2.4)</li>
+					<li style="padding-top: 1.5% !important;">... an extension of supervised learning to <b>regression</b> – e.g. predicting numerical values instead of classes. (Lecture 2.5)</li>
+				</ul>
+			</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: "100%", //used to be 960
+  				height: "100%",
+  				slideNumber: 'c',
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+	</body>
+</html>
+

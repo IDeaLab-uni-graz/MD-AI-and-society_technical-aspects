@@ -1,0 +1,293 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AI & Society 1.2 – Supervised learning</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #<<
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+			html, body {
+			    height: 100%;
+			    margin: 0; 
+			    overflow: hidden; 
+			}
+			.reveal img{
+				height: auto;
+			}
+
+	        p {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+			}
+	        .title-heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 2% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:center;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 70%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<img src="img/title_slide.svg">
+			</section>
+			<section>
+				<div class="title-heading" style="padding-bottom: 3% !important;">Micro-Degree Artificial Intelligence and Society</div>
+				<div class="title-heading" style="font-size: 200% !important; padding-bottom: 3% !important;">– Technical Aspects of AI –</div>
+				<div class="title-heading" style="padding-bottom: 5% !important;">Lecture 1.2: Supervised Learning</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="70%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<div class="heading" style="padding-bottom: 5% !important;">Supervised Learning:<br>Classification</div>
+						<ul class="outside">
+							<li style="padding-bottom: 3% !important;">A number of <em>observations</em> with <em>attributes</em> and their <em>values</em> (<em>x<sub>1</sub>, ..., x<sub>d</sub></em>).</li>
+							<li class="fragment" data-fragment-index="0">For each observation, a class (label)<br><em>y ∈ {y<sub>1</sub>, ..., y<sub>k</sub>}</em>.</li>
+						</ul>
+						<p class="fragment" data-fragment-index="1" style="padding-top: 16% !important;"><b>Goal</b>: Find the correct class for a new observation <em>without a class</em>.</p>
+						<p class="fragment" data-fragment-index="2" style="padding-top: 3% !important;">&rarr; <b>Classification</b></p>
+					</div>
+					<div class="column1to1_2">
+						<p style="text-align: center;"><b>Example</b></p>
+						<div class="r-stack">
+							<p class="fragment fade-out" data-fragment-index="0" style="text-align: center;">Obervations of animals with hooves</p>
+							<p class="fragment" data-fragment-index="0" style="text-align: center;"><em>y<sub>1</sub></em>: Horse <em> <span style="color: white;">-----------</span> y<sub>2</sub></em>: Pony</p>
+						</div>
+						<img src="img/horse_pony.svg" width="100%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+						<div class="reference" style="text-align: center; padding-bottom: 2% !important;">Sources: <a href="https://pxhere.com/de/photo/1192546">pxhere.com</a>, <a href="https://commons.wikimedia.org/wiki/File:Sleeping_Pony.jpg">Wikimedia commons</a>, <a href="https://creativecommons.org/licenses/by/2.0/deed.en">CC BY 2.0</a></div>
+						<li style="padding-left: 10%;"><em>x<sub>1</sub></em>: Weight</li>
+						<li style="padding-left: 10%;"><em>x<sub>2</sub></em>: Height</li>
+						<p class="fragment" data-fragment-index="1" style="padding-left: 10%; padding-top: 5% !important;"><b>Observation</b>:  Animal weighing 520 kg and 148 cm tall.</p>
+						<p class="fragment" data-fragment-index="2" style="padding-left: 15%; padding-top: 3% !important;">&rarr; Horse</p>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Supervised Learning: Classification</div>
+				<p class="fragment current-visible" data-fragment-index="1" style="padding-bottom: 1% !important;"><em>Find a line that optimally separates horses and ponies.</em></p>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/classification_0.svg" width=65%>
+					<img class="fragment current-visible" data-fragment-index="0" src="img/classification_1.svg" width=65%>
+					<img class="fragment current-visible" data-fragment-index="1" src="img/classification_2.svg" width=65%>
+					<img class="fragment current-visible" data-fragment-index="2" src="img/classification_3.svg" width=65%>
+					<img class="fragment current-visible" data-fragment-index="3" src="img/classification_4.svg" width=65%>
+					<img class="fragment" data-fragment-index="4" src="img/classification_5.svg" width=65%>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="container3to1">
+					<div class="column3to1_1">
+						<div class="heading" style="font-size: 130%; padding-top: 10% !important;">Classification "Pipeline"</div>
+						<p style="padding-top: 15% !important;">Training Phase</p>
+						<p class="fragment" data-fragment-index="0" style="padding-top: 55% !important; padding-bottom: 10%;">Application Phase</p>
+					</div>
+					<div class="column3to1_2">
+						<div class="r-stack">
+							<img class="fragment fade-out" data-fragment-index="0" src="img/classification_pipeline_1.svg" width=80%>
+							<img class="fragment" data-fragment-index="0" src="img/classification_pipeline_2.svg" width=80%>
+						</div>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Summary</div>
+				<ul class="outside">
+					<li style="padding-bottom: 2% !important; padding-top: 2% !important;">In <b>supervised learning</b>, we try to learn known patterns and recognize them automatically.</li>
+					<li style="padding-bottom: 2% !important;">Supervised learning consists of a <b>training phase</b> and an <b>application phase</b>.</li>
+					<li style="padding-bottom: 2% !important;">With supervised learning, we can predict class membership (<b>classification</b>).
+					<li style="padding-bottom: 4% !important;">Supervised learning also allows predicting continuous values (<b>regression</b>) &rarr; more in the next lecture.</li>
+					<li class="fragment" data-fragment-index="0">Nomenclature:</li>
+					<ul class="outside">
+						<li class="fragment" data-fragment-index="0" style="font-size: 120%;"><b>Attributes</b> (like "weight" and "height" in the animal example) are also often called <b>features</b>.</li>
+						<li class="fragment" data-fragment-index="0" style="font-size: 120%;"><b>Classes</b> (like "horse" and "pony" in the animal example) are also often called <b>labels</b> or <b>target values</b>.</li>
+						<li class="fragment" data-fragment-index="0" style="font-size: 120%;"><b>Observations</b> (like triplets of weight, height and class in the animal example) are also often called <b>data points</b>.</li>
+
+					</ul>
+				</ul>
+			</section>
+			<section>
+				<div class="heading" style="padding-bottom: 2% !important;">Exercise (5 min)</div>
+				<ul class="outside">
+					<li style="padding-bottom: 3% !important;">Think of a <b>use case for supervised learning</b> from your daily life, e.g., from studies, work, or private life.</li>
+					<li style="padding-bottom: 1% !important;">For the given use case, consider:</li>
+					<ul class="outside">
+						<li style="padding-bottom: 1% !important;">What is a single <b>observation</b> (or "data point")?</li>
+						<li style="padding-bottom: 1% !important;">What are the <b>attributes</b> (or "features") of the observation?</li>
+						<li style="padding-bottom: 1% !important;">What are the <b>classes</b> (or "labels", "target values") you want to predict?</li>
+					</ul>
+				</ul>
+			</section>
+		</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: "100%", //used to be 960
+  				height: "100%",
+  				slideNumber: 'c',
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+	</body>
+</html>
+
