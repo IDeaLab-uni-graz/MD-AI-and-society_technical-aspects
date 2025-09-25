@@ -1,0 +1,307 @@
+<!doctype html>
+
+<html>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script>
+	  Reveal.initialize({
+	    plugins: [ RevealMarkdown ]
+	  });
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>KI & Gesellschaft – große Sprachmodelle</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #bacce8
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+	        p {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 160%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 40%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<!--<div class="heading" style="font-size: 200%;">Künstliche Intelligenz und Gesellschaft</div>-->
+				<img src="img/KI_und_gesellschaft.svg" width="100%">
+				<div class="heading" style="font-size: 150%; padding-top:2% !important; text-align:center">Vorlesung 4: große Sprachmodelle</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Große Sprachmodelle –<br>large language models (LLMs)</div>
+				<ul class="outside">
+					<li style="font-size: 80%; padding-bottom:3% !important; padding-top:3% !important">Große Sprachmodelle die auf Anfrage Text generieren können haben sich seit dem Release von ChatGPT im Jahr 2022 extrem weit verbreitet.</li>
+					<li style="font-size: 80%; padding-bottom:3% !important">Um große Sprachmodelle zu trainieren, brauchen wir alle Spielarten von maschinellem Lernen.</li>
+					<li style="font-size: 80%;">Im Folgenden folgen wir Schritt für Schritt dem Prozess des Trainings eines großen generativen Sprachmodells.</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading" style="font-size: 130%; padding-bottom:2% !important">Schritt 1: Vortraining mit semi-überwachtem Lernen</div>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/transformer_0.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="0" src="img/transformer_1.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="1" src="img/transformer_2.svg" width="100%">
+					<img class="fragment" data-fragment-index="2" src="img/transformer_3.svg" width="100%">
+				</div>
+				<div class="container3to1">
+					<div class="column3to1_2">
+						<p style="font-size: 70%; padding-top:1% !important">Trainingskorpus von GPT-3 behinhaltet:</p>
+						<li style="font-size: 70%; padding-top: 0.5% !important;"><a href="https://commoncrawl.org/the-data/">CommonCrawl</a> (400 Mrd Tokens, 46% English) – niedrige Qualität.</li>
+						<li style="font-size: 70%; padding-top: 0.5% !important;">Reddit (19 Mrd Tokens), Wikipedia (3 Mrd Tokens)  – hohe Qualität.</li>
+						<li style="font-size: 70%; padding-top: 0.5% !important;">Bücher (67 Mrd Tokens) – hohe Qualität.</li>
+						<div class="reference" style="padding-top: 1% !important;">Siehe auch Brown et al., <a href="https://arxiv.org/pdf/2005.14165">Language Models are Few-Shot Learners</a>, <em>arXiv</em> (2020).</div>
+					</div>
+					<div class="column3to1_1">
+						<p class="fragment" data-fragment-index="3" style="font-size: 70%; padding-top:12% !important">Kosten GPT-4: $100 mio </p>
+						<img class="fragment" data-fragment-index="3" src="img/wirtschaftliche_aspekte.svg" width="95%" style="padding-top: 0%; margin-top:0%">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Vortrainiertes Sprachmodell</div>
+				<ul class="outside">
+					<li style="padding-top: 3% !important;padding-bottom: 3% !important; font-size:80%">Ein auf diese Weise vortrainiertes Sprachmodell kann bereits sehr gut <b>kohärente Sequenzen von Worten</b> produzieren.</li>
+					<li style="font-size: 80%; padding-bottom:3% !important">Es "spricht" die Sprachen, die genügend häufig im Trainingsdatensatz enthalten sind und hat Strukturen von Grammatik erlernt.</li>
+					<li class="fragment" style="font-size: 80%; padding-bottom:3% !important">Vortrainierte Sprachmodelle sind <b>sehr groß</b>: es handelt sich um neuronale Netze mit etwa 80 Mrd. Parametern (Gewichten). Das entspricht etwa 45 GB Festplattenspeicher nur für das Speichern der Modellgewichte. </li>
+					<li class="fragment" style="font-size: 80%;">Das Modell kann allerdings noch keinen <b>Instruktionen folgen</b>. Produzierter Text folgt eher der Struktur von Büchern oder Artikeln als der von Konversationen.</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading" style="font-size: 145%; padding-bottom:3% !important">Schritt 2: Überwachtes Lernen zum<br>Folgen von Instruktionen</div>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/instruction_tuning_1.svg" width="85%">
+					<img class="fragment" data-fragment-index="0" src="img/instruction_tuning_2.svg" width="85%">
+				</div>
+			</section>
+			<section>
+				<div class="heading">Instruktions-getuntes Sprachmodell</div>
+				<ul class="outside">
+					<li style="padding-top: 3% !important;padding-bottom: 3% !important; font-size:80%">Das "fine-tuning" des Modells mit einem kleinen Datensatz von Instruktion-Antwort Paaren verändert die Gewichte des Modells nur oberflächlich – die Grundstruktur der Sprache bleibt erhalten.</li>
+					<li style="padding-bottom: 3% !important; font-size:80%">Ein Instruktions-getuntes Sprachmodel kann sinnvoll auf Instruktionen als Eingabesequenz reagieren.</li>
+					<li class="fragment" style="font-size: 80%;">Es produziert allerdings noch Antworten, die <b>unfreundlich, gefährlich oder irreführend</b> sein können.</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Rückblick: bestärkendes Lernen</div>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/reinforcement_learning_1.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="0" src="img/reinforcement_learning_2.svg" width="100%">
+					<img class="fragment" data-fragment-index="1" src="img/reinforcement_learning_3.svg" width="100%">
+				</div>
+			</section>
+			<section>
+				<div class="heading" style="font-size: 150%; padding-bottom:2% !important">Schritt 3: Bestärkendes Lernen mit menschlichem Feedback</div>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/rlhf_1.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="0" src="img/rlhf_2.svg" width="100%">
+					<img class="fragment" data-fragment-index="1" src="img/rlhf_3.svg" width="100%">
+				</div>
+			</section>
+			<section>
+				<div class="container3to1">
+					<div class="column3to1_2">
+						<img src="img/alignment_meme.svg" width="95%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom:0%">
+						<div class="reference" style="text-align: left;">Adaptiert von: Samim, <a href="https://samim.io/p/2023-02-15-ai-alignment-memes-anthrupad/">alignment memes</a>.</div>
+					</div>
+					<div class="column3to1_1">
+						<ul class="outside">
+							<li style="font-size: 65%; padding-bottom:6% !important; padding-top:12% !important">Auch bestärkendes Lernen verändert die Gewichte des Modells nur oberflächlich.</li>
+							<li class="fragment" style="font-size: 65%; padding-bottom:6% !important;">Darunter liegt immer noch das vortrainierte Modell, dass das "Verhalten" des LLMs beeinflusst.</li>
+							<li class="fragment" style="font-size: 65%; padding-bottom:6% !important;">Im Vortraining erlernte Textmuster können mit dem richtigen Prompting immer noch <b>zum Vorschein kommen</b> – auch wenn sie unerwünscht sind.</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>	
+			<section>
+				<div class="heading">Wo funktionieren LLMs (nicht) gut?</div>
+				<ul class="outside">
+					<li style="padding-bottom: 1% !important; font-size: 80%; padding-top: 2% !important;"><span style="color: #689cce;"><b>Aufgaben die Fehler tolerieren:</b></span> Generierung von Geschichten, Automatisierung mancher Textbausteine, ...</li>
+					<p style="padding-bottom: 2% !important; font-size: 80%">&rarr; <b>LLMs können sehr gut kohärent klingende Texte produzieren.</b></p>
+					
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important; font-size:80%"><span style="color: #689cce;"><b>Aufgaben die Faktenwissen oder Logik erfordern:</b></span> Mathematik, Suche nach Wissen, Erstellen eines Plans, ... </li>
+					<p class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important; font-size:80%">&rarr; <b>LLMs haben kein Wissen oder Verständnis. Sie agieren rein probabilistisch.</b></p>
+					
+					<li class="fragment" data-fragment-index="1" style="padding-bottom: 1% !important; font-size:80%"><span style="color: #689cce;"><b>Aufgaben die kritisches Denken erfordern:</b></span> Brainstorming, philosophische Debatten, ... </li>
+					<p class="fragment" data-fragment-index="1" style="font-size: 80%">&rarr; <b>LLMs sind darauf trainiert, hilfreich und harmlos zu sein. Sie geben ungern Widerworte.</b></p>
+				</ul>
+			</section>
+		</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1200, //used to be 960
+  				height: 700,
+  				slideNumber: 'c',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+		
+	</body>
+</html>
+

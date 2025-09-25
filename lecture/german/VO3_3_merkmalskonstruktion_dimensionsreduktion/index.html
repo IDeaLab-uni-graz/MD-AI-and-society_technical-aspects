@@ -1,0 +1,360 @@
+<!doctype html>
+
+<html>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script>
+	  Reveal.initialize({
+	    plugins: [ RevealMarkdown ]
+	  });
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>KI & Gesellschaft – Merkmalskonstruktion & Dimensionsreduktion</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #bacce8
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+	        p {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 160%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 40%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<!--<div class="heading" style="font-size: 200%;">Künstliche Intelligenz und Gesellschaft</div>-->
+				<img src="img/KI_und_gesellschaft.svg" width="100%">
+				<div class="heading" style="font-size: 120%; padding-top:1% !important; text-align:center">Vorlesung 3: Merkmalskonstruktion (feature engineering)<br>& Dimensionsreduktion</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="70%" style="padding-top: 0% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 0% !important;">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Motivation</div>
+				<ul class="outside">
+					<li style="font-size: 80%; padding-bottom: 2% !important; padding-top: 3% !important;">Wir haben schon ein <b>Beispiel für Merkmalkonstruktion</b> (feature engineering) zur Transformation von Daten gesehen: one-hot encoding.</li>
+					<li style="font-size: 80%; padding-bottom:2% !important">Wir können noch einiges mehr tun, um mehr aus Daten "herauszuholen".</li>
+					<li style="font-size: 80%; padding-bottom:2% !important">Auf der anderen Seite können Daten auch zu <b>viele Attribute</b> / Merkmale / Features haben.</li>
+					<li style="font-size: 80%; padding-bottom:2% !important">Die Anzahl der Attribute auf ein sinnvolles Maß zu reduzieren heißt <b>Dimensionsreduktion</b>.</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading" style="font-size: 200%;">Feature Engineering</div>
+			</section>
+			<section>
+				<div class="heading">Beispiel: Recruiter</div>
+				<ul class="outside">
+					<li style="font-size:80%; padding-bottom: 2% !important; padding-top: 2% !important;">Wir arbeiten bei einem Recruiter und möchten herausfinden, auf welche Kandidat:innen wir unsere Bemühungen konzentrieren sollen.</li>
+					<li style="font-size:80%; padding-bottom: 2% !important;">Wir benutzen Informationen zu Demographie, Einkommen und Abschluss um die Vermittelbarkeit vorherzusagen.</li>
+				</ul>
+				<img src="img/feature_eng_example_0.svg" width="100%">
+			</section>
+			<section>
+				<div class="heading">One-hot encoding und binäre Attribute</div>
+				<ul class="outside">
+					<li style="font-size:80%; padding-bottom: 2% !important; padding-top: 2% !important;">Wir transformieren Wahrheitswerte in Einsen und Nullen.</li>
+					<li style="font-size:80%; padding-bottom: 2% !important;">Wir verwenden one-hot encoding, um kategorische Attribute in mehrere Spalten mit binären Attributen aufzutrennen.</li>
+				</ul>
+				<img src="img/feature_eng_example_1.svg" width="100%">
+			</section>
+			<section>
+				<div class="heading">Reskalierung</div>
+				<ul class="outside">
+					<li style="font-size:80%; padding-bottom: 1% !important; padding-top: 2% !important;">Zahlen mit  unterschiedlichen Größenordnungen, wie z.B. Alter (zwischen 0 und 100) und Jahreseinkommen (zwischen 0 und 100.000) können ein Problem sein.</li>
+					<li style="font-size:80%; padding-bottom: 1% !important;">Unterschiedliche <b>Skalierungen</b> können dazu führen, dass große Zahlen mehr Gewicht bekommen als kleine, obwohl das nicht beabsichtigt ist.</li>
+					<li style="font-size:80%;">Wir <b>reskalieren</b> beide Zahlen indem wir durch den maximal möglichen Wert teilen.</li>
+				</ul>
+				<img src="img/feature_eng_example_2.svg" width="100%">
+			</section>
+			<section>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<div class="heading">Löschen von Attributen</div>
+						<ul class="outside">
+							<li style="font-size:80%; padding-bottom: 2% !important; padding-top: 2% !important;">Manche Attribute sind <b>geschützt</b> und dürfen nicht zur Vorhersage von z.B. Beschäftigungsfähigkeit verwendet werden.</li>
+							<li style="font-size:80%;">Geschlecht zählt zu diesen Attributen - wir entfernen es.</li>
+						</ul>
+					</div>
+					<div class="column3to2_1">
+						<img src="img/rechtliche_aspekte.svg" width=70% style="padding-bottom: 0%; margin-bottom: 0%;">
+						<img src="img/ethische_aspekte.svg" width=70% style="padding-bottom: 0%; margin-bottom: 0%;">
+					</div>
+				</div>
+				<img src="img/feature_eng_example_3.svg" width="100%">
+			</section>
+			<section>
+				<div class="heading">Neue Attribute</div>
+				<ul class="outside">
+					<li style="font-size:80%; padding-bottom: 2% !important; padding-top: 2% !important;">Daraus, wie wiel Jahreseinkommen pro Alter eine Person verdient lassen sich vielleicht Rückschlüsse über die Ambitionen der Person ziehen.</li>
+					<li style="font-size:80%; padding-bottom: 2% !important;">Wir <b>konstruieren ein neues Attribut</b> Einkommen / Alter.</li>
+					<li class="fragment" data-fragment-index="0" style="font-size:80%; padding-bottom:1% !important">Die Telefonnummern sind nutzlos, da sie zufällig vergeben werden. Aber aus der Vorwahl können wir Rückschlüsse über das Aufenthaltsland ziehen.</li>
+				</ul>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/feature_eng_example_4.svg" width="100%">
+					<img class="fragment" data-fragment-index="0" src="img/feature_eng_example_5.svg" width="100%">
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading" style="font-size: 200%;">Dimensionsreduktion</div>
+			</section>
+			<section>
+				<div class="heading">Wenn wir zu viele Attribute haben ...</div>
+				<div class="container3to2">
+					<div class="column3to2_1">
+						<p style="font-size: 75%; padding-bottom:1% !important"><b>Problem 1: Große Datenmengen</b></p>
+						<p style="font-size: 75%; padding-bottom:4% !important">Erinnern wir uns an das Beispiel mit dem Text:</p>
+						<ul class="outside">
+							<li style="font-size: 75%; padding-bottom:4% !important">Die Deutsche Sprache hat etwa 75.000 Worte.</li>
+							<li style="font-size: 75%; padding-bottom:4% !important">Um einen Satz mit 6 Worten darzustellen, brauchen wir eine 75.000 x 6 Zellen große Tabelle.</li>
+							<li style="font-size: 75%;">Diese würde 75.000 x 6 x 32 / 8 / 1024 / 1024 = 1.7 Megabyte an Speicher belegen<sup>*</sup> &rarr; sehr ineffizient.</li>
+						</ul>
+					</div>
+					<div class="column3to2_2">
+						<img src="img/text.svg" width=70%>
+					</div>
+				</div>
+				<div class="reference"><sup>*</sup>Selbst wenn wir die Zahlen nicht als 32 Bit Integer sondern nur als 2 Bit Wahrheitswerte speichern, sind es noch 0.11 MB!</div>
+			</section>
+			<section>
+				<div class="heading">Der Fluch der Dimensionalität</div>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<ul class="outside">
+							<li style="font-size: 70%; padding-bottom: 3% !important;">Fügen wir unserem Datensatz ein weiteres Attribut hinzu, dann bekommt der <b>Raum</b> in dem sich unsere Daten befinden eine weitere Dimension.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 70%; padding-bottom: 3% !important;">Mit jeder weiteren Dimension steigt das <b>Volumen</b> des Raumes rapide an. </li>
+							<li class="fragment" data-fragment-index="1" style="font-size: 70%; padding-bottom: 3% !important;"><b>Konsequenz 1</b>: 100 Stichproben decken den (eindimensionalen) Raum zwischen 0 und 1 gut ab. In einem 10-dimensionalen Raum sind sie viel zu wenig.</li>
+							<li class="fragment" data-fragment-index="2" style="font-size: 70%;"><b>Konsequenz 2</b>: Der Unterschied zwischen der kleinsten und der größten <b>Distanz</b> zwischen zwei Datenpunkten wird beliebig klein. <b>Cluster zu finden wird schwierig!</b></li>
+						</ul>
+					</div>
+					<div class="column3to2_1">
+						<img class="fragment" data-fragment-index="0" src="img/dimensionality_curse.png" width="100%" style="padding-bottom: 0%; margin-bottom:0%; padding-top: 0%; margin-top: 0%;">
+						<div class="reference" style="text-align: left; font-size:45%; padding-left: 5% !important;"><span class="fragment" data-fragment-index="0" >Ein Zentimeter besteht aus 10 Millimetern, ein Quadratzentimeter hingegen aus 100 Quadratmillimetern. Quelle: <a href="https://de.wikipedia.org/wiki/Fluch_der_Dimensionalit%C3%A4t#/media/Datei:Area_conversion_-_square_mm_in_a_square_cm.png">Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>.</span></div>
+					</div>
+				</div>
+				<p class="fragment" data-fragment-index="3" style="font-size: 70%; color: #e4684b; padding-top: 1% !important">&rarr; <b>Distanzmaße</b> wie die Euklidische Distanz eignen sich schlecht für hochdimensionale Räume. Besser: <b>Ähnlichkeitsmaße</b> (Kosinusähnlichkeit).</p>
+			</section>
+			<section>
+				<div class="heading">Lösung: Dimensionsreduktion</div>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<ul class="outside">
+							<li style="font-size: 70%; padding-bottom: 3% !important"><b>Selektion von Attributen</b>: Attribute die nichts zur Lösung des Problems beitragen entfernen.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 70%; padding-bottom: 3% !important"><b>Projektion</b>: Wir suchen nach einer Projektion der Datenpunkte in einen Raum, in dem Unterschiede der Datenpunkte maximal zur Geltung kommen.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 70%; padding-bottom: 3% !important">Ein Verfahren mit dem das erreicht werden kann ist die <b>Hauptkomponentenanalyse</b> (principal component analysis, PCA).</li>
+							<li class="fragment" data-fragment-index="1" style="font-size: 70%; padding-bottom: 1% !important">Das Ergebnis einer PCA ist eine Projektion der Daten in einen Raum in dem die <b>Varianz der Datenpunkte in wenigen Dimensionen konzentriert</b> ist.</li>
+						</ul>
+					</div>
+					<div class="column3to2_1">
+						<img class="fragment" data-fragment-index="0" src="img/PCA_Projection_Illustration.gif" width="100%">
+						<div class="reference" style="text-align: left; font-size:45%; padding-left: 5% !important;"><span class="fragment" data-fragment-index="0" >Visualisierung einer Projektion mit PCA in zwei Dimensionen. Quelle: <a href="https://en.wikipedia.org/wiki/Dimensionality_reduction#/media/File:PCA_Projection_Illustration.gif">Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>.</span></div>
+					</div>
+				</div>
+				<p class="fragment" data-fragment-index="3" style="font-size: 70%; color: #e4684b; padding-top: 1% !important">&rarr; Das Ergebnis der PCA hat zwar erst einmal gleich viele Dimensionen wie der Ausgangsraum aber nur wenige sind wirklich wichtig. <b>Die anderen Dimensionen können wir entfernen</b>.</p>
+			</section>
+			<section>
+				<div class="heading" style="padding-bottom: 2% !important;">Beispiel PCA für Bauernhöfe</div>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/PCA_example_1.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="0" src="img/PCA_example_2.svg" width="100%">
+					<img class="fragment current-visible" data-fragment-index="1" src="img/PCA_example_3.svg" width="100%">
+					<img class="fragment" data-fragment-index="2" src="img/PCA_example_4.svg" width="100%">
+				</div>
+			</section>
+			<section>
+				<div class="heading" style="padding-bottom: 2% !important;">Beispiel PCA für Bauernhöfe</div>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/PCA_example_5.svg" width="70%">
+					<img class="fragment" data-fragment-index="0" src="img/PCA_example_6.svg" width="70%">
+			</section>
+		</section>
+		
+		<section>
+			<section>
+				<div class="heading">Zusammenfassung</div>
+				<ul class="outside">
+					<li style="font-size: 75%;"><b>Feature Engineering</b> hilft uns dabei, das meiste aus unseren Daten herauszuholen und Probleme mit den machine learning Algorithmen bzw. rechtlichen Vorgaben zu vermeiden. Techniken sind:</li>
+					<ul class="outside">
+						<li style="font-size: 75%;">One-hot encoding</li>
+						<li style="font-size: 75%;">Reskalierung</li>
+						<li style="font-size: 75%;">Konstruktion von neuen Attributen</li>
+						<li style="padding-bottom: 1% !important; font-size:75%">Löschen von Attributen</li>
+					</ul>
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important; font-size:75%">Zu viele Attribute (Dimensionen) führen zu Problemen beim <b>Speicherbedarf</b> und potentiell auch Rechenzeit.</li>
+					<li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important; font-size:75%">Der <b>Fluch der Dimensionalität</b> sorgt dafür, dass Distanzmaße Bedeutung verlieren und Cluster schwer zu finden sind.</li>
+					<li class="fragment" data-fragment-index="1" style="font-size:75%"><b>Dimensionsreduktion</b> ist eine Lösung. Sie konzentriert die in den Daten enthaltene Varianz in wenigen Dimensionen.</li>
+				</ul>
+			</section>
+		</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1200, //used to be 960
+  				height: 700,
+  				slideNumber: 'c',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+		
+	</body>
+</html>
+

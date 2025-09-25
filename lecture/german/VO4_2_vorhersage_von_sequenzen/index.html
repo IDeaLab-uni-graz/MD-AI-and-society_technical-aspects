@@ -1,0 +1,315 @@
+<!doctype html>
+
+<html>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script>
+	  Reveal.initialize({
+	    plugins: [ RevealMarkdown ]
+	  });
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>KI & Gesellschaft – Vorhersage von Sequenzen</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #bacce8
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+	        p {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 160%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 40%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<!--<div class="heading" style="font-size: 200%;">Künstliche Intelligenz und Gesellschaft</div>-->
+				<img src="img/KI_und_gesellschaft.svg" width="100%">
+				<div class="heading" style="font-size: 150%; padding-top:2% !important; text-align:center">Vorlesung 4: Vorhersage von Sequenzen</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Überwachtes Lernen zur Generierung von Sequenzen</div>
+				<ul class="outside">
+					<li style="font-size: 80%; padding-bottom:3% !important; padding-top:2% !important">Beim überwachten Lernen wird ein Zusammenhang zwischen Werten von Attributen von Beobachtungen und gewünschen Ausgabewerten (Klassen, Zahlen) erlernt, um <b>Ausgabewerte für unbekannte Beobachtungen vorherzusagen</b>.</li>
+					<li style="font-size: 80%; padding-bottom:3% !important">Die <b>Generierung von Sequenzen</b> funktioniert ähnlich: gegeben eine existierende Sequenz (Beobachtung) mit ihren Attributen (existierende Glieder der Sequenz), sage das nächste Glied der Sequenz voraus (Ausgabewert).</li>
+					<li style="font-size: 80%;">Bei der Vorhersage des darauf folgenden Gliedes wird das zuletzt vorhergesagte Glied der Sequenz als Attributswert der Beobachtung mit betrachtet.</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading" style="font-size: 140%; padding-bottom:2% !important">Anwendung: Generierung von Wortsequenzen</div>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/naechstes_wort_1.svg" width="100%" style="padding-top: 0%; margin-top:0%">
+					<img class="fragment" data-fragment-index="0" src="img/naechstes_wort_2.svg" width="100%" style="padding-top: 0%; margin-top:0%">
+				</div>
+				<p class="fragment" data-fragment-index="1" style="font-size: 70%;"><b>Exkurs: bedingte Wahrscheinlichkeiten</b></p>
+				<div class="container3to2">
+					<div class="column3to2_1">
+						<p class="fragment" data-fragment-index="1" style="font-size: 70%; padding-top: 3% !important;"><em>P(Regen) = 0.5</em></p>
+						<p class="fragment" data-fragment-index="2" style="font-size: 70%;"><em>P(Regen | Wetterbericht) = 0.8</em></p>
+						<p class="fragment" data-fragment-index="3" style="font-size: 70%;"><em>P(Regen | Wetterbericht, Wolken) = 0.9</em></p>
+						<p class="fragment" data-fragment-index="7" style="font-size: 70%; padding-top:3% !important; color: #f6a968">Die Zusammenhänge zwischen Sequenzen und Wahrscheinlichkeiten für das nächste Wort werden anhand von riesigen Textmengen gelernt.</p>
+					</div>
+					<div class="column3to2_2">
+						<p class="fragment" data-fragment-index="4" style="padding-top: 3% !important; font-size: 70%; padding-left: 3%;"><em>P(wütend | ich, hatte, noch, keinen, ...</span>) = 0.001</em></p>
+						
+						<p class="fragment" data-fragment-index="4" style="font-size: 70%;  padding-left: 3%"><em>P(müde | <span class="fragment highlight-uni-green" data-fragment-index="6">ich, hatte, noch, keinen, ...</span>) = <span class="fragment highlight-uni-red" data-fragment-index="5">0.01</span></em> <span class="fragment" data-fragment-index="6" style="padding-left: 4%; color:#9fcb81;">"Kontext"</span></p>
+						
+						<p class="fragment" data-fragment-index="4" style="padding-bottom: 5% !important; font-size: 70%;  padding-left: 3%"><em>P(gelb | ich, hatte, noch, keinen, ...</span>) = 0.0001</em></p>
+						
+						<p class="fragment" data-fragment-index="5" style="font-size: 70%;  padding-left: 3%; color: #e4684b;">Wenn <em>P(müde)</em> größer als alle anderen Wahrscheinlichkeiten, dann sag "müde" voraus.</p>
+					</div>
+			</section>
+			<section>
+				<div class="heading" style="padding-bottom: 3% !important;">Kodierer – Dekodierer Architektur</div>
+				<div class="container3to2">
+					<div class="column3to2_1">
+						<p style="font-size: 80%; padding-top: 2% !important;"><b>Aufgabe</b></p>
+						<p style="font-size: 80%;">Gegeben eine Sequenz von Worten, sage das nächste Wort voraus.</p>
+						<p class="fragment" data-fragment-index="2" style="font-size: 80%; padding-top:5% !important"><b>Anwendungsbeispiele</b></p>
+						<li class="fragment" data-fragment-index="2" style="font-size: 80%;">Übersetzung</li> 
+						<li class="fragment" data-fragment-index="2" style="font-size: 80%;">Textgenerierung</li>
+						<p class="fragment current-visible" data-fragment-index="3" style="font-size: 80%; padding-top:5% !important;"><b>Herausforderungen</b></p>
+						<li class="fragment current-visible" data-fragment-index="3" style="font-size: 80%;">sequentielle Berechnung</li>
+						<li class="fragment current-visible" data-fragment-index="3" style="font-size: 80%;">limitierte Kontextlänge</li>
+					</div>
+					<div class="column3to2_2">
+						<img class="fragment" data-fragment-index="1" src="img/encoder_decoder_general.svg" width="100%">
+						<div class="reference" style="padding-left: 10% !important; padding-top: 0% !important; text-align: center;"><span class="fragment" data-fragment-index="1">Traditionelle Encoder-Decoder Architektur zur Übersetzung.<br>Quelle: Adaptiert von <a href="https://www.youtube.com/watch?v=5SClruyUnoU">CS 198-126: Lecture 14 - Transformers and Attention</a></span></div>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<div class="heading" style="padding-bottom: 3% !important; font-size: 150%;">Kodierer – Dekodierer mit "Aufmerksamkeit"</div>
+				<div class="container3to2">
+					<div class="column3to2_1">
+						<p style="font-size: 80%; padding-top:15% !important"><b>Aufmerksamkeit</b> (attention)</p>
+						<p style="font-size: 80%;">Lerne die Wichtigkeit jedes Wortes im Kontext über Gewichte <em>w<sub>i</sub></em>.</p> 
+						<p style="font-size: 80%; padding-top:5% !important;"><b>Vorteile</b></p>
+						<li style="font-size: 80%;">parallele Berechnung</li>
+						<li style="font-size: 80%;">unendliche Kontextlänge</li>
+					</div>
+					<div class="column3to2_2">
+						<img src="img/encoder_decoder_attention.svg" width="100%">
+						<div class="reference" style="padding-left: 10% !important; padding-top: 0% !important; text-align: center;">Traditionelle Encoder-Decoder Architektur zur Übersetzung.<br>Quelle: Adaptiert von <a href="https://www.youtube.com/watch?v=5SClruyUnoU">CS 198-126: Lecture 14 - Transformers and Attention</a></div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Intuition für "Aufmerksamkeit"</div>
+				<p style="font-size:80%; padding-bottom: 5% !important; padding-top: 3% !important;"><em>Aufgabe: Gegeben eine Sequenz von Worten, generiere das nächste Wort.</em></p>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/attention_illustration_1.svg" width="100%">
+					<img class="fragment fade-in-then-out" data-fragment-index="0" src="img/attention_illustration_2.svg" width="100%">
+					<img class="fragment fade-in-then-out" data-fragment-index="1" src="img/attention_illustration_3.svg" width="100%">
+					<img class="fragment fade-in-then-out" data-fragment-index="2" src="img/attention_illustration_4.svg" width="100%">
+					<img class="fragment" data-fragment-index="3" src="img/attention_illustration_5.svg" width="100%">
+				</div>
+				<div class="r-stack">
+					<p class="fragment fade-out" data-fragment-index="0" style="padding-top:3% !important; font-size:80%"><b>Einbettung</b>: Repräsentation eines Wortes als Vektor.</p>
+					<p class="fragment current-visible" data-fragment-index="0" style="padding-top:3% !important; font-size:80%"><span style="color:#451952ff"><b>Einbettung</b>: Repräsentation eines Wortes als Vektor.</p>
+					<p class="fragment current-visible" data-fragment-index="1" style="padding-top:3% !important; font-size:80%">Während der Text generiert wird, wird unterschiedlichen Teilen der Eingabe <b>Aufmerksamkeit</b> geschenkt.</p>
+					<p class="fragment current-visible" data-fragment-index="2" style="padding-top:3% !important; font-size:80%">Welches Wort in der Eingabe wie viel Aufmerksamkeit bekommt wird während des Trainings <b>erlernt</b>.</p>
+					<p class="fragment" data-fragment-index="3" style="padding-top:3% !important; font-size:80%">Dieses Vorgehen ermöglicht <b>Interaktionen über lange Textteile hinweg</b>.</p>
+				</div>
+			</section>
+			<section>
+				<div class="container3to2">
+					<div class="column3to2_1">
+						<div class="heading" style="padding-top: 50% !important; text-align: center; font-size:140%">"Transformer" – Architektur von ChatGPT</div>
+						<div class="reference" style="text-align: center;">Abbildung adaptiert von Vaswani et al.<br><a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Attention is all you need</a> (2017).</div>
+					</div>
+					<div class="column3to2_2">
+						<img src="img/transformer_architecture.svg" width="74%">
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Zusammenfassung</div>
+				<ul class="outside">
+					<li style="font-size: 80%; padding-bottom: 0.5% !important;">Die Generierung von Sequenzen funktioniert nach dem Prinzip des überwachten Lernens: </li>
+					<ul class="outside">
+						<li style="font-size: 80%; padding-bottom: 0.5% !important;">Vorangegangene Glieder der Sequenz dienen als Attributswerte der Beobachtung.</li> 
+						<li style="font-size: 80%; padding-bottom: 0.5% !important;">Das nächste Glied wird vorhergesagt und dann der Beobachtung hinzugefügt.</li> 
+						<li style="font-size: 80%; padding-bottom: 2% !important;">Zusammenhänge zwischen Sequenzen und dem nächsten wahrscheinlichen Glied werden gelernt.</li>
+					</ul>
+					<li class="fragment" style="font-size:80%; padding-bottom: 2% !important;">Beim Einsatz von <b>Aufmerksamkeit</b> (attention) wird zusätzlich noch erlernt, wie wichtig ein vorangegangenes Glied ist. Das ermöglicht sehr weit zurückreichende Interaktionen zwischen Eingabesequenz und Ausgabewert.</li>
+					<li class="fragment" style="font-size: 80%;">Die Architektur, die Sprachmodellen wie ChatGPT zugrunde liegt heißt "Transformer" – ein Kodierer und Dekodierer mit Aufmerksamkeit.</li>
+				</ul>
+			</section>
+		</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1200, //used to be 960
+  				height: 700,
+  				slideNumber: 'c',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+		
+	</body>
+</html>
+

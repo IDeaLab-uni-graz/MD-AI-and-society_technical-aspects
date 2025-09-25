@@ -1,0 +1,484 @@
+<!doctype html>
+
+<html>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script>
+	  Reveal.initialize({
+	    plugins: [ RevealMarkdown ]
+	  });
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>KI & Gesellschaft – Einführung Empfehlungssysteme</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #bacce8
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+	        p {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 160%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 40%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<!--<div class="heading" style="font-size: 200%;">Künstliche Intelligenz und Gesellschaft</div>-->
+				<img src="img/KI_und_gesellschaft.svg" width="100%">
+				<div class="heading" style="font-size: 140%; padding-top:2% !important; text-align:center">Vorlesung 4: Einführung Empfehlungssysteme</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="80%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading" style="font-size: 145%; padding-bottom:1% !important">Empfehlungssysteme (Recommender Systems)</div>
+				<ul class="outside">
+					<li style="padding-bottom: 2% !important; font-size: 80%;">Empfehlungssysteme begegnen uns praktisch überall in Internet.</li>
+					<li style="font-size: 80%;">Sie stellen eine der am weitesten verbreiteten Anwendungen von maschinellem Lernen dar.</li>
+				</ul>
+				<div class="container3to1">
+					<div class="column3to1_2">
+						<img src="img/recommendations_in_the_wild.png" width="100%" style="padding-top: 1%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+					</div>
+					<div class="column3to1_1">
+						<div class="reference" style="padding-top: 40% !important; font-size:60%; padding-left:5% !important">Empfehlungen auf der Shoppingwebsite Amazon basierend auf einem Browserverlauf.</div>
+					</div>
+				</div>
+				<div class="reference">Diese und die folgenden Folien sind inspiriert von Dietmar Jannachs Vorlesung "<a href="https://tinyurl.com/recsys-summer-2023">Recommender Systems: Value, Methods, Measurements</a>".</div>
+			</section>
+			<section>
+				<div class="heading" style="padding-bottom: 2% !important;">Anwendungen von Empfehlungssystemen</div>
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Bücher</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Nachrichten</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Videos</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Musik</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Spiele</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Shopping</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Freunde</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Gemeinschaften</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Jobs</li>
+					</div>
+					<div class="column1to1_2">
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Apps</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Restaurants</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Hotels</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">romantische Beziehungen</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Aktien</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Versicherungen</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">...</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">Wein</li>
+						<li style="font-size: 80%; padding-bottom: 2% !important; padding-left: 5% !important;">...</li>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Warum brauchen wir Empfehlungssysteme?</div>
+			</section>
+			<section>
+				<div class="container3to1">
+					<div class="column3to1_2">
+						<div class="heading">Informationsüberflutung</div>
+						<ul class="outside">
+							<li style="font-size: 80%; padding-bottom:3% !important; padding-top:2% !important">Wir befinden uns in einer <b>Informationsgesellschaft</b>. In vielen Lebensbereichen steht mehr Information zur Verfügung als wir aufnehmen können.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-bottom:1% !important">Beispiel Spotify</li>
+							<ul class="outside">
+								<li class="fragment" data-fragment-index="0" style="font-size: 70%; padding-bottom:1% !important">Anfang 2024 gab es auf der Plattform 100 mio Songs.</li>
+								<li class="fragment" data-fragment-index="0" style="font-size: 70%; padding-bottom:1% !important">Angenommen jeder Song ist 3 min lang. Dann würde es etwa 5 mio Stunden dauern, alle Songs zu hören .</li>
+								<li class="fragment" data-fragment-index="0" style="font-size: 70%; padding-bottom:2% !important">Ein typisches Menschenleben hat etwa 30.000 Stunden. Selbst wenn wir die ganze Zeit Musik hören, würden wir nur 0.6% der verfügbaren Musik hören.</li>
+							</ul>
+							<li class="fragment" data-fragment-index="1" style="font-size: 80%; padding-bottom:3% !important">Aus der Masse an verfügbaren Möglichkeiten muss ein kleiner Teil <b>ausgewählt</b> werden &rarr; Empfehlungssysteme.</li>
+						</ul>
+					</div>
+					<div class="column3to1_1">
+						<img class="fragment" data-fragment-index="0" src="img/mixtapes.png" width=60% style="padding-bottom: 0%; margin-bottom:0%; padding-top: 0%; margin-top: 0%;">
+						<div class="reference" style="text-align: center;"><span class="fragment" data-fragment-index="0" >Empfehlungen auf Spotify.</span></div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Verschiedene Interessen</div>
+				<p style="font-size: 80%; padding-top:1% !important; padding-bottom:2% !important"><em>Verschiedene Gruppen haben verschiedene Interessen an Empfehlungssystemen.</em></p>
+				<div class="column_threeway">
+					<p style="font-size: 80%; text-align: center; padding-bottom: 7.5% !important; padding-top: 5% !important;"><b>Konsument:innen</b></p>
+					<ul class="outside">
+						<li style="font-size: 68%; padding-bottom:6% !important">Items finden die (langfristige) Bedürfnisse befriedigen.</li>
+						<li style="font-size: 68%; padding-bottom:6% !important">Gute Entscheidungen treffen.</li>
+						<li style="font-size: 68%; padding-bottom:6% !important">Neue Items entdecken.</li>
+						<li style="font-size: 68%;">Über relevante Items informiert werden.</li>
+					</ul>
+				</div>
+				<div class="column_threeway">
+					<p class="fragment" data-fragment-index="0" style="font-size: 80%; text-align: center; padding-bottom:2% !important"><b>Hersteller:innen / Künstler:innen</b></p>
+					<ul class="outside">
+						<li class="fragment" data-fragment-index="0" style="font-size: 68%; padding-bottom:6% !important; margin-left:5%">Gefunden werden.</li>
+						<li class="fragment" data-fragment-index="0" style="font-size: 68%; padding-bottom:6% !important; margin-left:5%">Kaufentscheidungen beeinflussen</li>
+						<li class="fragment" data-fragment-index="0" style="font-size: 68%; padding-bottom:6% !important; margin-left:5%">Informationen über die Kund:innen erhalten.</li>
+						<li class="fragment" data-fragment-index="0" style="font-size: 68%; margin-left:5%">Geld verdienen.</li>
+					</ul>
+				</div>
+				<div class="column_threeway">
+					<p class="fragment" data-fragment-index="1" style="font-size: 80%; text-align: center; padding-bottom:7.5% !important; padding-top: 5% !important;"><b>Plattformen</b></p>
+					<ul class="outside">
+						<li class="fragment" data-fragment-index="1" style="font-size: 68%; padding-bottom:6% !important">Aktivität der Nutzer:innen steigern.</li>
+						<li class="fragment" data-fragment-index="1" style="font-size: 68%; padding-bottom:6% !important">Einen Service mit Mehrwert bieten</li>
+						<li class="fragment" data-fragment-index="1" style="font-size: 68%; padding-bottom:6% !important">Daten über Nutzer:innen sammeln.</li>
+						<li class="fragment" data-fragment-index="1" style="font-size: 68%;">Geld verdienen.</li>
+					</ul>
+				</div>
+				<!--
+				<p class="fragment" data-fragment-index="2" style="font-size: 80%; padding-top:2% !important; color:#e4684b">&rarr; <em>Diese Interessen können durchaus auch im Widerspruch zueinander stehen.</em></p>-->
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Wie können wir messen, wie gut Empfehlungsssysteme funktionieren?</div>
+			</section>
+			<section>
+				<div class="heading">Was messen wir?</div>
+				<ul class="outside">
+					<li style="font-size: 80%; padding-bottom:2% !important; padding-top:2% !important">Grundannahme: die Interessen der Konsument:innen und Hersteller:innen sowie Plattformen sind kompatibel.</li>
+					<li style="font-size: 80%; padding-bottom:2% !important">Der Markt regelt die effiziente Verteilung von Aufmerksamkeit auf Items.</li>
+				</ul>
+				<img src="img/recommender_business_value.svg" width="100%" style="padding-bottom: 0%; margin-bottom:0%">
+				<div class="reference" style="text-align: center;">Adaptiert von Jannach & Jugovac <a href="https://arxiv.org/pdf/1908.08328">Measuring the Business Value of Recommender Systems</a>, <em>ACM TIMS</em> (2019).</div>
+			</section>
+			<section>
+				<div class="heading">Klickrate, Kaufrate, Nutzungsrate</div>
+				<ul class="outside">
+					<li style="font-size: 80%; padding-bottom:1% !important; padding-top:3% !important"><b>Klickrate</b></li>
+					<ul class="outside">
+						<li style="font-size: 80%; padding-bottom:1% !important">Misst, wie viele Klicks von Empfehlungen erzeugt werden: Anzahl Klicks / Anzahl Impressionen.</li>
+						<li style="font-size: 80%; padding-bottom:3% !important">Beispiel: Nachrichtenempfehlungen: wie viele Artikel klickt der/die Nutzer:in an?</li>
+					</ul>
+					<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-bottom:1% !important"><b>Kaufrate / Nutzungsrate</b></li>
+					<ul class="outside">
+						<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-bottom:1% !important">Die Klickrate misst nicht, ob der/die Nutzer:in das empfohlene Item tatsächlich gelesen/gekauft/genutzt hat.</li>
+						<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-bottom:2% !important">Beispiel: wie viele Nutzer:innen sehen sich ein empfohlenes Video auf Netflix tatsächlich an, nachdem sie darauf geklickt haben?</li>
+					</ul>
+				</ul>
+			</section>
+			<section>
+				<div class="heading" style="padding-bottom: 1% !important;">Umsatz, Gewinn und Verteilung</div>
+				<div class="container1to1">
+					<div class="column1to1_2">
+						<ul class="outside">
+							<li style="font-size: 68%; padding-bottom:4% !important">Klickrate, Kaufrate und Nutzungsrate sind <b>gute Indikatoren</b> dafür, dass die Empfehlungen für die Nutzer:innen <b>relevant</b> sind.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 68%; padding-bottom:4% !important">Es kann allerdings sein, dass sich das nicht direkt für das Geschäft relevant ist, z.B. wenn Nutzer:innen einen Gegenstand ohnehin gekauft hätten.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 68%;  padding-bottom:4% !important">Die Veränderung von Umsatz und Gewinn duch den Einsatz des Empfehlungssystem kann ein besserer Indikator sein.</li>
+							<li class="fragment" data-fragment-index="1" style="font-size: 68%;">Auch die <b>Verteilung</b> von Käufen / Nutzerverhalten kann ein wichtiger Indikator sein.</li>
+						</ul>
+					</div>
+					<div class="column1to1_1">
+						<img class="fragment" data-fragment-index="1" src="img/zigarettenstudie.png" width="100%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom:0%">
+						<div class="reference" style="padding-left: 20%;"><span class="fragment" data-fragment-index="1">Käufe von verschiedenen Zigarettensorten vor/nach der Einführung eines personalisierten Empfehlungssystems. Quelle: Dietmar Jannach, <a href="https://tinyurl.com/recsys-summer-2023">Recommender Systems: Value, Methods, Measurements</a>.</span></div>
+						<img class="fragment" data-fragment-index="2" src="img/wirtschaftliche_aspekte.svg" width="40%" style="padding-top: 4%; margin-top:0%; padding-bottom: 0%; margin-bottom:0%; padding-left:20%">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading" style="padding-bottom: 1% !important;">Nutzerverhalten und Aktivität</div>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<ul class="outside">
+							<li style="font-size: 80%; padding-bottom:4% !important; padding-top:2% !important">Annahme: Höhere Nutzer:innenaktivität führt dazu, dass Nutzer dem Angebot <b>länger erhalten</b> bleiben (z.B. ihr Spotify Abo nicht kündigen).</li>
+							<li style="font-size: 80%; padding-bottom:4% !important">Bei werbefinanzierten Services: bleiben Nutzer:innen länger aktiv, sehen sie <b>mehr Werbung</b>.</li>
+							<li style="font-size: 80%;">Bei Intensität und Dauer der Aktivität können Nutzer:innen und Anbietern/Plattformen <b>unterschiedliche Interessen</b> haben. Beispiel: Dating-Plattform.</li>
+						</ul>
+					</div>
+					<div class="column3to2_1">
+						<img src="img/user_engagement.png" style="padding-bottom: 1%; margin-bottom:0%">
+						<div class="reference" style="text-align: center;">Quelle: <a href="https://de.printpeppermint.com/blogs/graphic-design/foster-your-brands-growth-with-brilliant-customer-engagement">Printpeppermint.com</a>.</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading" style="padding-bottom: 1% !important;">Aufmerksamkeitsökonomie</div>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<ul class="outside">
+							<li style="font-size: 80%; padding-bottom: 2% !important;">In der Aufmerksamkeitsökonomie wird die Aufmerksamkeit der Nutzer:innen zu ökonimischem Kapital.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-bottom: 2% !important;">Empfehlungssysteme die <b>kurzfirstige Bedürfnisse</b> der Nutzer:innen wie Unterhaltung oder Zeitvertreib befriedigen können ihre <b>langfristigen Interessen</b> schädigen.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 80%;">Beispiele: Suchtverhalten, psychische Gesundheit, Polarisierung, Misinformation.</li>
+						</ul>
+						<img class="fragment" data-fragment-index="1" src="img/ethische_aspekte.svg" width="40%">
+						<img class="fragment" data-fragment-index="1" src="img/wirtschaftliche_aspekte.svg" width="40%">
+					</div>
+					<div class="column3to2_1">
+						<img src="img/attention_economy.png" style="padding-bottom: 1%; margin-bottom:0%">
+						<div class="reference" style="text-align: center;">Quelle: <a href="https://www.skyword.com/contentstandard/the-attention-economy-strategies-for-captivating-your-audience-in-the-digital-age/">Skyword.com</a>.</div>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Wie bauen wir Empfehlungssysteme?</div>
+			</section>
+			<section>
+				<div class="heading">Grundprinzip: personalisierte Empfehlung</div>
+				<img src="img/recommender_0.svg" width=100% style="padding-top: 3%; padding-bottom:2%; margin-bottom: 0%;">
+				<p style="font-size: 80%;">Einzelne Empfehlung, keine weitere Interaktion, keine Anpassung an Verhalten.</p>
+			</section>
+			<section>
+				<div class="heading">Inhaltsbasierte Empfehlung</div>
+				<img src="img/recommender_2.svg" width=100% style="padding-top: 0%; padding-bottom:0%; margin-bottom: 0%;">
+				<ul class="outside">
+					<li style="font-size: 80%; padding-bottom:1% !important">Automatisierte Konstruktion eines Nutzer:innenprofils basierend auf den <b>Eigenschaften der Items</b> mit denen der/die Nutzer:in interagiert hat.</li>
+					<li style="font-size: 80%;">Empfehlung: Machting von Nutzer:innenprofil und Itemprofil.</li>
+				</ul>
+			</section>
+			<section>
+				<div class="heading">Kollaboratives Filtern</div>
+				<img src="img/recommender_1.svg" width=100% style="padding-top: 0%; margin-top: 0%; padding-bottom:1%; margin-bottom: 0%;">
+				<ul class="outside">
+					<li style="font-size: 80%; padding-bottom:1% !important">Nutzung der Meinung oder des Verhaltens <b>anderer Nutzer:innen</b> zur Empfehlung.</li>
+					<li style="font-size: 80%;">Annahme: Nutzer:innen die in der Vergangenheit die selben Vorlieben hatten, haben diese auch in der Zukunft.</li>
+				</ul>
+			</section>
+			<section>
+				<div class="heading">Kollaboratives Filtern: Idee</div>
+				<p style="font-size: 75%;">Wir formulieren das Problem als "Komplettieren einer Tabelle":</p>
+				<ul class="outside" >
+					<li style="font-size: 75%; padding-bottom:1% !important; padding-top:1% !important">Wir haben Informationen darüber, wie gut unsere Nutzer:innen verschiedene Items finden (Ratings von 1 bis 5).</li>
+					<li style="font-size: 75%; padding-bottom:1% !important">Für Nutzerin Alice fehlt uns ein Rating für Item 5.</li>
+					<li style="font-size: 75%;">Idee: wir nutzen die Ratings von anderen Nutzer:innen die Alice <b>ähnlich</b> sind, um das Rating von Alice für Item 5 <b>vorherzusagen</b> &rarr; überwachtes Lernen.</li>
+				</ul>
+				<img src="img/usermatrix.svg" width=70% style="padding-top: 1%; margin-top:0%; padding-bottom:0%; margin-bottom:0%">
+			</section>
+			<section>
+				<div class="heading">Kollaboratives Filtern: Vorgehen</div>
+				<ol class="outside">
+					<li style="font-size: 80%; padding-bottom: 3% !important; padding-top:3% !important">Finde Nutzer:innen die Alice ähnlich sind, also die die gleichen Items wie sie ähnlich gut fanden.</li>
+					<li class="fragment" style="font-size: 80%; padding-bottom: 3% !important;">Nutze das mittlere Rating dieser Nutzer:innen für das fehlende Item um vorherzusagen, ob Alice es auch mögen wird.</li>
+					<li class="fragment" style="font-size: 80%; padding-bottom:3% !important">Folge diesem Vorgehen für alle Items die Alice noch nicht gesehen hat und empfehle ihr das Item mit dem besten vorhergesagten Rating.</li>
+				</ol>
+				<p class="fragment" style="font-size: 80%;"><b>Wie gut funktioniert der Algorithmus?</b><br>&rarr; Entferne einige von Alice's bekannten Ratings und sage sie mit dieser Methode voraus. Errechne den Vorhersagefehler mit der Wurzel aus der Fehlerquadratsumme.</p>
+			</section>
+			<section data-transition="slide-in none">
+				<div class="heading">K nächste Nachbarn Algorithmus</div>
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<p style="font-size: 80%; padding-bottom: 3% !important; padding-top:2% !important"><b>Erinnerung</b>: Um eine neue Beobachtung zu klassifizieren</p>
+					<ul class="outside">
+						<li style="font-size: 80%; padding-bottom: 3% !important;">Suche die <em>k</em> nächsten Datenpunkte ("<em>k</em> nächste Nachbarn").</li>
+						<li style="font-size: 80%; padding-bottom: 3% !important;">Wähle die Klasse, die die Mehrheit der nächsten Nachbarn hat (Mehrheitsvotum).</li>
+						<li style="font-size: 80%; padding-bottom: 3% !important">Optional: <b>gewichte</b> mit der Distanz der Datenpunkte: Nachbarn die näher sind haben mehr Einfluss.</li>
+					</ul>
+					
+					</div>
+					<div class="column1to1_2">
+						<img src="img/KnnClassification_6.svg" width="100%">
+					</div>
+				</div>
+			</section>
+			<section data-transition="none slide-out">
+				<div class="heading">K nächste Nachbarn Algorithmus</div>
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<ul class="outside">
+							<li style="font-size: 68%; padding-bottom: 2% !important;">Nutzer:innen werden durch ihre Ratings für Items characterisiert.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 68%; padding-bottom: 3% !important;">Verwende z.B. die <b>Kosinus-Ähnlichkeit</b> um Ähnlichkeit zwischen Nutzer:innen zu messen.</li>
+							<li class="fragment" data-fragment-index="1" style="font-size: 68%; padding-bottom: 3% !important;">Suche die <em>k</em> <b>Nutzer:innen</b> die Alice am ähnlichsten sind.</li>
+							<li class="fragment" data-fragment-index="2" style="font-size: 68%; padding-bottom: 3% !important;">Verwende die Ratings dieser Nutzer:innen, um Ratings für Items die Alice noch nicht gesehen hat vorherzusagen.</li>
+						</ul>
+						<div class="r-stack">
+							<img class="fragment fade-out" data-fragment-index="0" src="img/usermatrix.svg" width=80% style="padding-top: 0%; margin-top:0%; padding-bottom:0%; margin-bottom:0%">
+							<img class="fragment current-visible" data-fragment-index="0" src="img/usermatrix.svg" width=80% style="padding-top: 0%; margin-top:0%; padding-bottom:0%; margin-bottom:0%">
+							<img class="fragment current-visible" data-fragment-index="1" src="img/usermatrix_1.svg" width=80% style="padding-top: 0%; margin-top:0%; padding-bottom:0%; margin-bottom:0%">
+							<img class="fragment" data-fragment-index="2" src="img/usermatrix_2.svg" width=80% style="padding-top: 0%; margin-top:0%; padding-bottom:0%; margin-bottom:0%">
+						</div>
+					</div>
+					<div class="column1to1_2">
+						<div class="r-stack">
+							<img class="fragment fade-out" data-fragment-index="0" src="img/KnnClassification_7.svg" width="100%" style="padding-top: 0%; margin-top:0%; padding-bottom:0%; margin-bottom:0%">
+							<img class="fragment current-visible" data-fragment-index="0" src="img/KnnClassification_8.svg" width="100%" style="padding-top: 0%; margin-top:0%; padding-bottom:0%; margin-bottom:0%">
+							<img class="fragment" data-fragment-index="1" src="img/KnnClassification_9.svg" width="100%" style="padding-top: 0%; margin-top:0%; padding-bottom:0%; margin-bottom:0%">
+						</div>
+					</div>
+				</div>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<div class="heading">Zusammenfassung</div>
+				<ul class="outside">
+					<li style="padding-bottom: 3% !important; font-size:80%; padding-top:2% !important">Empfehlungssysteme (Recommender Systems) finden sich praktisch überall im Internet wo wir mit <b>Informationsüberflutung</b> konfrontiert sind.</li>
+					<li style="padding-bottom: 3% !important; font-size:80%">Konsument:innen, Anbieter:innen und Plattformen können <b>verschiedene Interessen</b> haben. Werden Empfehlungssysteme z.B. den langfristigen Interessen von Konsument:innen nicht gerecht, kann das problematisch sein.</li>
+					<li style="padding-bottom: 3% !important; font-size:80%">Wie gut ein Empfehlungssystem funktioniert, kann z.B. mit der <b>Klickrate</b> bzw. <b>Kaufrate</b> gemessen werden, aber auch durch <b>Nutzer:innenaktivität</b>.</li>
+					<li style="font-size: 80%;">Empfehlungssysteme können Informationen von <b>Nutzer:innen</b>, <b>Eigenschaften von Items</b> und <b>Informationen aus der Nutzer:innen Community</b> für Empfehlungen nutzen. Beispiel: kollaboratives Filtern.</li>
+				</ul>
+			</section>
+		</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1200, //used to be 960
+  				height: 700,
+  				slideNumber: 'c',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+		
+	</body>
+</html>
+

@@ -1,0 +1,338 @@
+<!doctype html>
+
+<html>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script>
+	  Reveal.initialize({
+	    plugins: [ RevealMarkdown ]
+	  });
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>KI & Gesellschaft – bestärkendes Lernen</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #bacce8
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+	        p {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 160%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 40%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<!--<div class="heading" style="font-size: 200%;">Künstliche Intelligenz und Gesellschaft</div>-->
+				<img src="img/KI_und_gesellschaft.svg" width="100%">
+				<div class="heading" style="font-size: 130%; padding-top:0% !important; text-align:center">Vorlesung 3: bestärkendes Lernen<br>(reinforcement learning)</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="70%" style="padding-top: 0% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 0% !important;">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Typen von maschinellem Lernen</div>
+				<p style="font-size: 80%; padding-bottom:1% !important; padding-top:2% !important">Bis jetzt:</p>
+				<ul class="outside">
+					<li style="font-size: 80%; padding-bottom:2% !important"><b>Überwachtes Lernen</b> (supervised learning): Lernen aus Beispielen (Paare von Merkmalen und Klassen bzw. Zielwerten), Erkennen von bekannten Mustern in unbekannten Daten<br><em>&rarr; Klarer Zusammenhang von Datenpunkt und optimalem Ausgabewert.</em></li>
+					<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-bottom:3% !important"><b>Unüberwachtes Lernen</b> (unsupervised learning): finden von unbekannten Mustern in unbekannten Daten die nur Merkmale aber keine Klassen bzw. Zielwerte haben.<br><em>&rarr; Kein Zusammenhang von Datenpunkt und Ausgabewert.</em></li>
+				</ul>
+				<p class="fragment" data-fragment-index="1" style="font-size: 80%;">Dazwischen <b>bestärkendes Lernen</b> (reinforcement learning)<br><em>&rarr; Schwacher Zusammenhang von Datenpunkt und optimalem Ausgabewert.</em></p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Grundidee: Bestärkendes Lernen</div>
+				<div class="r-stack">
+					<img class="fragment fade-out" data-fragment-index="0" src="img/reinforcement_learning_1.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="0" src="img/reinforcement_learning_2.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="1" src="img/reinforcement_learning_3.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="2" src="img/reinforcement_learning_4.svg" width=100%>
+					<img class="fragment current-visible" data-fragment-index="3" src="img/reinforcement_learning_5.svg" width=100%>
+					<img class="fragment" data-fragment-index="4" src="img/reinforcement_learning_6.svg" width=100%>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Wann eignet sich bestärkendes Lernen?</div>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<ul class="outside">
+							<li style="font-size: 100%; padding-bottom: 6% !important; padding-top: 10% !important;">Die <b>Umgebung ist komplex</b>, mit vielen möglichen Zuständen, aber sie lässt sich gut <b>simulieren</b> (Beispiel: Atari Computerspiele).</li>
+							<li style="font-size: 100%;">Der einzige Weg, Informationen über die Umbebung zu bekommen ist, mit ihr zu <b>interagieren</b>.</li>
+						</ul>
+					</div>
+					<div class="column3to2_1">
+						<img src="img/reinforcement.webp" width=90%>
+						<div class="reference" style="text-align: center;">Quelle: Greg Surma, <a href="https://gsurma.medium.com/atari-reinforcement-learning-in-depth-part-1-ddqn-ceaa762a546f">Atari - Solving Games with AI</a>.</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">Herausforderungen</div>
+				<ul class="outside">
+					<li style="font-size: 80%; padding-bottom:2% !important; padding-top:2% !important">Es kann passieren, dass eine Aktion keine oder weniger Punkte bringt als eine andere Aktion, <b>auf lange Sicht</b> aber zu einer höheren Gesamtpunktezahl führt.</li>
+					<li class="fragment" data-fragment-index="0" style="font-size: 80%; padding-bottom:2% !important">Es muss eine Balance zwischen <b>Erkunden</b> (exploration) von unbekannten Zuständen und <b>Ausbeuten</b> (exploitation) von bekannten gewinnbringenden Aktionen gefunden werden.</li>
+					<li class="fragment" data-fragment-index="1" style="font-size: 80%; padding-bottom:2% !important">Es kann <b>sehr viele mögliche Kombinationen</b> aus Aktionen des Agenten und Zuständen der Umgebung geben. Damit können nicht mehr alle Kombinationen ausprobiert werden (brute forcing) – es braucht einen intelligenteren Weg, um eine optimale Strategie zu finden.</li>
+				</ul>
+			</section>
+			<section>
+				<div class="heading">Monte Carlo Algorithmus</div>
+				<div class="container3to1">
+					<div class="column3to1_1">
+						<ul class="outside">
+							<li style="font-size: 65%; padding-bottom:6% !important; padding-top:4% !important">Idee: probiere zufällige Wege durch den "Entscheidungs-baum" aus.</li>
+							<li class="fragment" data-fragment-index="0" style="font-size: 65%; padding-bottom:6% !important">Berechne die Gesamtsumme der Belohnungen entlang jedes Weges.</li>
+							<li class="fragment" data-fragment-index="5" style="font-size: 65%; padding-bottom:6% !important">Der "Wert" jeder Aktion ist der Mittelwert der erreichten Belohnungen über alle Wege.</li>
+						</ul>
+					</div>
+					<div class="column3to1_2">
+						<div class="r-stack">
+							<img class="fragment fade-out" data-fragment-index="0" src="img/monte_carlo_1.svg" width=100% style="padding-top: 5%;">
+							<img class="fragment current-visible" data-fragment-index="0" src="img/monte_carlo_2.svg" width=100% style="padding-top: 5%;">
+							<img class="fragment current-visible" data-fragment-index="1" src="img/monte_carlo_3.svg" width=100% style="padding-top: 5%;">
+							<img class="fragment" data-fragment-index="4" src="img/monte_carlo_4.svg" width=100% style="padding-top: 5%;">
+						</div>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<div class="heading">AlphaGo</div>
+						<ul class="outside">
+							<li style="font-size: 70%; padding-bottom: 3% !important; padding-top: 2% !important;"><b>Herausforderung</b>: Das Spiel Go hat etwa 2*10<sup>170</sup> mögliche Brettpositionen. Alle möglichen Positionen auszuprobieren ist absolut unmöglich.</li>
+							<li style="font-size: 70%; padding-bottom: 3% !important;">Lange Zeit galt gute Performance in Go als unerreichbar für Computer.</li>
+							<li class="fragment" style="font-size: 70%; padding-bottom:3% !important"><b>Lösung</b>: Das Programm AlphaGo von Google DeepMind wurde mit Hilfe eines Monte Carlo Algorithmus komplett ohne menschlichen Input trainiert indem es gegen sich selbst spielte.</li>
+							<li class="fragment" style="font-size: 70%;"><b>Resultat</b>: Im März 2016 gewann AlphaGo 4 von 5 Spiele gegen einen der stärksten menschlichen Spieler (Lee Sedol). Seither wurde das Spiel durch die Verfügbarkeit von starken KI-Spielern revolutioniert.</li>
+						</ul>
+					</div>
+					<div class="column3to2_1">
+						<img src="img/go_2.png" width="70%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+						<img src="img/House-Alpha-Go-2.webp" width="100%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+						<div class="reference" style="text-align: center;">Quelle: <a href="https://www.newyorker.com/tech/annals-of-technology/alphago-lee-sedol-and-the-reassuring-future-of-humans-and-machines">Lee Jin-man / AP</a>.</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<div class="heading">Autonomes Fahren</div>
+						<ul class="outside">
+							<li style="font-size: 80%; padding-bottom: 4% !important; padding-top: 8% !important;"><b>Herausforderung</b>: Kreuzungen mit gemischtem Verkehr (Autos, Fußgänger, Fahrräder) zählen zu den komplexesten Entscheidungssituationen im autonomen Fahren.</li>
+							<li class="fragment" style="font-size: 80%; padding-bottom:4% !important">Bestärkendes Lernen das Fahrzeugverhalten in verschiedenen Umweltsituationen optimiert und strikte Sicherheitsvorschriften inkludiert liefert vielversprechende Ergebnisse.</li>
+						</ul>
+					</div>
+					<div class="column3to2_1">
+						<img src="img/driving_1.png" width="90%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+						<img src="img/driving_2.png" width="90%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+						<div class="reference" style="text-align: center; font-size:38%">Quelle: Ren et al., <a href="https://arxiv.org/pdf/2110.12359">Self-learned Intelligence for Integrated Decision and Control of Automated Vehicles at Signalized Intersections</a>, <em>arXiv</em> (2021).</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="heading">PV Inverter</div>
+				<div class="container3to2">
+					<div class="column3to2_2">
+						<ul class="outside">
+							<li style="font-size: 80%; padding-bottom: 4% !important; padding-top: 3% !important;"><b>Herausforderung</b>: Photovoltaikanlagen produzieren je nach Sonneneinstrahung stark verschiedene Mengen an Strom. Wird zu viel Strom produziert, kann das das Netz überlasten und die Leistung von PV Panelen muss über ihre Inverter begrenzt werde.</li>
+							<li class="fragment" style="font-size: 80%; padding-bottom:4% !important"><b>Lösung</b>: Die optimale lokale Steuerung von PV Invertern (Agenten) kann mittels bestärkendem Lernen erlernt werden. Dieser Ansatz ist einfacher und robuster als klassische Optimierungsansätze.</li>
+						</ul>
+					</div>
+					<div class="column3to2_1">
+						<img src="img/PV_system_1.jpg" width="90%" style="padding-top: 4%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+						<img src="img/PV_system_2.jpg" width="90%" style="padding-top: 4%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+						<div class="reference" style="text-align: center; font-size:33%">Quelle: Vergara et al., <a href="https://www.sciencedirect.com/science/article/pii/S0142061521008607?via%3Dihub">Optimal dispatch of PV inverters in unbalanced distribution systems using Reinforcement Learning</a>, <em>Int. J. Elect. Power & Energy Sys.</em> (2022).</div>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section>
+				<div class="heading">Zusammenfassung</div>
+				<ul class="outside">
+					<li style="padding-bottom: 2% !important; padding-top: 2% !important;">Bestärkendes Lernen eignet sich gut für Probleme in denen sich ein Agent in einer <b>komplexen Umgebung</b> mit vielen Entscheidungsmöglichkeiten optimal verhalten muss.</li>
+					<li style="padding-bottom: 2% !important;">Beispiele für <b>erfolgreiche Anwendungen</b> von bestärkendem Lernen sind Spiele, autonomes Fahren und lokale Steuerung von PV Analgen.</li>
+					<li class="fragment" style="padding-bottom: 2% !important;">Beim bestärkenden Lernen lernt ein Agent eine optimale Strategie durch kontinuiertliche <b>Interaktion mit der Umgebung</b> und Belohnungen für Aktionen.</li>
+					<li class="fragment" style="padding-bottom: 2% !important;"><b>Monte Carlo Simulationen</b> sind ein Weg, optimale Strategien durch das zufällige Ausprobieren von Entscheidungsketten zu erlernen.</li>
+				</ul>
+			</section>
+			<section>
+				<div class="heading">Ausblick nächste Vorlesung</div>
+				<p style="padding-top:3% !important"><em>Am 10.10. von 17:00 bis 18:45 im HS 15.05.</em></p>
+				<li style="padding-top: 3% !important;">Wie wir <b>Text als Daten</b> verwenden können (embeddings)</li>
+				<li style="padding-top: 2% !important;">Vorhersage von <b>Sequenzen</b> und Transformer-Modelle</li>
+				<li style="padding-top: 2% !important;"><b>Generative Modelle</b> und große Sprachmodelle (LLMs)</li>
+				<li style="padding-top: 2% !important;">Einführung in Emfephlungssyteme für Social Media</li>
+				<li style="padding-top: 2% !important;">Bias und Fairness in Empfehlungssystemen messen</li>
+			</section>
+		</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1200, //used to be 960
+  				height: 700,
+  				slideNumber: 'c',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+		
+	</body>
+</html>
+
