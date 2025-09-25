@@ -1,6 +1,6 @@
 # Micro-degree AI and Society – technical aspects
-Teaching materials for the technical aspects of the micro-degree [AI and Society](https://www.uni-graz.at/de/studium/microcredential/ki/) taught at the University of Graz in the winter semester 2024/25.
-Note that the materials are provided in German for now and will be translated throughout summer 2025.
+Teaching materials for the technical aspects of the micro-degree [AI and Society](https://www.uni-graz.at/de/studium/microcredential/ki/) taught at the University of Graz.
+Note that the materials are provided in German are not fully consistent with the materials provided in English. The course was taught in German in the winter semester 2024/25 and translated to English and updated for the winter semester 2025/26.
 
 ## Lectures
 ### English
