@@ -61,6 +61,10 @@ Note that the materials are provided in German for now and will be translated th
   * 4.5 [Das Empfehlungssystem von X](https://janalasser.at/lectures/MC_KI/VO4_5_X_empfehlungsssytem/)
  
 ## Course
+### English
+Work in progress
+
+### German
 * Course 1
   * [Einführung in Jupyter Notebooks](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/01_jupyter_intro.ipynb)
   * [Python Grundlagen 1](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/01_python_grundlagen_1.ipynb)
