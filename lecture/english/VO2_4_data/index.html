@@ -1,0 +1,447 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AI & Society 2.4 – Data Types and Data Problems</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #<<
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+			html, body {
+			    height: 100%;
+			    margin: 0; 
+			    overflow: hidden; 
+			}
+			.reveal img{
+				height: auto;
+			}
+
+	        p {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+			}
+	        .title-heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 2% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:center;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 70%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+		<section>
+			<section>
+				<img src="img/title_slide.svg">
+			</section>
+			<section>
+				<div class="title-heading" style="padding-bottom: 3% !important;">Micro-Degree Artificial Intelligence and Society</div>
+				<div class="title-heading" style="font-size: 200% !important; padding-bottom: 3% !important;">– Technical Aspects of AI –</div>
+				<div class="title-heading" style="padding-bottom: 5% !important;">Lecture 2.4: Data Types and Data Problems</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="70%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+			<section style="font-size: 120%;">
+			    <div class="heading">Data, Data, Data</div>
+			    <ul class="outside">
+			        <li style="padding-bottom: 3% !important; padding-top: 2% !important;">In all the examples discussed, we dealt with data as input for machine learning algorithms: numbers, images, ...</li>
+			        <li style="padding-bottom: 3% !important;">Many of the pitfalls in using AI have to do with the data. "Garbage in, garbage out".</li>
+			    </ul>
+			    <p><em>In the following, we will focus intensively on data. What kind of data is there? How can we describe it? And how do we need to handle it to avoid errors?</em></p>
+			</section>
+		</section>
+		<section>
+		    <section>
+		        <div class="heading">Numbers</div>
+		    </section>
+		    <section>
+		        <div class="heading">Different Types of Numbers</div>
+		        <ul class="outside">
+		            <li>Numbers come in two types:</li>
+		            <ul class="outside">
+		                <li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important;"><b>Discrete</b>: Integers. Examples: number of people in a room, days until Christmas, calls to the phone hotline.</li>
+		                <li class="fragment" data-fragment-index="1" style="padding-bottom:1% !important"><b>Continuous</b>: Decimal numbers (floats). Examples: weight of a person, distance to Paris, percentage of women in a lecture, temperature.
+		            </ul>
+		        </ul>
+		        <div class="container3to1">
+		            <div class="column3to1_1">
+		                <p style="padding-top: 27% !important; padding-left:15%; text-align:right"><em>Example:<br>Information about different wines.</em></p>
+		            </div>
+		            <div class="column3to1_2">
+		                <div class="r-stack">
+		                    <img class="fragment fade-out" data-fragment-index="0" src="img/wine_example_1.svg" width="80%" style="padding-right: 20%;">
+		                    <img class="fragment current-visible" data-fragment-index="0" src="img/wine_example_3.svg" width="80%" style="padding-right: 20%;">
+		                    <img class="fragment" data-fragment-index="1" src="img/wine_example_4.svg" width="80%" style="padding-right: 20%;">
+		                </div>
+		            </div>
+		        </div>
+		    </section>
+		    <section>
+		        <div class="heading">Tables</div>
+		        <p style="padding-bottom: 1% !important; padding-top: 1% !important;"><em>Often also called "data frame", "data table", or "matrix".</em></p>
+		        <div class="r-stack">
+		            <img class="fragment fade-out" data-fragment-index="0" src="img/wine_example_col_row_0.svg" width="100%">
+		            <img class="fragment current-visible" data-fragment-index="0" src="img/wine_example_col_row_1.svg" width="100%">
+		            <img class="fragment" data-fragment-index="1" src="img/wine_example_col_row_2.svg" width="100%">
+		        </div>
+		    </section>
+		    <section>
+		        <div class="heading">Problems with Numbers</div>
+		        <ul class="outside">
+		            <li style="padding-bottom: 1% !important;"><b>Missing values</b> can be blanks in the data, but also marked with <b>placeholders</b> like "-1" or "NA".</li>
+		            <li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important;"><b>Outliers</b>: values that are far outside the expected range.</li>
+		            <li class="fragment" data-fragment-index="1" style="padding-bottom: 1% !important;"><b>Forbidden values</b>: values that are outside the <b>allowed</b> range.</li>
+		        </ul>
+		        <div class="container3to1">
+		            <div class="column3to1_1">
+		                <p style="padding-top: 27% !important; padding-left:15%; text-align:right"><em>Example:<br>Information about different wines.</em></p>
+		            </div>
+		            <div class="column3to1_2">
+		                <div class="r-stack">
+		                    <img class="fragment fade-out" data-fragment-index="0" src="img/wine_example_5.svg" width="80%" style="padding-right: 20%;">
+		                    <img class="fragment current-visible" data-fragment-index="0" src="img/wine_example_6.svg" width="80%" style="padding-right: 20%;">
+		                    <img class="fragment" data-fragment-index="1" src="img/wine_example_7.svg" width="80%" style="padding-right: 20%;">
+		                </div>
+		            </div>
+		        </div>
+		    </section>
+		    <section>
+		        <div class="heading">Finding Problems with Numbers</div>
+		        <ul class="outside">
+		            <li style="padding-top:1% !important"><b>Check assumptions about numbers</b></li>
+		            <ul class="outside">
+		                <li style="padding-bottom: 0.5% !important;">Which values are allowed?</li>
+		                <li style="padding-bottom: 0.5% !important;">Which value ranges are expected?</li>
+		                <li style="padding-bottom: 2% !important;">How are missing values encoded?</li>
+		            </ul>
+		            <li class="fragment" data-fragment-index="0"><b>Descriptive Statistics</b></li>
+		            <ul class="outside">
+		                <li class="fragment" data-fragment-index="0" style="padding-bottom: 0.5% !important;"><b>Minimum</b>: the smallest number</li>
+		                <li class="fragment" data-fragment-index="0" style="padding-bottom: 0.5% !important;"><b>Maximum</b>: the largest number</li>
+		                <li class="fragment" data-fragment-index="1" style="padding-bottom: 0.5% !important;"><b>Median</b>: which number is exactly in the middle if we order all values from smallest to largest? Example: [1, 1, 3, <span style="color: #e4684b;">5</span>, 6, 6, 13]</li>
+		                <li class="fragment" data-fragment-index="2"><b>Mean</b>: sum all values and divide them by the count of values</li>
+		                <li class="fragment" data-fragment-index="2" style="padding-bottom: 0.5% !important;"><b>Mode</b>: the most frequent number</li>
+		            </ul>
+		        </ul>
+		    </section>
+		    <section style="text-align: left;">
+		        <div class="heading" style="padding-bottom: 2% !important;">Fixing Problems with Numbers</div>
+		        <ul class="outside">
+		            <li class="fragment" data-fragment-index="0"><b>Missing Values</b></li>
+		            <ul class="outside">
+		                <li class="fragment" data-fragment-index="0">Remove columns or rows with missing values.</li>
+		                <li class="fragment" data-fragment-index="0" style="padding-bottom:2% !important">Imputation: replace missing values with mean, median, or mode.</li>
+		            </ul>
+		            <li class="fragment" data-fragment-index="1"><b>Outliers</b></li>
+		            <ul class="outside">
+		                <li class="fragment" data-fragment-index="1">Find out where the values come from.</li>
+		                <li class="fragment" data-fragment-index="1" style="padding-bottom:2% !important">Replace with minimum / maximum or missing value.</li>
+		            </ul>
+		            <li class="fragment" data-fragment-index="2"><b>Forbidden Values</b></li>
+		            <ul class="outside">
+		                <li class="fragment" data-fragment-index="2">Find out where the values come from.</li>
+		                <li class="fragment" data-fragment-index="2">Replace with missing values or impute.</li>
+		            </ul>
+		        </ul>
+		    </section>
+		</section>
+		<section>
+		    <section>
+		        <div class="heading">Classes / Categories</div>
+		    </section>
+		    <section>
+		        <div class="heading">Different Types of Classes</div>
+		        <ul class="outside">
+		            <li style="padding-bottom: 2% !important; padding-top: 1% !important;"><b>Category</b>: Can have more than two values. Examples: color, gender, place of residence, ethnicity<span class="fragment" data-fragment-index="0">, quality.</span></li>
+		            <li class="fragment" data-fragment-index="1" style="padding-bottom:1% !important"><b>Boolean</b>: "yes" or "no", often "1" or "0".
+		        </ul>
+		        <div class="container3to1">
+		            <div class="column3to1_1">
+		                <p style="padding-top: 27% !important; padding-left:15%; text-align:right"><em>Example:<br>Information about different wines.</em></p>
+		            </div>
+		            <div class="column3to1_2">
+		                <div class="r-stack">
+		                    <img class="fragment fade-out" data-fragment-index="0" src="img/wine_example_8.svg" width="80%" style="padding-right: 20%;">
+		                    <img class="fragment current-visible" data-fragment-index="0" src="img/wine_example_9.svg" width="80%" style="padding-right: 20%;">
+		                    <img class="fragment" data-fragment-index="1" src="img/wine_example_10.svg" width="80%" style="padding-right: 20%;">
+		                </div>
+		            </div>
+		        </div>
+		    </section>
+		    <section>
+		        <div class="heading">How do we "Compute" with Classes?</div>
+		        <ul class="outside">
+		            <li style="padding-bottom: 2% !important; padding-top: 1% !important;"><b>Boolean values</b> (binary attributes): translate into "0" and "1".</li>
+		            <li class="fragment" data-fragment-index="0" style="padding-bottom:2% !important"><b>Categories with two possible values</b>: translate into boolean values.</li>
+		            <li class="fragment" data-fragment-index="1" style="padding-bottom:2% !important"><b>Categories with more than two possible values</b><span class="fragment" data-fragment-index="2">: split into multiple columns ("one-hot encoding").</span></li>
+		        </ul>
+		        <div class="container3to1">
+		            <div class="column3to1_1">
+		                <p style="padding-top: 27% !important; padding-left:15%; text-align:right"><em>Example:<br>Information about different wines.</em></p>
+		            </div>
+		            <div class="column3to1_2">
+		                <div class="r-stack">
+		                    <img class="fragment fade-out" data-fragment-index="0" src="img/wine_example_11.svg" width="80%" style="padding-right: 20%;">
+		                    <img class="fragment current-visible" data-fragment-index="0" src="img/wine_example_12.svg" width="80%" style="padding-right: 20%;">
+		                    <img class="fragment current-visible" data-fragment-index="1" src="img/wine_example_13.svg" width="80%" style="padding-right: 20%;">
+		                    <img class="fragment" data-fragment-index="2" src="img/wine_example_14.svg" width="80%" style="padding-right: 20%;">
+		                </div>
+		            </div>
+		        </div>
+		    </section>
+		</section>
+		<section>
+		    <section>
+		        <div class="heading">Images</div>
+		    </section>
+		    <section>
+		        <div class="heading">Images consist of Pixels</div>
+		        <p class="fragment" data-fragment-index="0">Pixels (picture elements) already contain numbers – the color values of the pixel. <span class="fragment" data-fragment-index="1">Images already have rows and columns.</span> <span class="fragment" data-fragment-index="2">Actually, images are already tables.</span></p>
+		        <div class="r-stack">
+		            <img class="fragment fade-out" data-fragment-index="0" src="img/image_1.svg" width="80%">
+		            <img class="fragment current-visible" data-fragment-index="0" src="img/image_2.svg" width="80%">
+		            <img class="fragment current-visible" data-fragment-index="1" src="img/image_3.svg" width="80%">
+		            <img class="fragment" data-fragment-index="2" src="img/image_4.svg" width="80%">
+		        </div>
+		    </section>
+		    <section>
+		        <div class="heading">Images with Colors</div>
+		        <div class="r-stack">
+		            <img class="fragment fade-out" data-fragment-index="0" src="img/colors_0.svg" width="70%">
+		            <img class="fragment current-visible" data-fragment-index="0" src="img/colors_1.svg" width="70%">
+		            <img class="fragment" data-fragment-index="1" src="img/colors_2.svg" width="70%">
+		        </div>
+		    </section>
+		</section>
+		<section>
+		    <section>
+		        <div class="heading">Text</div>
+		    </section>
+		    <section>
+		        <div class="heading" style="padding-bottom: 2% !important;">Representing Text as Numbers</div>
+		        <div class="container3to1">
+		            <div class="column3to1_2">
+		                <div class="r-stack">
+		                    <img class="fragment current-visible" data-fragment-index="0" src="img/text_1.svg" width="100%">
+		                    <img class="fragment current-visible" data-fragment-index="1" src="img/text_2.svg" width="100%">
+		                    <img class="fragment current-visible" data-fragment-index="2" src="img/text_3.svg" width="100%">
+		                    <img class="fragment" data-fragment-index="3" src="img/text_4.svg" width="100%">
+		                </div>
+		            </div>
+		            <div class="column3to1_1">
+		                <ul class="outside">
+		                    <li class="fragment" data-fragment-index="3" style="padding-bottom: 8% !important; padding-top:20% !important">There are around 600,000 words in the Oxford English Dictionary.</li>
+		                    <li class="fragment" data-fragment-index="4" style="padding-bottom:8% !important">This idea quickly leads to huge tables.</li>
+		                    <li class="fragment" data-fragment-index="4">More on this in Lecture 4!</li>
+		                </ul>
+		            </div>
+		        </div>
+		    </section>
+		</section>
+		<section>
+		    <section>
+		        <div class="heading">Further Data Types</div>
+		    </section>
+		    <section>
+		        <div class="container1to1">
+		            <div class="column1to1_1">
+		                <div class="heading" style="text-align: center;">Time Series</div>
+		                <p><em>Individual numbers recorded at regular time intervals.</em></p>
+		                <img src="img/time_series.svg" width="90%" style="padding-bottom: 0%; margin-bottom:0%">
+		                <div class="reference" style="text-align: center;">Temperature curve since 1850. Source: <a href="https://commons.wikimedia.org/wiki/File:Instrumental_Temperature_Record_by_R_Rhode.svg">Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA 3.0</a></div>
+		            </div>
+		            <div class="column1to1_2">
+		                <div class="heading" style="text-align: center;"><span class="fragment" data-fragment-index="0">Sound</span></div>
+		                <p class="fragment" data-fragment-index="0"><em>Many numbers (frequencies) recorded at regular time intervals.</em></p>
+		                <img span class="fragment" data-fragment-index="0" src="img/spectrogram.jpg" width="94.2%" style="padding-bottom: 0%; margin-bottom:0%">
+		                <div class="reference" style="text-align: center;"><span class="fragment" data-fragment-index="0">Spectrogram of the song "Oh No Girl". Source: <a href="https://commons.wikimedia.org/wiki/File:Oh_No_Girl_Spectrogram.jpg">Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA 3.0</a></span></div>
+		            </div>
+		        </div>
+		    </section>
+		</section>
+		<section>
+		    <section>
+		        <div class="heading">Summary</div>
+		        <ul class="outside">
+		            <li style="padding-bottom: 1% !important; padding-top: 1% !important;">To make data usable for machine learning, we need to convert it into <b>numbers in tables</b>.</li>
+		            <li class="fragment" data-fragment-index="0">There are different <b>data types</b>, all of which can be represented in tabular form in one way or another.</li>
+		            <ul class="outside">
+		                <li class="fragment" data-fragment-index="0">Numbers: discrete and continuous</li>
+		                <li class="fragment" data-fragment-index="0">Classes: boolean (binary attributes) and categories</li>
+		                <li class="fragment" data-fragment-index="0">Images: black and white, and color</li>
+		                <li class="fragment" data-fragment-index="0">Text</li>
+		                <li class="fragment" data-fragment-index="0" style="padding-bottom:1% !important">Time series</li>
+		            </ul>
+		            <li class="fragment" data-fragment-index="1">To discover and fix <b>data problems</b>, it's helpful to look at <b>descriptive</b> statistics (minimum, maximum, mode, median, mean).</li>
+		        </ul>
+		    </section>
+		    <section style="text-align: left; font-size: 120%;">
+		        <div class="heading" style="padding-bottom: 3% !important;">Exercise (5 min)</div>
+		        <p style="padding-bottom: 3% !important">Think back to the supervised learning application from your daily life that you considered in the last lecture.</p>
+		        <ul class="outside">
+		            <li style="padding-bottom: 3% !important">What data could you collect to train your algorithm?</li>
+		            <li style="padding-bottom: 3% !important">What problems could arise with this data?</li>
+		            <li>How could you fix these problems?</li>
+		        </ul>
+		    </section>
+		</section>		
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: "100%", //used to be 960
+  				height: "100%",
+  				slideNumber: 'c',
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+	</body>
+</html>
+

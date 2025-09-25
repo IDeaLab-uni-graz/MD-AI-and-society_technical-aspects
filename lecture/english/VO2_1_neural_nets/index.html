@@ -1,0 +1,297 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AI & Society 2.1 – Neural Networks</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #<<
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+			html, body {
+			    height: 100%;
+			    margin: 0; 
+			    overflow: hidden; 
+			}
+			.reveal img{
+				height: auto;
+			}
+
+	        p {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+			}
+	        .title-heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 2% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:center;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 70%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<img src="img/title_slide.svg">
+			</section>
+			<section>
+				<div class="title-heading" style="padding-bottom: 3% !important;">Micro-Degree Artificial Intelligence and Society</div>
+				<div class="title-heading" style="font-size: 200% !important; padding-bottom: 3% !important;">– Technical Aspects of AI –</div>
+				<div class="title-heading" style="padding-bottom: 5% !important;">Lecture 2.1: Neural Networks</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="70%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<section style="text-align: left;">
+			    <div class="heading">Supervised Learning Algorithms</div>
+			    <ul class="outside">
+			        <li style="padding-bottom: 0.5% !important;">A machine learning algorithm for classification:</li>
+			        <ul class="outside">
+			            <li style="padding-bottom:0.5% !important">Takes the <b>attributes</b> <em>x<sub>i</sub></em> of an unknown observation as input</li>
+			            <li style="padding-bottom:0.5% !important">Predicts the <b>class</b> <em>y<sub>i</sub></em> of the observation (output).</li>
+			            <li style="padding-bottom:1% !important"><b>Learns</b> from training data to improve its <b>performance</b>.</li>
+			        </ul>
+			        <li class="fragment" data-fragment-index="0" style="padding-bottom: 0.5% !important;">Last lecture: various algorithms for classification:</li>
+			        <ul class="outside">
+			            <li class="fragment" data-fragment-index="0" style="padding-bottom:0.5% !important">Naive Bayes</li>
+			            <li class="fragment" data-fragment-index="0" style="padding-bottom:0.5%!important"><em>k</em>-Nearest Neighbors</li>
+			            <li class="fragment" data-fragment-index="0" style="padding-bottom:1% !important">Decision Trees</li>
+			        </ul>
+			        <li class="fragment" data-fragment-index="1">Now: neural networks as a powerful and flexible <em>architecture</em> for machine learning algorithms.</li>
+			    </ul>
+			</section>
+			<section>
+			    <div class="heading" style="padding-bottom: 0% !important;">Neural Networks</div>
+			    <div class="r-stack">
+			        <img class="fragment fade-out" data-fragment-index="0" src="img/neural_net_1.svg" width="80%" style="padding-top: 0%; margin-top: 0%">
+			        <img class="fragment current-visible" data-fragment-index="0" src="img/neural_net_2.svg" width="80%" style="padding-top: 0%; margin-top: 0%">
+			    </div>
+			    <div class="reference" style="text-align: right;">Inspired by: YouTube Science Buddies <a href="https://www.youtube.com/watch?v=SV2huMdNs9c">Super Simple Neural Network Explanation</a>.</div>
+			</section>
+			<section>
+			    <div class="heading" style="padding-bottom: 0% !important;">The Perceptron</div>
+			    <div class="r-stack">
+			        <img class="fragment fade-out" data-fragment-index="0" src="img/neural_net_3.svg" width="80%" style="padding-top: 0%; margin-top: 0%">
+			        <img class="fragment" data-fragment-index="0" src="img/neural_net_4.svg" width="80%" style="padding-top: 0%; margin-top: 0%">
+			    </div>
+			    <div class="reference" style="text-align: right;">Inspired by: YouTube Science Buddies <a href="https://www.youtube.com/watch?v=SV2huMdNs9c">Super Simple Neural Network Explanation</a>.</div>
+			</section>
+			<section style="text-align: left;">
+			    <div class="heading">Should I Go Out Tonight?</div>
+			    <ul class="outside">
+			        <li style="padding-top:2% !important">Inputs:</li>
+			        <ul class="outside">
+			            <li>Is it not raining outside?</li>
+			            <li>Are my friends going out?</li>
+			            <li style="padding-bottom:2% !important">Do I have money left?</li>
+			        </ul>
+			        <li style="padding-bottom: 2% !important;">Output: Go out? (yes or no)</li>
+			        <li>Simple algorithm: If two or more inputs are "yes", I'm going out.</li>
+			    </ul>
+			</section>
+			<section>
+			    <div class="r-stack">
+			        <img class="fragment fade-out" data-fragment-index="0" src="img/neural_net_5.svg" width="85%">
+			        <img class="fragment current-visible" data-fragment-index="0" src="img/neural_net_6.svg" width="85%">
+			        <img class="fragment current-visible" data-fragment-index="1" src="img/neural_net_7.svg" width="85%">
+			        <img class="fragment current-visible" data-fragment-index="2" src="img/neural_net_8.svg" width="85%">
+			        <img class="fragment current-visible" data-fragment-index="3" src="img/neural_net_9.svg" width="85%">
+			        <img class="fragment current-visible" data-fragment-index="4" src="img/neural_net_10.svg" width="85%">
+			        <img class="fragment current-visible" data-fragment-index="5" src="img/neural_net_11.svg" width="85%">
+			        <img class="fragment current-visible" data-fragment-index="6" src="img/neural_net_12.svg" width="85%">
+			        <img class="fragment current-visible" data-fragment-index="7" src="img/neural_net_13.svg" width="85%">
+			        <img class="fragment current-visible" data-fragment-index="8" src="img/neural_net_14.svg" width="85%">
+			        <img class="fragment current-visible" data-fragment-index="9" src="img/neural_net_15.svg" width="85%">
+			        <img class="fragment current-visible" data-fragment-index="10" src="img/neural_net_16.svg" width="85%">
+			        <img class="fragment" data-fragment-index="11" src="img/neural_net_17.svg" width="85%">
+			    </div>
+			    <div class="reference" style="text-align: right; padding-top: 2% !important;">Inspired by: YouTube Science Buddies <a href="https://www.youtube.com/watch?v=SV2huMdNs9c">Super Simple Neural Network Explanation</a>.</div>
+			</section>
+			<section>
+			    <div class="heading">Neural Network for Image Recognition</div>
+			    <div class="r-stack">
+			        <img class="fragment current-visible" data-fragment-index="0" src="img/neural_net_image_0.svg" width="80%">
+			        <img class="fragment current-visible" data-fragment-index="1" src="img/neural_net_image_1.svg" width="80%">
+			        <img class="fragment current-visible" data-fragment-index="2" src="img/neural_net_image_3.svg" width="80%">
+			        <img class="fragment current-visible" data-fragment-index="3" src="img/neural_net_image_4.svg" width="80%">
+			        <img class="fragment current-visible" data-fragment-index="4" src="img/neural_net_image_5.svg" width="80%">
+			        <img class="fragment" data-fragment-index="5" src="img/neural_net_image_6.svg" width="80%">
+			    </div>
+			</section>
+		</section>
+		<section>
+			<section>
+			    <div class="heading">Summary</div>
+			    <ul class="outside">
+			        <li style="padding-top:2% !important; padding-bottom:2% !important">Neural networks consist of individual neurons (perceptrons).</li>
+			        <li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">Individual neurons receive <b>inputs</b> and calculate an <b>output</b> using an <b>activation function</b>.</li>
+			        <li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">Outputs are passed to neurons in the next <b>layer</b> of the neural network until the output layer is reached.</li>
+			        <li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">The input layer receives the <b>attributes of an observation</b> <em>x<sub>i</sub></em> as input. The output layer outputs one of the possible <b>classes</b> <em>y<sub>i</sub></em>.</li>
+			        <li class="fragment" data-fragment-index="1" style="padding-bottom:2% !important">The importance of inputs can be modified via <b>weights</b>.</li>
+			        <li class="fragment" data-fragment-index="1">During the <b>training</b> of neural networks, the weights are adjusted until the output is <b>optimal</b>.</li>
+			    </ul>
+			</section>
+		</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: "100%", //used to be 960
+  				height: "100%",
+  				slideNumber: 'c',
+			});
+		</script>
+		<!--
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+		-->
+	</body>
+</html>
+

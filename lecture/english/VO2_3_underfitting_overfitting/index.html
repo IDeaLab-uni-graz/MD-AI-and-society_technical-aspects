@@ -1,0 +1,378 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AI & Society 2.3 – Bias and Variance</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #<<
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+			html, body {
+			    height: 100%;
+			    margin: 0; 
+			    overflow: hidden; 
+			}
+			.reveal img{
+				height: auto;
+			}
+
+	        p {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+			}
+	        .title-heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 2% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:center;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 70%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<img src="img/title_slide.svg">
+			</section>
+			<section>
+				<div class="title-heading" style="padding-bottom: 3% !important;">Micro-Degree Artificial Intelligence and Society</div>
+				<div class="title-heading" style="font-size: 200% !important; padding-bottom: 3% !important;">– Technical Aspects of AI –</div>
+				<div class="title-heading" style="padding-bottom: 5% !important;">Lecture 2.3: Bias and Variance</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="70%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+		    <section style="text-align: left; font-size: 120%;">
+		        <div class="heading">Sources of Error</div>
+		        <ul class="outside">
+		            <li style="padding-bottom: 4% !important; padding-top: 3% !important;">In the section on performance indicators, we saw that there are <b>different types</b> of errors.</li>
+		            <li style="padding-bottom: 4% !important;">There are also <b>different reasons</b> why machine learning models make errors.</li>
+		            <li style="padding-bottom: 8% !important;">These reasons can lie in both the <b>training data</b> and the <b>training process</b>.</li>
+		        </ul>
+		        <p><em>Next, we will look closer at these reasons.</em></p>
+		    </section>
+		    <section>
+		        <div class="heading">Bias</div>
+		        <div class="container3to2">
+		            <div class="column3to2_2">
+		                <ul class="outside">
+		                    <li style="padding-bottom:2% !important">Bias of a model: Difference between its <b>average prediction</b> and the true value.</li>
+		                    <li class="fragment" data-fragment-index="0">Example</li>
+		                    <ul class="outside">
+		                        <li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important; font-size: 130%;">We train a model to recognize cats and dogs in images.</li>
+		                        <li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important; font-size: 130%;">Cats appear much more frequently than dogs in the training dataset.</li>
+		                        <li class="fragment" data-fragment-index="1" style="padding-bottom: 1% !important; font-size: 130%;">As a result, the model is much more likely to predict "cat" than "dog".</li>
+		                        <li class="fragment" data-fragment-index="1" style="padding-bottom: 3% !important; font-size: 130%;">The model has a cat bias!</li>
+		                    </ul>
+		                </ul>
+		                <img class="fragment" data-fragment-index="2" src="img/ethical_aspects.svg" width="40%">
+		                <img class="fragment" data-fragment-index="2" src="img/legal_aspects.svg" width="40%" style="padding-left: 3% !important;">
+		            </div>
+		            <div class="column3to2_1">
+		                <img class="fragment" data-fragment-index="0" src="img/cat_dog.png" width="90%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 5%; margin-top: 0%;">
+		                <div class="reference" style="text-align: right;"><span class="fragment" data-fragment-index="0">Source cat image: <a href="https://commons.wikimedia.org/wiki/File:Cat.png">Wikimedia Commons</a> <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA</a>.<br>Source dog image: <a href="https://commons.wikimedia.org/wiki/File:Cute_dog.jpg">Wikimedia Commons</a>, <a href="https://en.wikipedia.org/wiki/en:Creative_Commons">CC BY</a>.</span></div>
+		            </div>
+		        </div>
+		    </section>
+		    <section>
+		        <div class="container3to2">
+		            <div class="column3to2_2">
+		                <div class="heading">Variance</div>
+		                <ul class="outside">
+		                    <li style="padding-bottom:4% !important; padding-top:1% !important">Variance of a model: Spread of predictions for similar input observations.</li>
+		                    <li class="fragment" data-fragment-index="0"><b>Example</b></li>
+		                    <ul class="outside">
+		                        <li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">We train a model to recognize ponies and horses in images.</li>
+		                        <li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">Only brown horses and white ponies appear in the training data.</li>
+		                        <li class="fragment" data-fragment-index="1" style="padding-bottom: 2% !important;">The model memorizes the training data and learns to associate brown &rarr; horse and white &rarr; pony.</li>
+		                        <li class="fragment" data-fragment-index="1">The performance on new data with white horses and brown ponies is extremely poor.</li>
+		                    </ul>
+		                </ul>
+		            </div>
+		            <div class="column3to2_1">
+		                <p class="fragment" data-fragment-index="0" style="text-align:center; padding-left:20%">Training Data</p>
+		                <img class="fragment" data-fragment-index="0" src="img/pferd_pony_training.png" width="73%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%; padding-left: 20%;">
+		                <p class="fragment" data-fragment-index="1" style="text-align:center; padding-top:0%; padding-left:20%">Unknown Data</p>
+		                <img class="fragment" data-fragment-index="1" src="img/pferd_pony_test.png" width="73%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%; padding-left:20%">
+		                <div class="reference" style="text-align: right;">
+		                    <span class="fragment" data-fragment-index="0">Source White Pony: <a href="https://commons.wikimedia.org/wiki/File:Sleeping_Pony.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA</a>.</span>
+		                    <br><span class="fragment" data-fragment-index="1">Source Brown Pony: <a href="https://commons.wikimedia.org/wiki/File:Dayboro_Shetland_Pony_loves_carrots-1_%2828603360412%29.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA</a>.</span>
+		                    <br><span class="fragment" data-fragment-index="1">Source White Horse: <a href="https://commons.wikimedia.org/wiki/File:D%C3%BClmener_Pferd_%28132670151%29.jpeg">Wikimedia commons</a>, <a href="https://en.wikipedia.org/wiki/en:Creative_Commons">CC BY</a>.</span></div>
+		            </div>
+		        </div>
+		    </section>
+		    <section>
+		        <div class="container3to2">
+		            <div class="column3to2_1">
+		                <div class="heading">Bias and Variance</div>
+		                <ul class="outside">
+		                    <li style="padding-bottom:4% !important; padding-top:3% !important">In the context of machine learning, bias is also called <b>underfitting</b>:</li>
+		                    <li>&rarr; the algorithm does not learn the relationships between attributes and outputs.</li>
+
+		                    <li class="fragment" data-fragment-index="0" style="padding-top: 7% !important; padding-bottom: 4% !important;">Variance is also called <b>overfitting</b>:</li>
+		                    <li class="fragment" data-fragment-index="0">&rarr; the algorithm models false correlations or noise instead of the desired relationships between attributes and outputs.</li>
+		                </ul>
+		                <div class="reference" style="padding-top: 5% !important; text-align: right;"><span class="fragment" data-fragment-index="1" >Source illustration: Adapted from Scott Fortmann-Roe <a href="https://scott.fortmann-roe.com/docs/BiasVariance.html#:~:text=Bias%20measures%20how%20far%20off,model%20building%20process%20multiple%20times.">Graphical illustration of bias and variance</a>.</span></div>
+		            </div>
+		            <div class="column3to2_2">
+		                <img class="fragment" data-fragment-index="1" src="img/bias_variance.svg" width="85%" style="padding-left: 10%;">
+		            </div>
+		        </div>
+		    </section>
+		</section>
+		<section>
+		    <section>
+		        <div class="heading">Example: Election Prediction</div>
+		        <div class="container3to1">
+		            <div class="column3to1_1">
+		                <p style="text-align: center; font-size: 130%;">Prediction for Florida 2020</p>
+		                <img src="img/election_example_1.png" width="100%" style="padding-bottom: 0%; margin-bottom:0%">
+		            </div>
+		            <div class="column3to1_2">
+		                <p style="text-align: center;">Actual Result</p>
+		                <img src="img/election_example_2.png" width="90%" style="padding-bottom: 0%; margin-bottom:0%">
+		            </div>
+		        </div>
+		        <p class="fragment" data-fragment-index="0" style="padding-top: 1% !important;"><b>Possible Sources of Error</b></p>
+		        <ul class="outside">
+		            <li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important;"><b>Bias</b>: Attributes of respondents such as education or landline connection were not considered &rarr; the prediction systematically underestimates the number of Trump voters.</li>
+		            <li class="fragment" data-fragment-index="1"><b>Variance</b>: Not enough people surveyed, the model learns the attributes of individual people &rarr; the prediction is strongly influenced by the random selection of respondents.
+		        </ul>
+		    </section>
+		    <section>
+		        <div class="heading" style="font-size: 140%; padding-bottom:2% !important">Example: Pneumonia Prediction</div>
+		        <div class="container3to2">
+		            <div class="column3to2_2">
+		                <ul class="outside">
+		                    <li style="padding-bottom: 4% !important;"><b>Goal</b>: Detect pneumonia in X-ray images of lungs.</li>
+		                    <li style="padding-bottom:4% !important"><b>Training dataset</b>: X-ray images from three hospitals.</li>
+		                    <li>Incidence of pneumonia:</li>
+		                    <ul class="outside">
+		                        <li>Hospital 1: 1.2%</li>
+		                        <li>Hospital 2: 34.2%</li><
+		                        <li style="padding-bottom:5% !important">Hospital 3: 1.0%.</li>
+		                    </ul>
+		                    <li style="padding-bottom: 4% !important;">The machine learning model receives both the images and the <b>metadata</b> (which hospital, which device, time, etc.) for training.</li>
+		                    <div class="reference">See also <a href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683">Zech et al., PloS Medicine (2018)</a>.</div>
+		                </ul>
+		            </div>
+		            <div class="column3to2_1">
+		                <img src="img/lungs.svg" width="100%" style="margin-bottom: 0%; padding-bottom: 0%;">
+		                <div class="reference" style="text-align: right;">X-ray images of lungs. Source: Wikimedia Commons, public domain.</div>
+		                <p class="fragment" style="text-align:center; padding-top: 5% !important;"><b>Possible Problems?</b></p>
+		                <p class="fragment" style="padding-top: 3% !important; padding-left: 5%;"><em>The model learns the <b>source hospital</b> of images, not how pneumonia looks like &rarr; <b>Bias</b>.</em></p>
+		            </div>
+		        </div>
+		    </section>
+		   </section>
+		   <section>
+		    <section style="font-size:90%">
+		        <div class="heading" style="padding-bottom: 1% !important ;">Sources of Bias</div>
+		        <ul class="outside">
+		            <li><b>Data Selection</b>: Datasets should represent the underlying population.</li>
+		            <p style="padding-bottom:1% !important"><em>Example: a facial recognition algorithm trained on images of predominantly white men that poorly recognizes black women.</em></p>
+
+		            <li class="fragment" data-fragment-index="0"><b>Prejudices and Correlations</b>: Attributes can contain undesirable correlations that reflect prejudices.</li>
+		            <p class="fragment" data-fragment-index="0" style="padding-bottom:1% !important"><em>Example: a recruiting algorithm that includes postal code and thus discriminates against migrants.</em></p>
+
+		            <li class="fragment" data-fragment-index="1"><b>Missing Information</b>: Attributes not included in the dataset can be very important for the result.</li>
+		            <p class="fragment" data-fragment-index="1" style="padding-bottom:1% !important"><em>Example: Predicting customer willingness to buy. Customers from country X spend twice as much money as customers from country Y, but the country of origin is not collected and is not available for prediction.</em></p>
+
+		            <li class="fragment" data-fragment-index="2"><b>Different Data Source</b>: when the data source for the training data is different from the data used in the application.</li>
+		            <p class="fragment" data-fragment-index="2"><em>Example: the training data for an image recognition algorithm is captured with a Nikon camera, all data for the application comes from Canon cameras.</em></p>
+		        </ul>
+		    </section>
+		    <section style="font-size: 90%;">
+		        <div class="heading">Correct Assessment of Model Error</div>
+		        <p><em>In supervised learning, algorithms tend to "memorize" their training data.<br>&rarr; the prediction error on the training data is not a good measure of variance!</em></p>
+		        <p class="fragment" data-fragment-index="0" style="padding-top:1% !important"><b>Train-Test Approach</b></p>
+		        <ol class="outside">
+		            <li class="fragment" data-fragment-index="0" style="padding-bottom:0.5% !important">Divide the data with known classes into two parts: the <b>training dataset</b> (e.g., 80% of the data) and the <b>test dataset</b> (e.g., 20% of the data).</li>
+		            <li class="fragment" data-fragment-index="1" style="padding-bottom:0.5% !important">Train the model only with the training dataset.</li>
+		            <li class="fragment" data-fragment-index="1" style="padding-bottom:0.5% !important">Predict the classes in the test dataset with the trained model.</li>
+		            <li class="fragment" data-fragment-index="2" style="padding-bottom:0.5% !important">Compare the predicted classes with the true classes.</li>
+		            <li class="fragment" data-fragment-index="3" style="padding-bottom:0.5% !important">(Optional) Separate a third part (<b>validation data</b>) to evaluate the model during development.</li>
+		        </ol>
+		        <div class="r-stack">
+		            <img class="fragment" data-fragment-index="0" src="img/train_test_1.svg" width="95%">
+		            <img class="fragment" data-fragment-index="3" src="img/train_test_2.svg" width="95%">
+		        </div>
+		    </section>
+		</section>
+		<section>
+		    <section style="font-size: 110%;">
+		        <div class="heading">Summary</div>
+		        <ul class="outside">
+		            <li>Errors of machine learning models have two reasons:</li>
+		            <ul class="outside">
+		                <li><b>Bias</b>: a systematic deviation of model predictions from the true value.</li>
+		                <li style="padding-bottom: 2% !important;"><b>Variance</b>: a high spread of predictions for similar input values.</li>
+		            </ul>
+		            <li class="fragment" style="padding-bottom: 2% !important;">Sources of bias and variance can lie in both the training data and the training process.</li>
+		            <li class="fragment" style="padding-bottom: 2% !important;">Systematic identification of biases in training data helps to reduce model bias.</li>
+		            <li class="fragment" style="padding-bottom: 2% !important;">Splitting data into training and test datasets helps prevent overfitting and correctly assess model performance.</li>
+		        </ul>
+		    </section>
+		</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: "100%", //used to be 960
+  				height: "100%",
+  				slideNumber: 'c',
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+	</body>
+</html>
+
