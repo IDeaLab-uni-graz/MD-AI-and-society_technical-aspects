@@ -1,0 +1,246 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AI & Society 3 – Intro</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #<<
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+			html, body {
+			    height: 100%;
+			    margin: 0; 
+			    overflow: hidden; 
+			}
+			.reveal img{
+				height: auto;
+			}
+
+	        p {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+			}
+	        .title-heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 2% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:center;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 100%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section>
+	<img src="img/title_slide.svg">
+</section>
+<section>
+	<div class="title-heading" style="padding-bottom: 3% !important;">Micro-Degree Artificial Intelligence and Society</div>
+	<div class="title-heading" style="font-size: 200% !important; padding-bottom: 3% !important;">– Technical Aspects of AI –</div>
+	<div class="title-heading" style="padding-bottom: 5% !important;">Lecture 3: Unsupervised & Reinforcement Learning</div>
+
+	<div class="container1to1">
+		<div class="column1to1_1">
+			<img src="img/name_and_prof.svg" width="70%" style="padding-top: 2% !important;">
+		</div>
+		<div class="column1to1_2">
+			<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 2% !important;">
+		</div>
+	</div>
+</section>
+<section style="font-size: 110%;">
+    <div class="heading">Review Lecture 2</div>
+    <ul class="outside">
+        <li style="padding-bottom: 2% !important;"><em><b>Question:</b> How can we measure how well a supervised learning algorithm performs?</em>
+        	<!--<br><span class="fragment" data-fragment-index="0"><b>Answer:</b> For classification, we use accuracy (proportion of correct predictions) or the <em>F<sub>1</sub></em> score (harmonic mean of positive predictive value and sensitivity). For regression, we use the root mean squared error.</span>
+        	--></li>
+
+        <li style="padding-bottom: 2% !important;"><em><b>Question:</b> What is Bias (underfitting) and Variance (overfitting)?<br></em>
+        	<!--<span class="fragment" data-fragment-index="1"><b>Answer:</b> Bias: a systematic deviation of model predictions from the true value. Variance: a spread of predictions for similar input values.</span>
+        	--></li>
+
+        <li><em><b>Question:</b> What data types exist and what problems can occur with data?</em>
+        	<!--<br><span class="fragment" data-fragment-index="2"><b>Answer:</b> Data types: discrete and continuous numbers, classes, images, text, time series. Problems: missing data, outliers, "forbidden" values.</span>
+        	-->
+        </li>
+    </ul>
+</section>
+<section>
+    <div class="heading" style="padding-bottom: 1% !important;">Overview of Today's Lecture</div>
+    <div class="container1to1">
+        <div class="column1to1_1">
+            <ul class="outside">
+                <li style="padding-bottom: 2% !important; padding-top: 4% !important;">3.1 Introduction to Unsupervised Learning</li>
+                <li style="padding-bottom: 2% !important;">3.2 Distance Measures</li>
+                <li style="padding-bottom: 2% !important;">3.3 Dimensionality Reduction</li>
+                <li style="padding-bottom: 2% !important;">3.4 Algorithms for Unsupervised Learning</li>
+                <li>3.6 Reinforcement Learning</li>
+            </ul>
+        </div>
+        <div class="column1to1_2">
+			<div class="reference" style="text-align: right;">[content for further reading]</div>
+            <div class="reference" style="padding-bottom: 0.5% !important; padding-top:7.5% !important; text-align: right;">K. Backhaus et al., <a href="https://link.springer.com/book/10.1007/978-3-662-56655-8">Multivariate Analysemethoden</a>,<br>Chapter 8, Pages 435-497 (German).</div>
+			<div class="reference" style="padding-bottom: 0.5% !important; text-align: right;">Computer vision for dummies, <a href="https://www.visiondummy.com/2014/04/curse-dimensionality-affect-classification/">The Curse of Dimensionality in classification</a>.</div>
+            <div class="reference" style="padding-bottom: 0.5% !important; text-align: right;">C. M. Bishop, <a href="https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf">Pattern Recognition and Machine Learning</a>,<br> Chapter 9, Pages 423-430.</div>
+            <div class="reference" style="text-align: right;"><a href="https://joshvarty.github.io/AlphaZero/">A step-by-step look at Alpha Zero and Monte Carlo Tree Search</a></div>
+        </div>
+    </div>
+    <p class="fragment" data-fragment-index="0" style="padding-top: 4% !important; color:grey;"><b>Learning Objectives</b></p>
+    <ul class="outside">
+        <li class="fragment" data-fragment-index="0" style="color: grey;">Know application areas of unsupervised learning and understand algorithms for unsupervised learning.</li>
+        <li class="fragment" data-fragment-index="0" style="color: grey;">Understand how to measure the distance between data points and reduce dimensionality.</li>
+        <li class="fragment" data-fragment-index="0" style="color: grey;">Know the functional principle and application areas of reinforcement learning.</li>
+    </ul>
+</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: "100%", //used to be 960
+  				height: "100%",
+  				slideNumber: 'c',
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+	</body>
+</html>
+

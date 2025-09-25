@@ -1,0 +1,393 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AI & Society 3.4 – Algorithms for Unsupervised Learning</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #<<
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+			html, body {
+			    height: 100%;
+			    margin: 0; 
+			    overflow: hidden; 
+			}
+			.reveal img{
+				height: auto;
+			}
+
+	        p {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+			}
+	        .title-heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 2% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:center;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 70%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+		<section>
+			<section>
+				<img src="img/title_slide.svg">
+			</section>
+			<section>
+				<div class="title-heading" style="padding-bottom: 3% !important;">Micro-Degree Artificial Intelligence and Society</div>
+				<div class="title-heading" style="font-size: 200% !important; padding-bottom: 3% !important;">– Technical Aspects of AI –</div>
+				<div class="title-heading" style="padding-bottom: 5% !important;">Lecture 3.4: Algorithms for Unsupervised Learning</div>
+
+				<div class="container1to1">
+					<div class="column1to1_1">
+						<img src="img/name_and_prof.svg" width="70%" style="padding-top: 2% !important;">
+					</div>
+					<div class="column1to1_2">
+						<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 2% !important;">
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+		    <section>
+		        <div class="r-stack">
+		            <img class="fragment fade-out" data-fragment-index="0" src="img/clustering_ambiguous_1.svg" width="85%" style="padding-top: 0%; margin-top:0%">
+		            <img class="fragment current-visible" data-fragment-index="0" src="img/clustering_ambiguous_2.svg" width="85%" style="padding-top: 0%; margin-top:0%">
+		            <img class="fragment" data-fragment-index="1" src="img/clustering_ambiguous_3.svg" width="85%" style="padding-top: 0%; margin-top:0%">
+		        </div>
+		        <div class="reference" style="text-align: center; padding-top:0% !important;">Source: inspired by M. Hahsler, "<a href="https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/slides/chap7_basic_cluster_analysis.pdf">Cluster Analysis: Basic Concepts and Algorithms"</a>.</div>
+		    </section>
+		    <section>
+		        <div class="heading" style="padding-bottom: 2% !important;">Different Clustering Properties</div>
+		        <div class="r-stack">
+		            <img class="fragment fade-out" data-fragment-index="0" src="img/clustering_properties_1.svg" width="90%" style="padding-top: 0%; margin-top:0%; padding-bottom: 1%; margin-bottom: 0%;">
+		            <img class="fragment current-visible" data-fragment-index="0" src="img/clustering_properties_2.svg" width="90%" style="padding-top: 0%; margin-top:0%; padding-bottom: 1%; margin-bottom: 0%;">
+		            <img class="fragment current-visible" data-fragment-index="1" src="img/clustering_properties_3.svg" width="90%" style="padding-top: 0%; margin-top:0%; padding-bottom: 1%; margin-bottom: 0%;">
+		            <img class="fragment" data-fragment-index="2" src="img/clustering_properties_4.svg" width="90%" style="padding-top: 0%; margin-top:0%; padding-bottom: 1%; margin-bottom: 0%;">
+		        </div>
+		        <p><em>Different clustering <b>methods</b> lead to clusterings with different properties.</em></p>
+		    </section>
+		</section>
+		<section>
+		    <section>
+		        <div class="heading" style="padding-bottom: 0% !important;"><b>Hierarchical</b> Clustering</div>
+		        <p style="padding-bottom:1.5% !important">Algorithm: <em>In each step, merge the two closest clusters.</em></p>
+		        <div class="r-stack">
+		            <img class="fragment current-visible" data-fragment-index="0" src="img/hierarchical_clustering_1.svg" width="95%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment current-visible" data-fragment-index="1" src="img/hierarchical_clustering_2.svg" width="95%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment current-visible" data-fragment-index="2" src="img/hierarchical_clustering_3.svg" width="95%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment current-visible" data-fragment-index="3" src="img/hierarchical_clustering_4.svg" width="95%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment current-visible" data-fragment-index="4" src="img/hierarchical_clustering_5.svg" width="95%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment current-visible" data-fragment-index="5" src="img/hierarchical_clustering_6.svg" width="95%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment" data-fragment-index="6" src="img/hierarchical_clustering_7.svg" width="95%" style="padding-top: 0px; margin-top:0px">
+		        </div>
+		    </section>
+		    <section style="font-size: 130%;">
+		        <div class="heading">Exercise (5 min)</div>
+		        <div class="container1to1">
+		            <div class="column1to1_1">
+		                <p style="padding-top: 15% !important;">Perform a hierarchical clustering for the depicted data points based on their Euclidean distance and draw a dendrogram. What grouping do you get for n=3 clusters?</p>
+		            </div>
+		            <div class="column1to1_2">
+
+		                <img src="img/exercise_1.svg" width="100%">
+		            </div>
+		        </div>
+		    </section>
+		    <!--
+		    <section>
+		        <div class="heading">Solution</div>
+		        <img src="img/exercise_2.svg" width="100%">
+		    </section>
+		    -->
+		</section>
+		<section>
+		    <section style="font-size: 130%;">
+		        <div class="heading" style="padding-bottom: 5% !important;"><b>Partitioning</b> Clustering Methods</div>
+		        <p style="padding-left: 10% !important; padding-right: 10% !important;"><em>Starting from a given clustering, move data points to other clusters to find a <b>better</b> clustering.</em></p>
+		    </section>
+		    <section style="font-size: 120%;">
+		        <div class="heading" style="padding-bottom: 1% !important;">Objective Functions: Intuition</div>
+		        <p style="padding-bottom: 3% !important; padding-left: 7% !important;"><em>To find the <b>best</b> clustering, the algorithm optimizes its <b>objective function</b>. <br><span class="fragment" data-fragment-index="0">Example: <b>"Sum of Errors"</b>.</span></em></p>
+		        <div class="r-stack">
+		            <img class="fragment current-visible" data-fragment-index="1" src="img/SSE_intuition_1.svg" width="90%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment current-visible" data-fragment-index="2" src="img/SSE_intuition_2.svg" width="90%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment current-visible" data-fragment-index="3" src="img/SSE_intuition_3.svg" width="90%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment current-visible" data-fragment-index="4" src="img/SSE_intuition_4.svg" width="90%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment" data-fragment-index="5" src="img/SSE_intuition_5.svg" width="90%" style="padding-top: 0px; margin-top:0px">
+		        </div>
+		        <p style="padding-bottom: 2% !important;"></p>
+		    </section>
+		    <section data-transition="slide-in none" style="font-size: 110%;">
+		        <div class="heading">Calculate Sum of Squared Errors in Cluster <em>C<sub>i</sub></em></div>
+		        <p style="text-align:center; padding-bottom: 3% !important;"><em>The sum of squared errors is also called "Sum of Squared Errors" (SSE).</em></p>
+		        <div class="r-stack">
+		            <img class="fragment fade-out" data-fragment-index="0" src="img/SSE_2.svg" width="90%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment current-visible" data-fragment-index="0" src="img/SSE_3.svg" width="90%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment current-visible" data-fragment-index="1" src="img/SSE_4.svg" width="90%" style="padding-top: 0px; margin-top:0px">
+		            <img class="fragment" data-fragment-index="2" src="img/SSE_5.svg" width="90%" style="padding-top: 0px; margin-top:0px">
+		        </div>
+		        <p style="padding-bottom: 3% !important;"></p>
+		    </section>
+		    <section data-transition="none slide-out" style="font-size: 110%;">
+		        <div class="heading">Sum of Squared Errors over the Clustering</div>
+		        <p style="text-align:center; padding-bottom: 3% !important;"><em>The sum of squared errors is also called "Sum of Squared Errors" (SSE).</em></p>
+		        <img src="img/SSE_6.svg" width="85%" style="padding-top: 0%; margin-top:0%">
+		        <p style="padding-bottom:2% !important;"></p>
+		    </section>
+		</section>
+		<section>
+		    <section style="font-size: 120%;">
+		        <div class="heading" style="padding-bottom: 3% !important;">K-means:<br>an algorithm for finding clusters</div>
+		        <p style="padding-left: 10% !important; padding-right: 10% !important;"><em>Intuition: Starting from a given clustering, move data points to other clusters to <b>reduce the Sum of Squared Errors (SSE)</b>.</em></p>
+		    </section>
+		    <section>
+		        <div class="heading" style="padding-bottom: 2% !important;">K-means Algorithm</div>
+		        <div class="container3to2">
+		            <div class="column3to2_2">
+		                <ol class="outside">
+		                    <li class="fragment" data-fragment-index="0" style="padding-bottom: 1.5% !important;">Propose a clustering.</li>
+		                    <li class="fragment" data-fragment-index="1" style="padding-bottom: 1.5% !important;">Calculate the mean per attribute & cluster.</li>
+		                    <li class="fragment" data-fragment-index="2" style="padding-bottom: 1.5% !important;">Calculate <em>SSE</em> over the entire clustering.</li>
+		                    <li class="fragment" data-fragment-index="3" style="padding-bottom: 1.5% !important;">For all data points: check if <em>SSE</em> can be reduced by changing cluster membership.</li>
+		                    <li class="fragment" data-fragment-index="4" style="padding-bottom: 1.5% !important;">Move the data point with the maximum reduction of SSE to the corresponding cluster.</li>
+		                    <li class="fragment" data-fragment-index="5" style="padding-bottom: 2% !important;">Calculate new means of all attributes for the giving and receiving cluster.</li>
+		                </ol>
+		                <p class="fragment" data-fragment-index="6" style="padding-top: 1.5% !important; padding-top: 1%;"><em>Repeat steps 4 to 6 until no further reduction in SSE happens.</em></p>
+		            </div>
+		            <div class="column3to2_1">
+		                <img class="fragment" data-fragment-index="7" src="img/K-means_convergence.gif" width="90%">
+		                <div class="reference" style="text-align:center;"><span class="fragment" data-fragment-index="7">Source: Wikipedia, <a href="https://en.m.wikipedia.org/wiki/File:K-means_convergence.gif">K-means convergence</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</span></div>
+		            </div>
+		        </div>
+		    </section>
+		    <section style="font-size: 105%;">
+		        <div class="heading" style="padding-bottom: 1% !important">What is the Optimal Number of Clusters?</div>
+		        <p style="padding-bottom:1% !important"><b>Silhouette Score</b>: measures how similar an observation is to other observations in the same cluster (cohesion) compared to observations in other clusters (separation). Here, <b>1 is very good</b> and <b>-1 is very bad</b>. </p>
+		        <div class="container3to2">
+		            <div class="column3to2_1">
+		                <ul class="outside">
+		                    <li class="fragment" data-fragment-index="1" style="padding-bottom:3% !important"><b><em>a<sub>i</sub></em></b>: mean distance of observation <em>i</em> to all other observations in the same cluster.</li>
+		                    <li class="fragment" data-fragment-index="2" style="padding-bottom:3% !important"><b><em>b<sub>i</sub></em></b>: mean distance to the next closest cluster.</li>
+		                    <li class="fragment" data-fragment-index="4">The silhouette score is the mean of <em>s<sub>i</sub></em> over all observations.</li>
+		                </ul>
+		            </div>
+		            <div class="column3to2_2">
+		                <div class="r-stack">
+		                    <img class="fragment current-visible" data-fragment-index="0" src="img/silhouette_1.svg" width="100%">
+		                    <img class="fragment current-visible" data-fragment-index="1" src="img/silhouette_2.svg" width="100%">
+		                    <img class="fragment current-visible" data-fragment-index="2" src="img/silhouette_3.svg" width="100%">
+		                    <img class="fragment" data-fragment-index="3" src="img/silhouette_4.svg" width="100%">
+		                </div>
+		            </div>
+		        </div>
+		    </section>
+			<section>
+		        <div class="heading" style="padding-bottom: 1% !important;">Influence of the Initial Clustering</div>
+		        <div class="container3to1">
+		        	<div class=column3to1_2>
+				        <div class="r-stack">
+				            <img class="fragment fade-out" data-fragment-index="0" src="img/centroid_choice_1.svg" width="100%">
+				            <img class="fragment current-visible" data-fragment-index="0" src="img/centroid_choice_2.svg" width="100%">
+				            <img class="fragment current-visible" data-fragment-index="1" src="img/centroid_choice_2.svg" width="100%">
+				        </div>
+				    </div>
+				    <div class="column3to1_1">
+				    	<p class="fragment" data-fragment-index="1" style="text-align:left; padding-top:100% !important">&#x2192; Repeat the clustering procedure several times with different initial clusterings.</p>
+				    </div>
+				</div>
+		    </section>
+		    <section style="font-size: 110%;">
+		        <div class="heading">Limitations of K-Means Clustering</div>
+		        <p style="padding-top:1% !important; padding-bottom:1.5% !important">K-means leads to unintuitive results when the clusters are ...</p>
+		        <div class="container3to2">
+		            <div class="column3to2_2">
+		                <li style="padding-left: 10% !important; padding-top: 5.5% !important;">... of different sizes.</li>
+		                <li class="fragment" data-fragment-index="0" style="padding-left: 10% !important;padding-top: 11% !important;">... of different densities.</li>
+		                <li class="fragment" data-fragment-index="1" style="padding-left: 10% !important;padding-top: 11% !important;">... do not have a convex hull.</li>
+		            </div>
+		            <div class="column3to2_1">
+		                <div class="r-stack">
+		                    <img class="fragment fade-out" data-fragment-index="0" src="img/k_means_problems_1.svg" width="80%" style="padding-right: 10%;">
+		                    <img class="fragment current-visible" data-fragment-index="0" src="img/k_means_problems_2.svg" width="80%" style="padding-right: 10%;">
+		                    <img class="fragment" data-fragment-index="1" src="img/k_means_problems_3.svg" width="80%" style="padding-right: 10%;">
+		                </div>
+		            </div>
+		        </div>
+		        <p class="fragment" data-fragment-index="2">&#x2192; Density-based clustering <span style="font-size: 70%; color:grey">(see for example <a href="https://en.wikipedia.org/wiki/DBSCAN">DBSCAN</a>)</span></p>
+		    </section>
+		</section>
+		<section>
+		    <section style="text-align: left; font-size: 120%;">
+		        <div class="heading" style="padding-bottom: 2% !important;">Summary</div>
+		        <ul class="outside">
+		        	<li >Different clustering methods produce different clusterings</li>
+		            <ul class="outside">
+		                <li>Hierarchical methods</li>
+		                <li style="padding-bottom: 4% !important;">Partitioning methods (k-Means)</li>
+		            </ul>
+		            <li class="fragment" data-fragment-index="0">Clusterings can have <b>different properties</b>.</li>
+		            <ul class="outside">
+		            	<li class="fragment" data-fragment-index="0">fine vs. coarse-grained</li>
+		                <li class="fragment" data-fragment-index="0">exclusive vs. non-exclusive</li>
+		                <li class="fragment" data-fragment-index="0">complete vs. partial</li>
+		                <li class="fragment" data-fragment-index="0">density-based vs. distance-based</li>
+		            </ul>
+		        </ul>
+		    </section>
+		</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: "100%", //used to be 960
+  				height: "100%",
+  				slideNumber: 'c',
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+	</body>
+</html>
+
