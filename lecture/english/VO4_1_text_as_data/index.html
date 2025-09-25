@@ -1,0 +1,275 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AI & Society 4.1 – Text as Data</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #<<
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+			html, body {
+			    height: 100%;
+			    margin: 0; 
+			    overflow: hidden; 
+			}
+			.reveal img{
+				height: auto;
+			}
+
+	        p {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+			}
+	        .title-heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 2% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:center;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 70%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+<section>
+	<section>
+		<img src="img/title_slide.svg">
+	</section>
+	<section>
+		<div class="title-heading" style="padding-bottom: 3% !important;">Micro-Degree Artificial Intelligence and Society</div>
+		<div class="title-heading" style="font-size: 200% !important; padding-bottom: 3% !important;">– Technical Aspects of AI –</div>
+		<div class="title-heading" style="padding-bottom: 5% !important;">Lecture 4.1: Text as Data</div>
+
+		<div class="container1to1">
+			<div class="column1to1_1">
+				<img src="img/name_and_prof.svg" width="70%" style="padding-top: 2% !important;">
+			</div>
+			<div class="column1to1_2">
+				<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 2% !important;">
+			</div>
+		</div>
+	</section>
+</section>
+<section>
+    <section>
+        <div class="heading">Converting Text to Numbers</div>
+        <div class="container3to1">
+            <div class="column3to1_1">
+                <ul class="outside">
+                    <li style="padding-bottom: 4% !important; padding-top: 7% !important;">There are around 600,000 words in the Oxford English Dictionary.</li>
+                    <li style="padding-bottom: 4% !important;">Representing text as one-hot encoded vectors is extremely inefficient.</li>
+                    <li style="padding-bottom: 4% !important;">How can we make the encoding more efficient?</li>
+                    <li><b>Solution</b>: learned "embeddings".</li>
+                </ul>
+            </div>
+            <div class="column3to1_2">
+                <div class="r-stack">
+                    <img class="fragment fade-out" data-fragment-index="0" src="img/embedding_1.svg" width="85%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+                    <img class="fragment" data-fragment-index="0" src="img/embedding_2.svg" width="85%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="heading">Learning Embeddings</div>
+        <div class="r-stack">
+            <img class="fragment fade-out" data-fragment-index="0" src="img/word_to_vec_1.svg" width="89%" style="padding-top: 0%; margin-top: 0%; padding-bottom:0%; margin-bottom: 0%;">
+            <img class="fragment" data-fragment-index="0" src="img/word_to_vec_2.svg" width="89%" style="padding-top: 0%; margin-top: 0%; padding-bottom:0%; margin-bottom: 0%;">
+        </div>
+        <p style="font-size: 100%;">Continuous Bag-Of-Words (CBOW) predicts the target-word based on its surrounding words. <span style="color: grey; font-size: 70%; padding-bottom: 1% !important;">Inspired by Manan Suri, <a href="https://medium.com/@manansuri/a-dummys-guide-to-word2vec-456444f3c673">A Dummy’s Guide to Word2Vec</a>, <em>Medium</em>.</span></p>
+    </section>
+</section>
+<section>
+    <section style="font-size: 110%;">
+        <div class="container3to1">
+            <div class="column3to1_2">
+                <div class="heading">Advantages of Embeddings</div>
+                <ul class="outside">
+                    <li style="padding-bottom: 4% !important; padding-top: 4% !important;">We need far fewer dimensions (typically between 100 and 1000) to represent a word.</li>
+                    <li class="fragment" data-fragment-index="0">Words that are similar to each other are located at similar positions in the <em>embedding space</em>. The <b>cosine similarity</b> of their embedding vectors is very high.</li>
+
+                    <img class="fragment" data-fragment-index="0" src="img/cosine_similarity_2.svg" width="100%">
+                    <li class="fragment" data-fragment-index="1" style="padding-top:2% !important">We can "calculate" with embedding vectors.</li>
+                </ul>
+            </div>
+            <div class="column3to1_1">
+                <img class="fragment" data-fragment-index="0" src="img/cosine_similarity_1.svg" width="75%">
+            </div>
+        </div>
+    </section>
+    <section style="font-size: 120%;">
+        <div class="heading">Calculating with Embeddings</div>
+        <div class="container3to1">
+            <div class="column3to1_1">
+                <p style="padding-top:45% !important">"Man" relates to "Woman" in the vector space as "Brother" relates to "Sister".</p>
+            </div>
+            <div class="column3to1_2">
+                <img src="img/vector_arithmetic.svg" width="80%">
+            </div>
+        </div>
+    </section>
+</section>
+<section>
+    <section style="font-size: 120%;">
+        <div class="heading">Summary</div>
+        <ul class="outside">
+            <li style="padding-bottom: 2% !important; padding-top: 2% !important;">To use text as data for machine learning, we first need to convert it into numbers.</li>
+            <li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">This is done using <b>embeddings</b> - vectors with 100 to 1000 dimensions that represent a word in the context of its language.</li>
+            <li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">Embeddings are learned using neural networks and large amounts of naturally occurring text.</li>
+            <li class="fragment" data-fragment-index="1" >The embedding vectors of words that have similar meanings show high cosine similarity - the words are located at similar points in the embedding space.</li>
+        </ul>
+    </section>
+</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: "100%", //used to be 960
+  				height: "100%",
+  				slideNumber: 'c',
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,355 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AI & Society 4.6 – Recommender System of X</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #<<
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+			html, body {
+			    height: 100%;
+			    margin: 0; 
+			    overflow: hidden; 
+			}
+			.reveal img{
+				height: auto;
+			}
+
+	        p {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+			}
+	        .title-heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 2% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:center;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 70%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+<section>
+	<section>
+		<img src="img/title_slide.svg">
+	</section>
+	<section>
+		<div class="title-heading" style="padding-bottom: 3% !important;">Micro-Degree Artificial Intelligence and Society</div>
+		<div class="title-heading" style="font-size: 200% !important; padding-bottom: 3% !important;">– Technical Aspects of AI –</div>
+		<div class="title-heading" style="padding-bottom: 5% !important;">Lecture 4.6: The Recommender System of X</div>
+
+		<div class="container1to1">
+			<div class="column1to1_1">
+				<img src="img/name_and_prof.svg" width="70%" style="padding-top: 2% !important;">
+			</div>
+			<div class="column1to1_2">
+				<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 2% !important;">
+			</div>
+		</div>
+	</section>
+	<section>
+	    <div class="container3to2">
+	        <div class="column3to2_1">
+	            <div class="heading" style="padding-bottom: 1% !important;">Social Media</div>
+	            <ul class="outside">
+	                <li style="padding-bottom: 4% !important;">Large parts of the population in the EU use social media.</li>
+	                <li style="padding-bottom: 4% !important;">Among 16-24 year olds, the proportion is already 74%.</li>
+	                <li class="fragment" data-fragment-index="0" style="padding-bottom: 4% !important;">On a platform like X (formerly "Twitter"), about 500 million posts are created daily.</li>
+	                <li class="fragment" data-fragment-index="0" style="padding-bottom: 4% !important;">However, a typical user only sees a few hundred of them.</li>
+	                <li class="fragment" data-fragment-index="0">&rarr; All major social media platforms have complex recommender systems.</li>
+	            </ul>
+	        </div>
+	        <div class="column3to2_2">
+	            <img src="img/europe-social-media-use.png" width="100%" style="padding-bottom: 1% !important; margin-bottom: 0%; padding-top: 2%; margin-top: 0%;">
+	            <div class="reference" style="text-align: center;">Source: <a href="https://landgeist.com/2022/11/19/social-media-users-in-europe/">Landgeist.com</a>.</div>
+	        </div>
+	    </div>
+	</section>
+</section>
+<section>
+    <section style="text-align: left;">
+        <div class="heading">The Recommender System of X</div>
+        <p style="padding-bottom:0.5% !important;">Tasks of the recommender system</p>
+        <ol class="outside">
+            <li style="padding-bottom:0.5% !important">To <b>select</b> posts that are relevant to the user.</li>
+            <li style="padding-bottom:0.5% !important">To <b>arrange</b> posts in a timeline – the most relevant first.</li>
+            <li style="padding-bottom:4% !important">To <b>detect illegal content</b> and keep it out of users' timelines.<span style="color: white;">..</span></li>
+        </ol>
+        <p class="fragment" data-fragment-index="0" style="padding-bottom:0.5%">Sources of information</p>
+        <ol class="outside">
+            <li class="fragment" data-fragment-index="0" style="padding-bottom:0.5% !important"><b>Information about users</b> such as their profile and stated interests.</li>
+            <li class="fragment" data-fragment-index="0" style="padding-bottom:0.5% !important"><b>Information about posts</b> such as topic, multimedia content, and links.</li>
+            <li class="fragment" data-fragment-index="0" style="padding-bottom:0.5% !important"><b>Information about the community</b> such as which other users a user follows, and which posts these users interacted with.</li>
+            <li class="fragment" data-fragment-index="0"><b>Information about user behavior</b> such as which posts users liked, shared, or replied to in the past (engagement) &rarr; optimization goal.</li>
+        </ol>
+    </section>
+    <section style="font-size: 95%;">
+        <div class="heading" style="padding-bottom: 1% !important;">From Data to Recommendations</div>
+        <div class="r-stack">
+            <img class="fragment fade-out" data-fragment-index="0" src="img/X_recommender_1.svg" width="100%">
+            <img class="fragment current-visible" data-fragment-index="0" src="img/X_recommender_2.svg" width="100%">
+            <img class="fragment current-visible" data-fragment-index="1" src="img/X_recommender_3.svg" width="100%">
+            <img class="fragment current-visible" data-fragment-index="2" src="img/X_recommender_4.svg" width="100%">
+            <img class="fragment current-visible" data-fragment-index="3" src="img/X_recommender_5.svg" width="100%">
+            <img class="fragment" data-fragment-index="4" src="img/X_recommender_6.svg" width="100%">
+        </div>
+        <ul class="outside">
+            <li class="fragment" data-fragment-index="0" style="padding-bottom:1% !important">Text data is embedded to process it into features.</li>
+            <li class="fragment" data-fragment-index="1" style="padding-bottom:1% !important">Using the features, the cosine similarity to content and users with whom the user has already interacted is calculated.</li>
+            <li class="fragment" data-fragment-index="2" style="padding-bottom:1% !important">For the 1500 most similar or "most relevant" posts, a neural network predicts how likely the user is to engage with them.</li>
+            <li class="fragment" data-fragment-index="4" style="padding-bottom:1% !important">After applying filters, the ranked posts are mixed with ads and follow recommendations and delivered as a timeline.</li>
+        </ul>
+    </section>
+</section>
+<section>
+    <section style="font-size: 115%;">
+        <div class="heading">Problems with Optimizing Engagement</div>
+        <p>Strongly emotionally charged or sensational content (clickbait) excites us and leads us to engage more with it. <span class="fragment" data-fragment-index="0">This leads to ...</span></p>
+        <div class="container3to1">
+            <div class="column3to1_1">
+                <img class="fragment" data-fragment-index="0" src="img/icon1.svg" width="35%" style="padding-bottom: 1%; margin-bottom:0%; padding-top: 1%; margin-top: 0%;"><br>
+                <img class="fragment" data-fragment-index="1" src="img/icon2.svg" width="35%" style="padding-bottom: 1%; margin-bottom:0%; padding-top: 1%; margin-top: 0%;"><br>
+                <img class="fragment" data-fragment-index="2" src="img/icon3.svg" width="35%" style="padding-bottom: 2%; margin-bottom:0%; padding-top: 1%; margin-top: 0%;">
+            </div>
+            <div class="column3to1_2">
+                <ul class="outside">
+                    <li class="fragment" data-fragment-index="0" style="padding-bottom:9% !important; padding-top: 4% !important;">... extreme views spreading faster and wider [1, 2].</li>
+                    <li class="fragment" data-fragment-index="1" style="padding-bottom:9% !important">... declining social trust and increasing polarization [3].</li>
+                    <li class="fragment" data-fragment-index="2">... political literacy decreasing [4].</li>
+                </ul>
+            </div>
+        </div>
+        <div class="reference"><span class="fragment" data-fragment-index="0">[1] Lorenz-Spreen et al., <a href="https://www.nature.com/articles/s41562-022-01460-1">A Systematic Review of Worldwide Causal and Correlational Evidence on Digital Media and Democracy</a>, <em>Nat Hum Behav</em> (2021).</span></div>
+        <div class="reference"><span class="fragment" data-fragment-index="0">[2] Müller & Schwarz, <a href="https://academic.oup.com/jeea/article/19/4/2131/5917396">Fanning the Flames of Hate</a>, <em>J Eur Econ Assoc</em> (2023).</span></div>
+        <div class="reference"><span class="fragment" data-fragment-index="1">[3] Sabatini & Sarracino, <a href="https://link.springer.com/article/10.1007/s11205-018-1887-2">Online Social Networks and Trust</a>, <em>Soc Indic Res</em> (2021).</span></div>
+        <div class="reference"><span class="fragment" data-fragment-index="2">[4] Lee, <a href="https://www.tandfonline.com/doi/full/10.1080/01292986.2018.1549264">Connecting Social Media Use with Gaps in Knowledge and Participation in a Protest Context</a>, <em>Asian J Commun</em>, (2019).</span></div>
+    </section>
+    <section>
+        <div class="heading">Reducing Societal Risks</div>
+        <div class="container1to1">
+            <div class="column1to1_1">
+                <p style="padding-top: 10% !important; padding-left: 6% !important; padding-right:10% !important;">Providers [...] shall diligently identify [...] any actual or foreseeable negative effects on <span style="color: #689cce;"><b>civic discourse</b></span> and <span style="color: #689cce;"><b>electoral processes</b></span>, and <span style="color: #689cce;"><b>public security</b></span> [...]</p>
+                <div class="reference" style="text-align:right; padding-top:5% !important; padding-bottom:3% !important; font-size: 90%; padding-right: 10%;">Digital Services Act, Article 34</div>
+                <img class="fragment" data-fragment-index="0" src="img/legal_aspects.svg" width="40%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+                <img class="fragment" data-fragment-index="0" src="img/economic_aspects.svg" width="40%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+                <img class="fragment" data-fragment-index="0" src="img/ethical_aspects.svg" width="40%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+                <img class="fragment" data-fragment-index="0" src="img/educational_aspects.svg" width="40%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+            </div>
+            <div class="column1to1_2">
+                <p class="fragment" data-fragment-index="1" style="padding-top:10% !important"><b>Idea</b>: New recommendation algorithms that not only optimize engagement but also pay attention to other characteristics.</p>
+                <img class="fragment" data-fragment-index="1" src="img/reranking.svg" width="85%" style="padding-top: 3% !important; padding-bottom: 4%;">
+                <div class="reference" style="font-size: 90%;"><span class="fragment" data-fragment-index="1">Research project "Designing Social Media Recommendation Algorithms for Societal Good".</span></div>
+            </div>
+        </div>
+    </section>
+</section>
+<section>
+    <section style="font-size: 120%;">
+        <div class="heading">Summary</div>
+        <ul class="outside">
+            <li style="padding-bottom: 3% !important; padding-top: 3% !important;">Social media platforms like X (formerly Twitter) use complex recommender systems based on machine learning techniques to select content.</li>
+            <li style="padding-bottom: 3% !important;">These recommender systems optimize user engagement to maximize the platform's advertising revenue.</li>
+            <li>Engagement optimization leads to societal problems which are addressed in laws like the Digital Services Act.</li>
+        </ul>
+    </section>
+    <section style="font-size: 105%;">
+        <div class="heading" style="padding-bottom: 0.5% !important;">Technical Foundations of AI</div>
+        <div class="container1to1">
+            <div class="column1to1_1">
+                <ul class="outside">
+                    <li style="padding-bottom:0.5% !important"><b>Different Forms of Machine Learning</b></li>
+                    <ul class="outside">
+                        <li style="padding-bottom:0.5% !important">Supervised Learning</li>
+                        <li style="padding-bottom:0.5% !important">Unsupervised Learning</li>
+                        <li style="padding-bottom:5.5% !important">Reinforcement Learning</li>
+                    </ul>
+                    <li class="fragment" data-fragment-index="0" style="padding-bottom:0.5% !important"><b>Computational Thinking & Mathematical Foundations</b></li>
+                    <ul class="outside">
+                        <li class="fragment" data-fragment-index="0" style="padding-bottom:0.5% !important">Deconstructing problems so they can be solved by algorithms</li>
+                        <li class="fragment" data-fragment-index="0" style="padding-bottom:0.5% !important">Measures for algorithm performance</li>
+                        <li class="fragment" data-fragment-index="0">Measures for the distance or similarity of data points</li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="column1to1_2">
+                <ul class="outside">
+                    <li class="fragment" data-fragment-index="1" style="padding-bottom:0.5% !important"><b>Data as the Basis of Artificial Intelligence</b></li>
+                    <ul class="outside">
+                        <li class="fragment" data-fragment-index="1" style="padding-bottom:0.5% !important">Data types (numbers, categories, images, text)</li>
+                        <li class="fragment" data-fragment-index="1" style="padding-bottom:0.5% !important">Problems with data</li>
+                        <li class="fragment" data-fragment-index="1" style="padding-bottom:5.5% !important">Feature engineering and dimensionality reduction</li>
+                    </ul>
+                    <li class="fragment" data-fragment-index="2" style="padding-bottom:0.5% !important"><b>Applications of Artificial Intelligence</b></li>
+                    <ul class="outside">
+                        <li class="fragment" data-fragment-index="2" style="padding-bottom:0.5% !important">Classification, Regression, Cluster Analysis, dimensionality reduction.</li>
+                        <li class="fragment" data-fragment-index="2" style="padding-bottom:0.5% !important">Large Language Models (LLMs)</li>
+                        <li class="fragment" data-fragment-index="2">Recommender Systems</li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section style="font-size: 120%;">
+        <div class="heading">Where does "AI" work (not) well?</div>
+        <ul class="outside">
+            <li class="fragment" style="padding-bottom: 3% !important; padding-top: 2% !important;"><span style="color: #689cce;"><b>Huge Advances:</b></span> Optical character recognition, translation, image recognition, ...<br>&rarr; <b>Perception</b></li>
+            <li class="fragment" style="padding-bottom: 3% !important;"><span style="color: #689cce;"><b>Passable Advances:</b></span> Spam detection, content moderation, detection of financial crimes, ... <br>&rarr; <b>Automation of decisions</b></li>
+            <li class="fragment"><span style="color: #689cce;"><b>Very Questionable:</b></span> Prediction of criminal recidivism, prediction of terrorism, prediction of job performance ... <br>&rarr; <b>Prediction of social characteristics</b></li>
+        </ul>
+    </section>
+</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: "100%", //used to be 960
+  				height: "100%",
+  				slideNumber: 'c',
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+	</body>
+</html>
+

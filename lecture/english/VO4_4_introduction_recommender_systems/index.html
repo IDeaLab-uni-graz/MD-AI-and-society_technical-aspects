@@ -1,0 +1,404 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AI & Society 4.4 – Introduction to Recommender Systems</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!--
+		Uni-grau: #c6c6c6
+		Uni-gelb: #ffd500
+		Uni-hellgrau: #e3e3e3
+		Uni-hellviolett: #c2bddf
+		Uni-dunkelviolett: #948dc3
+		Uni-hellblau: #<<
+		Uni-dunkelblau: #689cce
+		Uni-hellgrün: #cce2ba
+		Uni-dunkelgrün: #9fcb81
+		Uni-hellrot: #f1ae95
+		Uni-dunkelrot: #e4684b
+		Uni-hellorange: #fbd0aa
+		Uni-dunkelorange: #f6a968
+		Uni-hellgelb: #ffeeaf
+		Uni-dunkelgelb: #ffe063
+		Uni-dunkelbraun: #231f20ff
+		-->
+
+
+		<style>
+			html, body {
+			    height: 100%;
+			    margin: 0; 
+			    overflow: hidden; 
+			}
+			.reveal img{
+				height: auto;
+			}
+
+	        p {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+	        }
+	        li {
+			    font-size: 150%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+	        }
+			li::marker {
+			  color: #ffd500; /* bullet color */
+			}
+	        .heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 1% !important; 
+			    text-align:left;
+			}
+	        .title-heading {
+			    color: #231f20ff !important;
+			    font-size: 270% !important; 
+			    margin-top: 0% !important; 
+			    padding-top: 2% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:center;
+			}
+	        .reference {
+			    color: #63676A;
+			    font-size: 90%; 
+			    margin-top: 0% !important; 
+			    padding-top: 0% !important;
+			    margin-bottom: 0% !important;
+			    padding-bottom: 0% !important; 
+			    text-align:left;
+			}
+			.container3to2{
+			    display: flex;
+			}
+			.column3to2_1 {
+			    flex: 2;
+			}
+			.column3to2_2 {
+			    flex: 3;
+			}
+			.container3to1{
+			    display: flex;
+			}
+			.column3to1_1 {
+			    flex: 1;
+			}
+			.column3to1_2 {
+			    flex: 3;
+			}
+			.container1to1{
+			    display: flex;
+			}
+			.column1to1_1 {
+			    flex: 1;
+			}
+			.column1to1_2 {
+			    flex: 1;
+			}
+			.column_threeway {
+				  float: left;
+				  width: 33.33%;
+			}
+
+	    </style>
+	</head>
+
+	</style>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+<section>
+	<section>
+		<img src="img/title_slide.svg">
+	</section>
+	<section>
+		<div class="title-heading" style="padding-bottom: 3% !important;">Micro-Degree Artificial Intelligence and Society</div>
+		<div class="title-heading" style="font-size: 200% !important; padding-bottom: 3% !important;">– Technical Aspects of AI –</div>
+		<div class="title-heading" style="padding-bottom: 5% !important;">Lecture 4.4: Introduction to Recommender Systems</div>
+
+		<div class="container1to1">
+			<div class="column1to1_1">
+				<img src="img/name_and_prof.svg" width="70%" style="padding-top: 2% !important;">
+			</div>
+			<div class="column1to1_2">
+				<img src="img/idea_lab_and_uni_yellow.svg" width="70%" style="padding-top: 2% !important;">
+			</div>
+		</div>
+	</section>
+    <section style="text-align: left;">
+        <div class="heading" style="font-size: 145%; padding-bottom:1% !important">Recommender Systems</div>
+        <ul class="outside">
+            <li style="padding-bottom: 2% !important;">Recommender systems occur everywhere on the internet.</li>
+            <li>They represent one of the most widespread applications of machine learning.</li>
+        </ul>
+        <div class="container3to1">
+            <div class="column3to1_2">
+                <img src="img/recommendations_in_the_wild.png" width="100%" style="padding-top: 1%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+            </div>
+            <div class="column3to1_1">
+                <div class="reference" style="padding-top: 40% !important; padding-left:5% !important">Recommendations on the shopping website Amazon based on my browsing history.</div>
+            </div>
+        </div>
+        <div class="reference">These and the following slides are inspired by Dietmar Jannach's lecture "<a href="https://tinyurl.com/recsys-summer-2023">Recommender Systems: Value, Methods, Measurements</a>".</div>
+    </section>
+    <section style="font-size: 112%; text-align: left;">
+        <div class="heading" style="padding-bottom: 2% !important;">Applications of Recommender Systems</div>
+        <div class="container1to1">
+            <div class="column1to1_1">
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Books</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">News</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Videos</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Music</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Games</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Shopping</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Friends</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Communities</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Jobs</li>
+            </div>
+            <div class="column1to1_2">
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Apps</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Restaurants</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Hotels</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Romantic relationships</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Stocks</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Insurance</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">...</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">Wine</li>
+                <li style="padding-bottom: 2% !important; padding-left: 5% !important;">...</li>
+            </div>
+        </div>
+    </section>
+</section>
+<section>
+    <section>
+        <div class="heading">Why do we need Recommender Systems?</div>
+    </section>
+    <section style="font-size: 100%;">
+        <div class="container3to1">
+            <div class="column3to1_2">
+                <div class="heading">Information Overload</div>
+                <ul class="outside">
+                    <li style="padding-bottom:4% !important;">We live in an <b>information society</b>. In many areas of life, more information is available than we can absorb.</li>
+                    <li class="fragment" data-fragment-index="0" style="padding-bottom:1% !important">Example Spotify</li>
+                    <ul class="outside">
+                        <li class="fragment" data-fragment-index="0" style="padding-bottom:1% !important">At the beginning of 2024, there were 100 million songs on the platform.</li>
+                        <li class="fragment" data-fragment-index="0" style="padding-bottom:1% !important">Assuming each song is 3 min long, it would then take about 5 million hours to listen to all songs.</li>
+                        <li class="fragment" data-fragment-index="0" style="padding-bottom:4% !important">A typical human life has about 30,000 hours. Even if we listen to music all the time, we would only hear 0.6% of the available music.</li>
+                    </ul>
+                    <li class="fragment" data-fragment-index="1" style="padding-bottom:3% !important">From the mass of available options, a small part must be <b>selected</b> &rarr; recommender systems.</li>
+                </ul>
+            </div>
+            <div class="column3to1_1">
+                <img class="fragment" data-fragment-index="0" src="img/mixtapes.png" width="55%" style="padding-bottom: 0%; margin-bottom:0%; padding-top: 0%; margin-top: 0%;">
+                <div class="reference" style="text-align: center;"><span class="fragment" data-fragment-index="0">Recommendations on Spotify.</span></div>
+            </div>
+        </div>
+    </section>
+    <section style="text-align: left; font-size: 110%;">
+        <div class="heading">Different Interests</div>
+        <p style="padding-top:1% !important; padding-bottom:4% !important"><em>Different stakeholders have different interests in recommender systems.</em></p>
+        <div class="column_threeway">
+            <p class="fragment" data-fragment-index="0" style="text-align: center; padding-bottom: 2% !important;"><b>Consumers</b></p>
+            <ul class="outside">
+                <li class="fragment" data-fragment-index="0" style="padding-bottom:6% !important">Find items that satisfy (long-term) needs.</li>
+                <li class="fragment" data-fragment-index="0" style="padding-bottom:6% !important">Make good decisions.</li>
+                <li class="fragment" data-fragment-index="0" style="padding-bottom:6% !important">Discover new items.</li>
+            </ul>
+        </div>
+        <div class="column_threeway">
+            <p class="fragment" data-fragment-index="1" style="text-align: center; padding-bottom:2% !important"><b>Producers / Artists</b></p>
+            <ul class="outside">
+                <li class="fragment" data-fragment-index="1" style="padding-bottom:6% !important; margin-left:5%">Be found.</li>
+                <li class="fragment" data-fragment-index="1" style="padding-bottom:6% !important; margin-left:5%">Influence purchasing decisions</li>
+                <li class="fragment" data-fragment-index="1" style="padding-bottom:6% !important; margin-left:5%">Receive information about customers.</li>
+                <li class="fragment" data-fragment-index="1" style="margin-left:5%">Earn money.</li>
+            </ul>
+        </div>
+        <div class="column_threeway">
+            <p class="fragment" data-fragment-index="2" style="text-align: center; padding-bottom:2% !important;"><b>Platforms</b></p>
+            <ul class="outside">
+                <li class="fragment" data-fragment-index="2" style="padding-bottom:6% !important">Increase user activity.</li>
+                <li class="fragment" data-fragment-index="2" style="padding-bottom:6% !important">Offer a value-added service</li>
+                <li class="fragment" data-fragment-index="2" style="padding-bottom:6% !important">Collect data about users.</li>
+                 <li class="fragment" data-fragment-index="2" style="padding-bottom:6% !important">Show ads.</li>
+                <li class="fragment" data-fragment-index="2">Earn money.</li>
+            </ul>
+        </div>
+        </section>
+</section>
+<section>
+    <section>
+        <div class="heading">How can we measure relevance concretely?</div>
+    </section>
+    <section style="text-align: left; font-size: 103%;">
+        <div class="heading">What do we measure?</div>
+        <ul class="outside">
+            <li style="padding-bottom:2% !important; padding-top:2% !important">Basic assumption: the interests of consumers, producers, and platforms are compatible.</li>
+            <li style="padding-bottom:2% !important">The market regulates the efficient distribution of attention to items.</li>
+        </ul>
+        <div class="r-stack">
+        	<img class="fragment fade-out" data-fragment-index="0" src="img/recommender_business_value_1.svg" width="100%" style="padding-bottom: 2%; margin-bottom:0%">
+        	<img class="fragment" data-fragment-index="0" src="img/recommender_business_value_2.svg" width="100%" style="padding-bottom: 2%; margin-bottom:0%">
+        </div>
+        <div class="reference" style="text-align: center;">Adapted from Jannach & Jugovac <a href="https://arxiv.org/pdf/1908.08328">Measuring the Business Value of Recommender Systems</a>, <em>ACM TIMS</em> (2019).</div>
+    </section>
+    <section style="font-size: 110%;">
+        <div class="heading">Click-Through Rate, Purchase Rate, Usage Rate</div>
+        <ul class="outside">
+            <li style="padding-bottom:1% !important; padding-top:3% !important"><b>Click-Through Rate (CTR)</b></li>
+            <ul class="outside">
+                <li style="padding-bottom:1% !important">Measures how many clicks are generated from recommendations: It is calculated as the number of clicks / number of impressions.</li>
+                <li style="padding-bottom:3% !important">Example: News recommendations: how many articles does the user click on?</li>
+            </ul>
+            <li class="fragment" data-fragment-index="0" style="padding-bottom:1% !important"><b>Purchase Rate / Usage Rate</b></li>
+            <ul class="outside">
+                <li class="fragment" data-fragment-index="0" style="padding-bottom:1% !important">The CTR does not measure whether the user actually read/bought/used the recommended item.</li>
+                <li class="fragment" data-fragment-index="0" style="padding-bottom:2% !important">Example: how many users actually watch a recommended video on Netflix after clicking on it?</li>
+            </ul>
+        </ul>
+    </section>
+    <!--
+    <section>
+        <div class="heading" style="padding-bottom: 1% !important;">Revenue, Profit, and Distribution</div>
+        <div class="container1to1">
+            <div class="column1to1_2">
+                <ul class="outside">
+                    <li style="padding-bottom:4% !important">Click-through rate, purchase rate, and usage rate are <b>good indicators</b> that the recommendations are <b>relevant</b> for the users.</li>
+                    <li class="fragment" data-fragment-index="0" style="padding-bottom:4% !important">However, this might not be directly relevant to the business, e.g., if users would have bought an item anyway.</li>
+                    <li class="fragment" data-fragment-index="0" style="padding-bottom:4% !important">The change in revenue and profit due to the use of the recommendation system can be a better indicator.</li>
+                    <li class="fragment" data-fragment-index="1">The <b>distribution</b> of purchases / user behavior can also be an important indicator.</li>
+                </ul>
+            </div>
+            <div class="column1to1_1">
+                <img class="fragment" data-fragment-index="1" src="img/zigarettenstudie.png" width="100%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom:0%">
+                <div class="reference" style="padding-left: 20%;"><span class="fragment" data-fragment-index="1">Purchases of different cigarette brands before/after the introduction of a personalized recommendation system. Source: Dietmar Jannach, <a href="https://tinyurl.com/recsys-summer-2023">Recommender Systems: Value, Methods, Measurements</a>.</span></div>
+                <img class="fragment" data-fragment-index="2" src="img/economic_aspects.svg" width="40%" style="padding-top: 4%; margin-top:0%; padding-bottom: 0%; margin-bottom:0%; padding-left:20%">
+            </div>
+        </div>
+    </section>
+    -->
+    <section style="font-size: 110%;">
+        <div class="heading" style="padding-bottom: 1% !important;">User Behavior and Activity</div>
+        <div class="container3to2">
+            <div class="column3to2_2">
+                <ul class="outside">
+                    <li style="padding-bottom:3% !important; padding-top:2% !important">Assumption: Higher user activity leads to users <b>staying with the service longer</b>.</li>
+                    <li style="padding-bottom:3% !important">This translates to users not cancelling their subscriptions, and/or users seeing more ads.</li>
+                    <li class="fragment" style="padding-bottom: 3% !important;">Metrics: interactions (likes, shares, comments) with items, time spent with an item.</li>
+                    <li class="fragment">For intensity and duration of activity, users and providers/platforms can have <b>different interests</b>. Example: Dating platform.</li>
+                </ul>
+            </div>
+            <div class="column3to2_1">
+                <img src="img/user_engagement.png" style="padding-bottom: 1%; margin-bottom:0%">
+                <div class="reference" style="text-align: center;">Source: <a href="https://de.printpeppermint.com/blogs/graphic-design/foster-your-brands-growth-with-brilliant-customer-engagement">Printpeppermint.com</a>.</div>
+            </div>
+        </div>
+    </section>
+    <section style="font-size: 110%;">
+        <div class="heading" style="padding-bottom: 1% !important;">Attention Economy</div>
+        <div class="container3to2">
+            <div class="column3to2_2">
+                <ul class="outside">
+                    <li style="padding-bottom: 4% !important;">In the attention economy, users' attention becomes economic capital.</li>
+                    <li class="fragment" data-fragment-index="0" style="padding-bottom: 4% !important;">Recommender systems that satisfy users' <b>short-term needs</b> such as entertainment can harm their <b>long-term interests</b>.</li>
+                    <li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">Examples: addictive behavior, psychological health, polarization, misinformation.</li>
+                </ul>
+                <img class="fragment" data-fragment-index="1" src="img/ethical_aspects.svg" width="40%">
+                <img class="fragment" data-fragment-index="1" src="img/economic_aspects.svg" width="40%">
+            </div>
+            <div class="column3to2_1">
+                <img src="img/attention_economy.png" style="padding-bottom: 1%; margin-bottom:0%">
+                <div class="reference" style="text-align: center;">Source: <a href="https://www.skyword.com/contentstandard/the-attention-economy-strategies-for-captivating-your-audience-in-the-digital-age/">Skyword.com</a>.</div>
+            </div>
+        </div>
+    </section>
+</section>
+<section>
+    <section style="font-size: 120%;">
+        <div class="heading">Summary</div>
+        <ul class="outside">
+            <li style="padding-bottom: 5% !important;">Recommender systems are found practically everywhere on the internet where we are confronted with <b>information overload</b>.</li>
+             <li class="fragment" style="padding-bottom: 5% !important;"><b>Relevance</b> ot individual <b>items</b> that are subject to recommendations can be measured in different ways, for example, by <b>click-through rate</b> or <b>purchase rate</b>, but also by <b>user activity</b>.</li>
+            <li class="fragment">Consumers, providers, and platforms can have <b>different interests</b>. Problems can arise if for example a recommender systems do not meet the long-term interest of consumers.</li>
+           
+        </ul>
+    </section>
+</section>
+		</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: "100%", //used to be 960
+  				height: "100%",
+  				slideNumber: 'c',
+			});
+		</script>
+		<style type="text/css">
+		    /* 1. Style header/footer <div> so they are positioned as desired. */
+		    #header-left {
+		        position: absolute;
+		        top: 0%;
+		        left: 0%;
+		    }
+		    #header-right {
+		        position: absolute;
+		        top: 0%;
+		        right: 0%;
+		    }
+		    #footer-left {
+		        position: absolute;
+		        bottom: 0%;
+		        left: 0%;
+		    }
+		</style>
+
+		<!-- 2. Create hidden header/footer <div> -->
+		<div id="hidden" style="display:none;">
+		    <div id="header">
+		        <div id="footer-left" style="font-size: 40%; padding-bottom:0.5%; padding-left:1%; color:#231f20ff">Univ.-Prof. Dr. Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 IDea_Lab &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@uni-graz.at</div>
+		    </div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+		    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+		    var header = $('#header').html();
+		    if ( window.location.search.match( /print-pdf/gi ) ) {
+		        Reveal.addEventListener( 'ready', function( event ) {
+		            $('.slide-background').append(header);
+		        });
+		    }
+		    else {
+		        $('div.reveal').append(header);
+		   }
+		</script>
+	</body>
+</html>
+

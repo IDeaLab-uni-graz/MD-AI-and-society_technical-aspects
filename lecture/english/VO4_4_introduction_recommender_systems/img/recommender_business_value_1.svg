@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="220.08859mm"
+   height="61.843697mm"
+   viewBox="0 0 220.08859 61.843697"
+   version="1.1"
+   id="svg502"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="recommender_business_value.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview504"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.8761363"
+     inkscape:cx="430.13932"
+     inkscape:cy="168.16475"
+     inkscape:window-width="2560"
+     inkscape:window-height="1440"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2025"
+       originx="0"
+       originy="-24.22995" />
+  </sodipodi:namedview>
+  <defs
+     id="defs499" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-24.22995)">
+    <rect
+       style="fill:#dcdcdc;fill-opacity:1;stroke:none;stroke-width:0.421933;stroke-linejoin:round"
+       id="rect623"
+       width="75"
+       height="20.520678"
+       x="70"
+       y="24.22995" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round"
+       x="108.24094"
+       y="32.373619"
+       id="text1389"><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.3"
+         x="108.24094"
+         y="32.373619"
+         id="tspan1907">business benefit</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.3"
+         x="108.24094"
+         y="39.711391"
+         id="tspan421">of recommender systems</tspan></text>
+    <rect
+       style="fill:#dcdcdc;fill-opacity:1;stroke:none;stroke-width:0.308136;stroke-linejoin:round"
+       id="rect1909"
+       width="40"
+       height="20.520678"
+       x="0"
+       y="65.552971" />
+    <rect
+       style="fill:#dcdcdc;fill-opacity:1;stroke:none;stroke-width:0.308136;stroke-linejoin:round"
+       id="rect1911"
+       width="40"
+       height="20.520678"
+       x="45.211098"
+       y="65.552971" />
+    <rect
+       style="fill:#dcdcdc;fill-opacity:1;stroke:none;stroke-width:0.308136;stroke-linejoin:round"
+       id="rect1913"
+       width="40"
+       height="20.520678"
+       x="90.422195"
+       y="65.552971" />
+    <rect
+       style="fill:#dcdcdc;fill-opacity:1;stroke:none;stroke-width:0.308136;stroke-linejoin:round"
+       id="rect1967"
+       width="40"
+       height="20.520678"
+       x="134.87749"
+       y="65.552971" />
+    <rect
+       style="fill:#dcdcdc;fill-opacity:1;stroke:none;stroke-width:0.308136;stroke-linejoin:round"
+       id="rect1969"
+       width="40"
+       height="20.520678"
+       x="180.08859"
+       y="65.552971" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.8;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 200.08859,57.792 H 20 v 7.760971"
+       id="path2027"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.8;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 65.211097,65.55297 V 57.642"
+       id="path2809" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.8;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 110.422,65.55297 V 44.750628"
+       id="path2811"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.8;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 154.87748,65.55297 V 57.784703"
+       id="path2813" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.8;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 200.08859,57.792 v 7.76097"
+       id="path2815" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round"
+       x="20.856499"
+       y="78.398293"
+       id="text1389-3"><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.3"
+         x="20.856499"
+         y="78.398293"
+         id="tspan1907-6">click rate</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round"
+       x="65.121521"
+       y="74.131554"
+       id="text5806"><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.3"
+         x="65.121521"
+         y="74.131554"
+         id="tspan5812">purchase rate /</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.3"
+         x="65.121521"
+         y="81.469322"
+         id="tspan420">usage rate</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round"
+       x="110.42908"
+       y="74.131554"
+       id="text7270"><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.3"
+         x="110.42908"
+         y="74.131554"
+         id="tspan7274">turnover and</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.3"
+         x="110.42908"
+         y="81.469322"
+         id="tspan425">profit</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round"
+       x="155.41386"
+       y="74.131554"
+       id="text7280"><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.3"
+         x="155.41386"
+         y="74.131554"
+         id="tspan7284">distribution</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.3"
+         x="155.41386"
+         y="81.469322"
+         id="tspan429">of purchases</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round"
+       x="199.89429"
+       y="74.131554"
+       id="text7290"><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.3"
+         x="199.89429"
+         y="74.131554"
+         id="tspan7294">user activity</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.3"
+         x="199.89429"
+         y="81.469322"
+         id="tspan433">and behaviour</tspan></text>
+  </g>
+</svg>

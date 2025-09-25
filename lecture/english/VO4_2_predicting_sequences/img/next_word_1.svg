@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="106.38531mm"
+   height="17.232708mm"
+   viewBox="0 0 106.38531 17.232708"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="next_word_1.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="3.6596241"
+     inkscape:cx="237.18283"
+     inkscape:cy="56.153308"
+     inkscape:window-width="2560"
+     inkscape:window-height="1440"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-33.844011,-37.976052)">
+    <text
+       xml:space="preserve"
+       style="font-size:3.52777px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#948dc3;fill-opacity:1;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round"
+       x="76.913643"
+       y="40.544365"
+       id="text236"><tspan
+         sodipodi:role="line"
+         id="tspan234"
+         style="fill:#948dc3;fill-opacity:1;stroke-width:0.25"
+         x="76.913643"
+         y="40.544365"><tspan
+   style="font-weight:bold"
+   id="tspan401">Goal</tspan>: given a sequence of words, predict the next word</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52777px;line-height:1.3;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#9fcb81;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       x="76.275436"
+       y="49.661106"
+       id="text3234"><tspan
+         sodipodi:role="line"
+         id="tspan3232"
+         style="fill:#9fcb81;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-opacity:1"
+         x="76.275436"
+         y="49.661106">I didn't have a coffee today yet. Because of this I am ...</tspan></text>
+  </g>
+</svg>
