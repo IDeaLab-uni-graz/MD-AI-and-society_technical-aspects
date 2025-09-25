@@ -5,12 +5,12 @@ Note that the materials are provided in German are not fully consistent with the
 ## Lectures
 ### English
 * Lecture 1
-  * 1.0 [Intro to Lecture 1](https://janalasser.at/lectures/MD_KI/VO1_0_intro/)
+  * 1.0 [Intro to Lecture 1: Supervised Learning](https://janalasser.at/lectures/MD_KI/VO1_0_intro/)
   * 1.1 [What is AI?](https://janalasser.at/lectures/MD_KI/VO1_1_what_is_AI/)
   * 1.2 [Supervised Learning](https://janalasser.at/lectures/MD_KI/VO1_2_supervised_learning/)
   * 1.3 [Algorithms for Supervised Learning](https://janalasser.at/lectures/MD_KI/VO1_3_algorithms_supervised_learning/)
 * Lecture 2
-  * 2.0 [Intro to Lecture 2](https://janalasser.at/lectures/MD_KI/VO2_0_intro/)
+  * 2.0 [Intro to Lecture 2: From Neural Nets to Data](https://janalasser.at/lectures/MD_KI/VO2_0_intro/)
   * 2.1 [Neural Networks](https://janalasser.at/lectures/MD_KI/VO2_1_neural_nets/)
   * 2.2 [Performance of Classification Algorithms](https://janalasser.at/lectures/MD_KI/VO2_2_performance/)
   * 2.3 [Bias and Variance](https://janalasser.at/lectures/MD_KI/VO2_3_bias_variance/)
@@ -18,7 +18,7 @@ Note that the materials are provided in German are not fully consistent with the
   * 2.5 [Regression](https://janalasser.at/lectures/MD_KI/VO2_5_regression/)
   * 2.6 [Summary Supervised Learning](https://janalasser.at/lectures/MD_KI/VO2_6_summary_supervised%20learning/)
 * Lecture 3
-  * 3.0 [Intro to Lecture 3](https://janalasser.at/lectures/MD_KI/VO3_0_intro/)
+  * 3.0 [Intro to Lecture 3: Unsupervised & Reinforcement Learning](https://janalasser.at/lectures/MD_KI/VO3_0_intro/)
   * 3.1 [Unsupervised Learning](https://janalasser.at/lectures/MD_KI/VO3_1_unsupervised_learning/)
   * 3.2 [Distance & Similarity Measures](https://janalasser.at/lectures/MD_KI/VO3_2_distance_measures/)
   * 3.3 [Data Transformations](https://janalasser.at/lectures/MD_KI/VO3_3_data_transformations/)
