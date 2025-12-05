@@ -156,39 +156,39 @@
 </section>
 <section>
     <section style="font-size: 90%;">
-        <div class="heading" style="padding-bottom:2% !important">Step 1: Pre-training with Self-Supervised Learning</div>
+        <div class="heading" style="padding-bottom:0% !important">Step 1: Pre-training with Self-Supervised Learning</div>
         <div class="r-stack">
-            <img class="fragment fade-out" data-fragment-index="0" src="img/transformer_0.svg" width="100%">
-            <img class="fragment current-visible" data-fragment-index="0" src="img/transformer_0.svg" width="100%">
-            <img class="fragment current-visible" data-fragment-index="1" src="img/transformer_0.svg" width="100%">
-            <img class="fragment current-visible" data-fragment-index="2" src="img/transformer_1.svg" width="100%">
-            <img class="fragment current-visible" data-fragment-index="3" src="img/transformer_2.svg" width="100%">
-            <img class="fragment" data-fragment-index="4" src="img/transformer_3.svg" width="100%">
+            <img class="fragment fade-out" data-fragment-index="0" src="img/transformer_0.svg" width="90%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+            <img class="fragment current-visible" data-fragment-index="0" src="img/transformer_0.svg" width="90%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+            <img class="fragment current-visible" data-fragment-index="1" src="img/transformer_0.svg" width="90%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+            <img class="fragment current-visible" data-fragment-index="2" src="img/transformer_1.svg" width="90%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+            <img class="fragment current-visible" data-fragment-index="3" src="img/transformer_2.svg" width="90%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+            <img class="fragment" data-fragment-index="4" src="img/transformer_3.svg" width="90%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
         </div>
         <div class="container3to1">
             <div class="column3to1_2">
-                <p class="fragment" data-fragment-index="0" style="padding-top:1% !important">GPT-3's training corpus includes:</p>
+                <p class="fragment" data-fragment-index="0">GPT-3's training corpus includes:</p>
                 <li class="fragment" data-fragment-index="0" ><a href="https://commoncrawl.org/the-data/">CommonCrawl</a> (400 billion tokens, 46% English) – low quality.</li>
                 <li class="fragment" data-fragment-index="0" >Reddit (19 billion tokens), Wikipedia (3 billion tokens) – high quality.</li>
                 <li class="fragment" data-fragment-index="0" >Books (67 billion tokens) – high quality.</li>
-                <div class="reference" style="padding-top: 1% !important;"><span class="fragment" data-fragment-index="0" >See also Brown et al., <a href="https://arxiv.org/pdf/2005.14165">Language Models are Few-Shot Learners</a>, <em>arXiv</em> (2020).</span></div>
+                <div class="reference"><span class="fragment" data-fragment-index="0" >See also Brown et al., <a href="https://arxiv.org/pdf/2005.14165">Language Models are Few-Shot Learners</a>, <em>arXiv</em> (2020).</span></div>
             </div>
             <div class="column3to1_1">
-                <p class="fragment" data-fragment-index="5" style="padding-top:2% !important; text-align: center;">Cost of training GPT-4: $100 mio </p>
+                <p class="fragment" data-fragment-index="5" style="padding-top:1% !important; text-align: center;">Cost of training GPT-4: $100 mio </p>
                 <div class="r-stack">
-                	<img class="fragment current-visible" data-fragment-index="1" src="img/legal_aspects.svg" width="95%" style="padding-top: 0%; margin-top:0%">
-                	<img class="fragment current-visible" data-fragment-index="5" src="img/economic_aspects.svg" width="95%" style="padding-top: 0%; margin-top:0%">
+                	<img class="fragment current-visible" data-fragment-index="1" src="img/legal_aspects.svg" width="95%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
+                	<img class="fragment current-visible" data-fragment-index="5" src="img/economic_aspects.svg" width="95%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom: 0%;">
                 </div>
             </div>
         </div>
     </section>
-    <section style="font-size: 115%;">
+    <section style="font-size: 110%;">
         <div class="heading">Pre-trained Language Model</div>
         <ul class="outside">
-            <li style="!important;padding-bottom: 1.5% !important;">A language model pre-trained in this way is already very good at generating <b>coherent sequences of words</b>.</li>
+            <li style="padding-bottom: 1.5% !important;">A language model pre-trained in this way is already very good at generating <b>coherent sequences of words</b>.</li>
             <li style="padding-bottom:1.5% !important">It "speaks" the languages sufficiently present in the training dataset and has learned syntax and grammar structures.</li>
             <li class="fragment" style="padding-bottom:1.5% !important">Pre-trained language models are <b>very large</b>: they are neural networks with up to 671 billion parameters<sup>*</sup> (weights). This corresponds to about 1.5 TB of hard drive space just for storing the model weights.</li>
-            <li class="fragment" style="padding-bottom: 1.5% !important;">However, the model cannot yet <b>follow instructions</b>. Produced text follows the structure of books or articles rather than conversations.</li>
+            <li class="fragment" style="padding-bottom: 1% !important;">However, the model cannot yet <b>follow instructions</b>. Produced text follows the structure of books or articles rather than conversations.</li>
         </ul>
         <div class="reference">*Size of the most recent <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3">DeepSeek model V3</a>.</div>
     </section>
@@ -212,11 +212,11 @@
 </section>
 <section>
     <section>
-        <div class="heading">Review: Reinforcement Learning</div>
+        <div class="heading" style="padding-bottom: 0% !important;">Review: Reinforcement Learning</div>
         <div class="r-stack">
-            <img class="fragment fade-out" data-fragment-index="0" src="img/reinforcement_learning_1.svg" width="100%">
-            <img class="fragment current-visible" data-fragment-index="0" src="img/reinforcement_learning_2.svg" width="100%">
-            <img class="fragment" data-fragment-index="1" src="img/reinforcement_learning_3.svg" width="100%">
+            <img class="fragment fade-out" data-fragment-index="0" src="img/reinforcement_learning_1.svg" width="85%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%;">
+            <img class="fragment current-visible" data-fragment-index="0" src="img/reinforcement_learning_2.svg" width="85%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%;">
+            <img class="fragment" data-fragment-index="1" src="img/reinforcement_learning_3.svg" width="85%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%;">
         </div>
     </section>
     <section style="font-size: 95%;">
@@ -230,13 +230,13 @@
     <section style="font-size: 95%;">
         <div class="container3to1">
             <div class="column3to1_2">
-                <img src="img/alignment_meme.svg" width="95%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom:0%">
+                <img src="img/alignment_meme.svg" width="85%" style="padding-top: 0%; margin-top:0%; padding-bottom: 0%; margin-bottom:0%">
             </div>
             <div class="column3to1_1">
                 <ul class="outside">
-                    <li style="padding-bottom:12% !important; padding-top:12% !important">Reinforcement learning and fine-tuning only superficially change the model's weights.</li>
-                    <li class="fragment" style="padding-bottom:12% !important;">Beneath it still lies the pre-trained model.</li>
-                    <li class="fragment" style="padding-bottom:12% !important;">Text patterns learned in pre-training can still <b>come to light</b> with the right prompting – even if they are undesirable.</li>
+                    <li style="padding-bottom:8% !important; padding-top:8% !important">Reinforcement learning and fine-tuning only superficially change the model's weights.</li>
+                    <li class="fragment" style="padding-bottom:8% !important;">Beneath it still lies the pre-trained model.</li>
+                    <li class="fragment">Text patterns learned in pre-training can still <b>come to light</b> with the right prompting – even if they are undesirable.</li>
                 </ul>
                 <div class="reference" style="text-align: left;">Figure adapted from: Samim, <a href="https://samim.io/p/2023-02-15-ai-alignment-memes-anthrupad/">alignment memes</a>.</div>
             </div>
@@ -258,14 +258,14 @@
     <section style="font-size: 108%; text-align:left">
         <div class="heading">Where do LLMs work (not) well?</div>
         <ul class="outside">
-            <li style="padding-bottom: 1% !important; padding-top: 2% !important;"><span style="color: #689cce;"><b>Tasks that tolerate errors:</b></span> Generation of stories, editing of existing text, ...</li>
+            <li style="padding-bottom: 1% !important;"><span style="color: #689cce;"><b>Tasks that tolerate errors:</b></span> Generation of stories, editing of existing text, ...</li>
             <p style="padding-bottom: 3% !important;">&rarr; <b>LLMs are very good at producing coherent-sounding texts.</b></p>
 
             <li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important;"><span style="color: #689cce;"><b>Tasks requiring factual knowledge:</b></span> Knowledge retrieval, summarizing, ... </li>
-            <p class="fragment" data-fragment-index="0" style="padding-bottom: 3% !important;">&rarr; <b>LLMs have no concept of factuality.</b></p>
+            <p class="fragment" data-fragment-index="0" style="padding-bottom: 2.5% !important;">&rarr; <b>LLMs have no concept of factuality.</b></p>
 
             <li class="fragment" data-fragment-index="1" style="padding-bottom: 1% !important;"><span style="color: #689cce;"><b>Tasks requiring critical thinking:</b></span> Brainstorming, philosophical debates, ... </li>
-            <p class="fragment" data-fragment-index="1" style="padding-bottom: 3% !important">&rarr; <b>LLMs are trained to be helpful and harmless. They are reluctant to contradict.</b></p>
+            <p class="fragment" data-fragment-index="1" style="padding-bottom: 2.5% !important">&rarr; <b>LLMs are trained to be helpful and harmless. They are reluctant to contradict.</b></p>
 
             <li class="fragment" data-fragment-index="2" style="padding-bottom: 1% !important;"><span style="color: #689cce;"><b>Tasks requiring logic:</b></span> Mathematics, coherent reasoning, creating a plan, ... </li>
             <p class="fragment" data-fragment-index="2">&rarr; <b>LLMs have no understanding of reality.</b></p>

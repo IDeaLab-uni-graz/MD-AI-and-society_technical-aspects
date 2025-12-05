@@ -157,24 +157,24 @@
 		        <p><em>Next, we will look closer at these reasons.</em></p>
 		    </section>
 		    <section>
-		        <div class="heading">Bias</div>
 		        <div class="container3to2">
 		            <div class="column3to2_2">
+		            	 <div class="heading">Bias</div>
 		                <ul class="outside">
 		                    <li style="padding-bottom:2% !important">Bias of a model: Difference between its <b>average prediction</b> and the true value.</li>
 		                    <li class="fragment" data-fragment-index="0">Example</li>
 		                    <ul class="outside">
 		                        <li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important; font-size: 130%;">We train a model to recognize cats and dogs in images.</li>
-		                        <li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important; font-size: 130%;">Cats appear much more frequently than dogs in the training dataset.</li>
+		                        <li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important; font-size: 130%;">Cats appear much more frequently in the training dataset.</li>
 		                        <li class="fragment" data-fragment-index="1" style="padding-bottom: 1% !important; font-size: 130%;">As a result, the model is much more likely to predict "cat" than "dog".</li>
-		                        <li class="fragment" data-fragment-index="1" style="padding-bottom: 3% !important; font-size: 130%;">The model has a cat bias!</li>
+		                        <li class="fragment" data-fragment-index="1" style="font-size: 130%;">The model has a cat bias!</li>
 		                    </ul>
 		                </ul>
-		                <img class="fragment" data-fragment-index="2" src="img/ethical_aspects.svg" width="40%">
-		                <img class="fragment" data-fragment-index="2" src="img/legal_aspects.svg" width="40%" style="padding-left: 3% !important;">
+		                <img class="fragment" data-fragment-index="2" src="img/ethical_aspects.svg" width="40%" style="padding-top: 1%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+		                <img class="fragment" data-fragment-index="2" src="img/legal_aspects.svg" width="40%" style="padding-left: 3% !important; padding-top: 1%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
 		            </div>
 		            <div class="column3to2_1">
-		                <img class="fragment" data-fragment-index="0" src="img/cat_dog.png" width="90%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 5%; margin-top: 0%;">
+		                <img class="fragment" data-fragment-index="0" src="img/cat_dog.png" width="90%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 8%; margin-top: 0%;">
 		                <div class="reference" style="text-align: right;"><span class="fragment" data-fragment-index="0">Source cat image: <a href="https://commons.wikimedia.org/wiki/File:Cat.png">Wikimedia Commons</a> <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA</a>.<br>Source dog image: <a href="https://commons.wikimedia.org/wiki/File:Cute_dog.jpg">Wikimedia Commons</a>, <a href="https://en.wikipedia.org/wiki/en:Creative_Commons">CC BY</a>.</span></div>
 		            </div>
 		        </div>
@@ -184,7 +184,7 @@
 		            <div class="column3to2_2">
 		                <div class="heading">Variance</div>
 		                <ul class="outside">
-		                    <li style="padding-bottom:4% !important; padding-top:1% !important">Variance of a model: Spread of predictions for similar input observations.</li>
+		                    <li style="padding-bottom:2% !important;">Variance of a model: Spread of predictions for similar input observations.</li>
 		                    <li class="fragment" data-fragment-index="0"><b>Example</b></li>
 		                    <ul class="outside">
 		                        <li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">We train a model to recognize ponies and horses in images.</li>
@@ -196,9 +196,9 @@
 		            </div>
 		            <div class="column3to2_1">
 		                <p class="fragment" data-fragment-index="0" style="text-align:center; padding-left:20%">Training Data</p>
-		                <img class="fragment" data-fragment-index="0" src="img/pferd_pony_training.png" width="73%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%; padding-left: 20%;">
+		                <img class="fragment" data-fragment-index="0" src="img/pferd_pony_training.png" width="62%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%; padding-left: 20%;">
 		                <p class="fragment" data-fragment-index="1" style="text-align:center; padding-top:0%; padding-left:20%">Unknown Data</p>
-		                <img class="fragment" data-fragment-index="1" src="img/pferd_pony_test.png" width="73%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%; padding-left:20%">
+		                <img class="fragment" data-fragment-index="1" src="img/pferd_pony_test.png" width="62%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 0%; margin-top: 0%; padding-left:20%">
 		                <div class="reference" style="text-align: right;">
 		                    <span class="fragment" data-fragment-index="0">Source White Pony: <a href="https://commons.wikimedia.org/wiki/File:Sleeping_Pony.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA</a>.</span>
 		                    <br><span class="fragment" data-fragment-index="1">Source Brown Pony: <a href="https://commons.wikimedia.org/wiki/File:Dayboro_Shetland_Pony_loves_carrots-1_%2828603360412%29.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA</a>.</span>
@@ -211,16 +211,16 @@
 		            <div class="column3to2_1">
 		                <div class="heading">Bias and Variance</div>
 		                <ul class="outside">
-		                    <li style="padding-bottom:4% !important; padding-top:3% !important">In the context of machine learning, bias is also called <b>underfitting</b>:</li>
+		                    <li style="padding-bottom:2% !important; padding-top:0.5% !important">In the context of machine learning, bias is also called <b>underfitting</b>:</li>
 		                    <li>&rarr; the algorithm does not learn the relationships between attributes and outputs.</li>
 
-		                    <li class="fragment" data-fragment-index="0" style="padding-top: 7% !important; padding-bottom: 4% !important;">Variance is also called <b>overfitting</b>:</li>
+		                    <li class="fragment" data-fragment-index="0" style="padding-top: 3% !important; padding-bottom: 2% !important;">Variance is also called <b>overfitting</b>:</li>
 		                    <li class="fragment" data-fragment-index="0">&rarr; the algorithm models false correlations or noise instead of the desired relationships between attributes and outputs.</li>
 		                </ul>
-		                <div class="reference" style="padding-top: 5% !important; text-align: right;"><span class="fragment" data-fragment-index="1" >Source illustration: Adapted from Scott Fortmann-Roe <a href="https://scott.fortmann-roe.com/docs/BiasVariance.html#:~:text=Bias%20measures%20how%20far%20off,model%20building%20process%20multiple%20times.">Graphical illustration of bias and variance</a>.</span></div>
+		                <div class="reference" style="padding-top: 2% !important; text-align: right;"><span class="fragment" data-fragment-index="1" >Source illustration: Adapted from Scott Fortmann-Roe <a href="https://scott.fortmann-roe.com/docs/BiasVariance.html#:~:text=Bias%20measures%20how%20far%20off,model%20building%20process%20multiple%20times.">Graphical illustration of bias and variance</a>.</span></div>
 		            </div>
 		            <div class="column3to2_2">
-		                <img class="fragment" data-fragment-index="1" src="img/bias_variance.svg" width="85%" style="padding-left: 10%;">
+		                <img class="fragment" data-fragment-index="1" src="img/bias_variance.svg" width="75%" style="padding-left: 10%;">
 		            </div>
 		        </div>
 		    </section>
@@ -231,11 +231,11 @@
 		        <div class="container3to1">
 		            <div class="column3to1_1">
 		                <p style="text-align: center; font-size: 130%;">Prediction for Florida 2020</p>
-		                <img src="img/election_example_1.png" width="100%" style="padding-bottom: 0%; margin-bottom:0%">
+		                <img src="img/election_example_1.png" width="90%" style="padding-bottom: 0%; margin-bottom:0%">
 		            </div>
 		            <div class="column3to1_2">
 		                <p style="text-align: center;">Actual Result</p>
-		                <img src="img/election_example_2.png" width="90%" style="padding-bottom: 0%; margin-bottom:0%">
+		                <img src="img/election_example_2.png" width="80%" style="padding-bottom: 0%; margin-bottom:0%">
 		            </div>
 		        </div>
 		        <p class="fragment" data-fragment-index="0" style="padding-top: 1% !important;"><b>Possible Sources of Error</b></p>
@@ -254,10 +254,10 @@
 		                    <li>Incidence of pneumonia:</li>
 		                    <ul class="outside">
 		                        <li>Hospital 1: 1.2%</li>
-		                        <li>Hospital 2: 34.2%</li><
+		                        <li>Hospital 2: 34.2%</li>
 		                        <li style="padding-bottom:5% !important">Hospital 3: 1.0%.</li>
 		                    </ul>
-		                    <li style="padding-bottom: 4% !important;">The machine learning model receives both the images and the <b>metadata</b> (which hospital, which device, time, etc.) for training.</li>
+		                    <li style="padding-bottom: 1% !important;">The machine learning model receives both the images and the <b>metadata</b> (which hospital, which device, time, etc.) for training.</li>
 		                    <div class="reference">See also <a href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683">Zech et al., PloS Medicine (2018)</a>.</div>
 		                </ul>
 		            </div>

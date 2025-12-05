@@ -148,16 +148,16 @@
 </section>
 <section>
     <section style="text-align: left;">
-        <div class="heading">Basic Principle: Personalized Recommendation</div>
-        <img src="img/recommender_1.svg" width="100%" style="padding-top: 3%; padding-bottom:2%; margin-bottom: 0%;">
+        <div class="heading" style="padding-bottom: 0% !important;">Basic Principle: Personalized Recommendation</div>
+        <img src="img/recommender_1.svg" width="98%" style="padding-top: 0%; padding-bottom:0%; margin-bottom: 0%; margin-top: 0%;">
         <ul class="outside"> 
         	<li>Recommendation: Matching user profile and item profile.</li>
         	<li>Single recommendation, no further interaction, no adaptation to behavior.</li>
         </ul>
     </section>
     <section>
-        <div class="heading">Content-Based Recommendation</div>
-        <img src="img/recommender_2.svg" width="90%" style="padding-top: 0%; padding-bottom:0%; margin-bottom: 0%;">
+        <div class="heading" style="padding-bottom: 0% !important;">Content-Based Recommendation</div>
+        <img src="img/recommender_2.svg" width="80%" style="padding-top: 0%; padding-bottom:0%; margin-bottom: 0%; margin-top: 0%;">
         <ul class="outside">
             <li >Automated construction of a user profile based on the <b>characteristics of the items</b> with which the user has interacted.</li>
             <li>Recommendation: Matching user history and item profile.</li>
@@ -165,8 +165,8 @@
         </ul>
     </section>
     <section style="text-align: left;">
-        <div class="heading">Collaborative Filtering</div>
-        <img src="img/recommender_3.svg" width="90%" style="padding-top: 0%; margin-top: 0%; padding-bottom:1%; margin-bottom: 0%;">
+        <div class="heading" style="padding-bottom: 0% !important;">Collaborative Filtering</div>
+        <img src="img/recommender_3.svg" width="80%" style="padding-top: 0%; margin-top: 0%; padding-bottom:1%; margin-bottom: 0%;">
         <ul class="outside">
             <li>Using the opinion or behavior of <b>other users</b> for recommendation.</li>
             <li>Recommendation: matching similar users and recommending items other users liked.</li>
@@ -176,20 +176,20 @@
 </section>
 <section>
     <section>
-        <div class="heading">Collaborative Filtering: Implementation Idea</div>
+        <div class="heading" style="padding-bottom: 0% !important;">Collaborative Filtering: Implementation Idea</div>
         <p>We formulate the problem as "completing a table":</p>
         <ul class="outside">
-            <li style="padding-bottom:1% !important; padding-top:1% !important">We have information about how well our users rate different items (ratings from 1 to 5).</li>
-            <li style="padding-bottom:1% !important">For user Alice, we are missing a rating for item 5.</li>
+            <li style="padding-bottom:0.5% !important; padding-top:1% !important">We have information about how well our users rate different items (ratings from 1 to 5).</li>
+            <li style="padding-bottom:0.5% !important">For user Alice, we are missing a rating for item 5.</li>
             <li>Idea: we use the ratings of other users who are <b>similar</b> to Alice to <b>predict</b> Alice's rating for item 5 &rarr; supervised learning.</li>
         </ul>
-        <img src="img/usermatrix.svg" width="70%" style="padding-top: 1%; margin-top:0%; padding-bottom:0%; margin-bottom:0%">
+        <img src="img/usermatrix.svg" width="63%" style="padding-top: 0%; margin-top:0%; padding-bottom:0%; margin-bottom:0%">
     </section>
     <section style="font-size: 115%;">
         <div class="heading">Collaborative Filtering: Algorithm</div>
         <ol class="outside">
-            <li style="padding-bottom: 2% !important; padding-top:3% !important">Find users who are similar to Alice, meaning those who liked the same items similarly well.</li>
-            <li class="fragment" style="padding-bottom: 2% !important;">Use the average rating of these users for the missing item to predict whether Alice will like it too.</li>
+            <li style="padding-bottom: 1.5% !important; padding-top:0% !important">Find users who are similar to Alice, meaning those who liked the same items similarly well.</li>
+            <li class="fragment" style="padding-bottom: 1.5% !important;">Use the average rating of these users for the missing item to predict whether Alice will like it too.</li>
             <li class="fragment" style="padding-bottom:2% !important">Follow this procedure for all items Alice has not yet seen and recommend the item with the best predicted rating.</li>
         </ol>
         <p class="fragment"><b>How well does the algorithm work?</b><br>&rarr; Remove some of Alice's known ratings and predict them with this method. Calculate the prediction error with the root mean squared error.</p>
@@ -198,15 +198,15 @@
         <div class="container1to1">
             <div class="column1to1_1">
             	<div class="heading">K-Nearest Neighbors Algorithm</div>
-                <p style="padding-bottom: 3% !important; padding-top:10% !important"><b>Reminder</b>: To classify a new observation:</p>
+                <p style="padding-bottom: 3% !important; padding-top:2% !important"><b>Reminder</b>: To classify a new observation:</p>
                 <ul class="outside">
                     <li style="padding-bottom: 3% !important;">Find the <em>k</em> nearest data points ("<em>k</em>-nearest neighbors").</li>
-                    <li style="padding-bottom: 3% !important;">Choose the class that the majority of the nearest neighbors have (majority vote).</li>
+                    <li>Choose the class that the majority of the nearest neighbors have (majority vote).</li>
                 </ul>
 
             </div>
             <div class="column1to1_2">
-                <img src="img/KnnClassification_6.svg" width="100%" style="padding-top: 10%;">
+                <img src="img/KnnClassification_6.svg" width="100%" style="padding-top: 5%;">
             </div>
         </div>
     </section>

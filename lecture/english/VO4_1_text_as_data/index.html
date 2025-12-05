@@ -147,8 +147,8 @@
 	</section>
 </section>
 <section>
-    <section>
-        <div class="heading">Converting Text to Numbers</div>
+    <section style="font-size: 90%;">
+        <div class="heading" style="padding-bottom: 0% !important;">Converting Text to Numbers</div>
         <div class="container3to1">
             <div class="column3to1_1">
                 <ul class="outside">
@@ -160,8 +160,8 @@
             </div>
             <div class="column3to1_2">
                 <div class="r-stack">
-                    <img class="fragment fade-out" data-fragment-index="0" src="img/embedding_1.svg" width="85%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
-                    <img class="fragment" data-fragment-index="0" src="img/embedding_2.svg" width="85%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+                    <img class="fragment fade-out" data-fragment-index="0" src="img/embedding_1.svg" width="75%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
+                    <img class="fragment" data-fragment-index="0" src="img/embedding_2.svg" width="75%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
                 </div>
             </div>
         </div>
@@ -169,8 +169,8 @@
     <section>
         <div class="heading">Learning Embeddings</div>
         <div class="r-stack">
-            <img class="fragment fade-out" data-fragment-index="0" src="img/word_to_vec_1.svg" width="89%" style="padding-top: 0%; margin-top: 0%; padding-bottom:0%; margin-bottom: 0%;">
-            <img class="fragment" data-fragment-index="0" src="img/word_to_vec_2.svg" width="89%" style="padding-top: 0%; margin-top: 0%; padding-bottom:0%; margin-bottom: 0%;">
+            <img class="fragment fade-out" data-fragment-index="0" src="img/word_to_vec_1.svg" width="75%" style="padding-top: 0%; margin-top: 0%; padding-bottom:0%; margin-bottom: 0%;">
+            <img class="fragment" data-fragment-index="0" src="img/word_to_vec_2.svg" width="75%" style="padding-top: 0%; margin-top: 0%; padding-bottom:0%; margin-bottom: 0%;">
         </div>
         <p style="font-size: 100%;">Continuous Bag-Of-Words (CBOW) predicts the target-word based on its surrounding words. <span style="color: grey; font-size: 70%; padding-bottom: 1% !important;">Inspired by Manan Suri, <a href="https://medium.com/@manansuri/a-dummys-guide-to-word2vec-456444f3c673">A Dummy’s Guide to Word2Vec</a>, <em>Medium</em>.</span></p>
     </section>
@@ -181,7 +181,7 @@
             <div class="column3to1_2">
                 <div class="heading">Advantages of Embeddings</div>
                 <ul class="outside">
-                    <li style="padding-bottom: 4% !important; padding-top: 4% !important;">We need far fewer dimensions (typically between 100 and 1000) to represent a word.</li>
+                    <li style="padding-bottom: 4% !important;">We need far fewer dimensions (typically between 100 and 1000) to represent a word.</li>
                     <li class="fragment" data-fragment-index="0">Words that are similar to each other are located at similar positions in the <em>embedding space</em>. The <b>cosine similarity</b> of their embedding vectors is very high.</li>
 
                     <img class="fragment" data-fragment-index="0" src="img/cosine_similarity_2.svg" width="100%">
@@ -189,7 +189,7 @@
                 </ul>
             </div>
             <div class="column3to1_1">
-                <img class="fragment" data-fragment-index="0" src="img/cosine_similarity_1.svg" width="75%">
+                <img class="fragment" data-fragment-index="0" src="img/cosine_similarity_1.svg" width="68%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
             </div>
         </div>
     </section>
@@ -200,7 +200,7 @@
                 <p style="padding-top:45% !important">"Man" relates to "Woman" in the vector space as "Brother" relates to "Sister".</p>
             </div>
             <div class="column3to1_2">
-                <img src="img/vector_arithmetic.svg" width="80%">
+                <img src="img/vector_arithmetic.svg" width="75%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
             </div>
         </div>
     </section>
@@ -209,7 +209,7 @@
     <section style="font-size: 120%;">
         <div class="heading">Summary</div>
         <ul class="outside">
-            <li style="padding-bottom: 2% !important; padding-top: 2% !important;">To use text as data for machine learning, we first need to convert it into numbers.</li>
+            <li style="padding-bottom: 2% !important;">To use text as data for machine learning, we first need to convert it into numbers.</li>
             <li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">This is done using <b>embeddings</b> - vectors with 100 to 1000 dimensions that represent a word in the context of its language.</li>
             <li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important;">Embeddings are learned using neural networks and large amounts of naturally occurring text.</li>
             <li class="fragment" data-fragment-index="1" >The embedding vectors of words that have similar meanings show high cosine similarity - the words are located at similar points in the embedding space.</li>

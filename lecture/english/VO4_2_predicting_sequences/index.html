@@ -148,8 +148,8 @@
 	<section style="font-size: 115%;">
 	    <div class="heading" style="font-size: 240% !important;">Self-Supervised Learning for Sequence Prediction</div>
 	    <ul class="outside">
-	        <li style="padding-bottom:3% !important; padding-top:1% !important"><b>Self-supervised learning</b>: a form of <b>unsupervised learning</b> in which not humans but the data itself provides the supervision for the learning.</li>
-	        <li class="fragment" data-fragment-index="0" style="padding-bottom:3% !important"><b>Sequence prediction</b>: given an existing sequence (observation) with its elements (attributes), <b>predict the next element</b> of the sequence (output value).</li>
+	        <li style="padding-bottom:2% !important;"><b>Self-supervised learning</b>: a form of <b>unsupervised learning</b> in which not humans but the data itself provides the supervision for the learning.</li>
+	        <li class="fragment" data-fragment-index="0" style="padding-bottom:2% !important"><b>Sequence prediction</b>: given an existing sequence (observation) with its elements (attributes), <b>predict the next element</b> of the sequence (output value).</li>
 	        <li class="fragment" data-fragment-index="1">Two prominent application examples.</li>
 	        <ul>
 	        	<li class="fragment" data-fragment-index="1"><b>Translation</b>: The input sequence is the text in one language, the output sequence is the same text but in a different language.</li>
@@ -162,7 +162,7 @@
     	<div class="heading">Translation</div>
     </section>
     <section style="font-size: 120%;">
-        <div class="heading" style="padding-bottom: 3% !important;">Encoder – Decoder Architecture</div>
+        <div class="heading" style="padding-bottom: 0%;">Encoder – Decoder Architecture</div>
         <div class="container3to2">
             <div class="column3to2_1">
                 <p style="padding-top: 2% !important;"><b>Task</b></p>
@@ -172,13 +172,13 @@
                 <li class="fragment current-visible" data-fragment-index="2">Limited context length</li>
             </div>
             <div class="column3to2_2">
-                <img class="fragment" data-fragment-index="1" src="img/encoder_decoder_general.svg" width="100%">
+                <img class="fragment" data-fragment-index="1" src="img/encoder_decoder_general.svg" width="90%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
                 <div class="reference" style="padding-left: 10% !important; padding-top: 0% !important; text-align: center;"><span class="fragment" data-fragment-index="1">Traditional Encoder-Decoder Architecture for Translation.<br>Source: Adapted from <a href="https://www.youtube.com/watch?v=5SClruyUnoU">CS 198-126: Lecture 14 - Transformers and Attention</a></span></div>
             </div>
         </div>
     </section>
     <section style="font-size: 120%;">
-        <div class="heading" style="padding-bottom: 3% !important;">Encoder – Decoder with "Attention"</div>
+        <div class="heading" style="padding-bottom: 0%;">Encoder – Decoder with "Attention"</div>
         <div class="container3to2">
             <div class="column3to2_1">
                 <p style="padding-top:15% !important"><b>Attention</b></p>
@@ -188,7 +188,7 @@
                 <li>Infinite context length</li>
             </div>
             <div class="column3to2_2">
-                <img src="img/encoder_decoder_attention.svg" width="100%">
+                <img src="img/encoder_decoder_attention.svg" width="90%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
                 <div class="reference" style="padding-left: 10% !important; padding-top: 0% !important; text-align: center;">Traditional Encoder-Decoder Architecture for Translation.<br>Source: Adapted from <a href="https://www.youtube.com/watch?v=5SClruyUnoU">CS 198-126: Lecture 14 - Transformers and Attention</a></div>
             </div>
         </div>
@@ -196,9 +196,9 @@
     <section>
         <div class="container3to2">
             <div class="column3to2_1">
-                <div class="heading" style="padding-top: 15% !important; text-align: center;">"Transformer" – Architecture for Translation</div>
+                <div class="heading" style="padding-top: 5% !important; text-align: center;">"Transformer" – Architecture for Translation</div>
                 <div class="reference" style="text-align: center;">Figure adapted from Vaswani et al.<br><a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Attention is all you need</a> (2017).</div>
-                <p class="fragment" data-fragment-index="0" style="padding-top: 10% !important; padding-bottom: 1% !important;">Every predicted word depends on two types of input:</p>
+                <p class="fragment" data-fragment-index="0" style="padding-top: 5% !important; padding-bottom: 1% !important;">Every predicted word depends on two types of input:</p>
                 <ul>
                 	<li class="fragment" data-fragment-index="0" >The full sequence in the source language.</li>
                 	<li class="fragment" data-fragment-index="0" >The already generated (partial) sequence in the target language.</li>
@@ -206,7 +206,7 @@
                 
             </div>
             <div class="column3to2_2">
-                <img src="img/transformer_translation.svg" width="74%">
+                <img src="img/transformer_translation.svg" width="66%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
             </div>
         </div>
     </section>
@@ -222,25 +222,25 @@
                 <p class="fragment" data-fragment-index="0" style="padding-top: 10% !important; padding-bottom: 1% !important; font-size: 180%;">Every predicted word depends only on the words preceding it, including the prompt.</p>                
             </div>
             <div class="column1to1_2">
-                <img src="img/transformer_generation.svg" width="60%">
+                <img src="img/transformer_generation.svg" width="55%" style="padding-top: 0%; margin-top: 0%; padding-bottom: 0%; margin-bottom: 0%;">
             </div>
         </div>
     </section>
 	<section>
-        <div class="heading" style="padding-bottom:2% !important">Conditional Probabilities</div>
+        <div class="heading">Conditional Probabilities</div>
         <div class="r-stack">
             <img class="fragment fade-out" data-fragment-index="0" src="img/next_word_1.svg" width="100%" style="padding-top: 0%; margin-top:0%">
             <img class="fragment" data-fragment-index="0" src="img/next_word_2.svg" width="100%" style="padding-top: 0%; margin-top:0%">
         </div>
         <div class="container3to2">
             <div class="column3to2_1">
-                <p class="fragment" data-fragment-index="1" style="padding-top: 6% !important;"><em>P(Rain) = 0.5</em></p>
+                <p class="fragment" data-fragment-index="1" style="padding-top: 2% !important;"><em>P(Rain) = 0.5</em></p>
                 <p class="fragment" data-fragment-index="2"><em>P(rain | weather report) = 0.8</em></p>
                 <p class="fragment" data-fragment-index="3"><em>P(rain | weather report, clouds) = 0.9</em></p>
-                <p class="fragment" data-fragment-index="7" style="padding-top:3% !important; color: #f6a968">The relationships between sequences and probabilities for the next word are learned from vast amounts of text.</p>
+                <p class="fragment" data-fragment-index="7" style="padding-top:1.5% !important; color: #f6a968">The relationships between sequences and probabilities for the next word are learned from vast amounts of text.</p>
             </div>
             <div class="column3to2_2">
-                <p class="fragment" data-fragment-index="4" style="padding-top: 2% !important; padding-left: 3%;"><em>P(angry | I, had, no, ...</span>) = 0.001</em></p>
+                <p class="fragment" data-fragment-index="4" style="padding-left: 3%;"><em>P(angry | I, had, no, ...</span>) = 0.001</em></p>
                 
                 <p class="fragment" data-fragment-index="4" style="padding-left: 3%"><em>P(tired | <span class="fragment highlight-uni-green" data-fragment-index="6">I, had, no, ...</span>) = <span class="fragment highlight-uni-red" data-fragment-index="5">0.01</span></em> <span class="fragment" data-fragment-index="6" style="padding-left: 4%; color:#9fcb81;">"context"</span></p>
                 
@@ -267,18 +267,18 @@
     </section>
 </section>
 <section>
-    <section>
-        <div class="heading">Summary</div>
+    <section style="font-size: 95%;">
+        <div class="heading" style="padding-bottom: 0% !important;">Summary</div>
         <ul class="outside">
             <li style="padding-bottom: 0.5% !important;">To build an algorithm that can predict the next element in a sequence we use <b>self-supervised learning</b> (target values are provided by the data itself): </li>
             <ul class="outside">
                 <li style="padding-bottom: 0.5% !important;">The observation is the input sequence. The attributes of the observation are the individual elements of the sequence. The target value is the next element in the sequence.</li>
                 <li style="padding-bottom: 0.5% !important;">Each predicted element is added to the observation before the next element is predicted.</li>
-                <li style="padding-bottom: 2% !important;">Relationships between preceding elements and the next probable element are learned.</li>
+                <li style="padding-bottom: 1% !important;">Relationships between preceding elements and the next probable element are learned.</li>
             </ul>
-            <li class="fragment" style="padding-bottom: 2% !important;">When using <b>attention</b>, it is also learned how important a preceding element is. This enables <b>longe range interactions</b> between elements in the input sequence and the target value.</li>
-            <li class="fragment">As primary application examples for sequence prediction we discussed <b>machine translation</b> and <b>text generation</b>.</li>
-            <li class="fragment" style="padding-bottom: 2% !important;">The architecture of neural nets for sequence prediction is called <b>transformer</b>. For text translation it consists of an encoder and a decoder, for text generation it is decoder only.</li>
+            <li class="fragment" style="padding-bottom: 1% !important;">When using <b>attention</b>, it is also learned how important a preceding element is. This enables <b>longe range interactions</b> between elements in the input sequence and the target value.</li>
+            <li class="fragment" style="padding-bottom: 1% !important;">As primary application examples for sequence prediction we discussed <b>machine translation</b> and <b>text generation</b>.</li>
+            <li class="fragment">The architecture of neural nets for sequence prediction is called <b>transformer</b>. For text translation it consists of an encoder and a decoder, for text generation it is decoder only.</li>
         </ul>
     </section>
 </section>

@@ -165,7 +165,7 @@
 		            <li style="padding-bottom: 2% !important; padding-top: 2% !important;">We work at a headhunting agency and want to find out which candidates we should focus our efforts on.</li>
 		            <li style="padding-bottom: 2% !important;">We use information on demographics, income, and education to predict employability.</li>
 		        </ul>
-		        <img src="img/feature_eng_example_0.svg" width="100%">
+		        <img src="img/feature_eng_example_0.svg" width="90%">
 		    </section>
 		    <section>
 		        <div class="heading">One-Hot Encoding and Binary Attributes</div>
@@ -173,7 +173,7 @@
 		            <li style="padding-bottom: 2% !important; padding-top: 2% !important;">We transform boolean values into ones and zeros.</li>
 		            <li style="padding-bottom: 2% !important;">We use one-hot encoding to separate categorical attributes into multiple columns with binary attributes.</li>
 		        </ul>
-		        <img src="img/feature_eng_example_1.svg" width="100%">
+		        <img src="img/feature_eng_example_1.svg" width="90%">
 		    </section>
 		    <section>
 		        <div class="heading">Standardization</div>
@@ -185,28 +185,28 @@
 		        </ul>
 		        <img src="img/feature_eng_example_2.svg" width="100%">
 		    </section>
-		    <section style="font-size: 115%;">
+		    <section style="font-size: 110%;">
 		        <div class="container3to2">
 		            <div class="column3to2_2">
 		                <div class="heading">Deleting Features</div>
 		                <ul class="outside">
-		                    <li style="padding-bottom: 2% !important; padding-top: 2% !important;">Some attributes of people are <b>protected</b> and may not be used for making decisions about humans.</li>
-		                    <li>Gender is one of these atributes, as is for example religion and ethnicity - we remove it.</li>
+		                    <li style="padding-bottom: 1.5% !important;">Some attributes of people are <b>protected</b> and may not be used for decisionmaking.</li>
+		                    <li>Gender is one of these atributes, as is for example religion and ethnicity – we remove it.</li>
 		                </ul>
 		            </div>
 		            <div class="column3to2_1">
-		                <img src="img/legal_aspects.svg" width="70%" style="padding-bottom: 0%; margin-bottom: 0%;">
-		                <img src="img/ethical_aspects.svg" width="70%" style="padding-bottom: 0%; margin-bottom: 0%;">
+		                <img src="img/legal_aspects.svg" width="65%" style="padding-bottom: 0%; margin-bottom: 0%;">
+		                <img src="img/ethical_aspects.svg" width="65%" style="padding-bottom: 0%; margin-bottom: 0%;">
 		            </div>
 		        </div>
-		        <img src="img/feature_eng_example_3.svg" width="100%">
+		        <img src="img/feature_eng_example_3.svg" width="100%" style="padding-bottom: 0%; margin-bottom: 0%; padding-top: 0.5%; margin-top: 0%;">
 		    </section>
 		    <section>
 		        <div class="heading">New Attributes</div>
 		        <ul class="outside">
-		            <li style="padding-bottom: 2% !important; padding-top: 2% !important;">From how much annual income a person earns per age, conclusions can perhaps be drawn about the person's ambitions.</li>
-		            <li style="padding-bottom: 2% !important;">We <b>construct a new attribute</b> income / age.</li>
-		            <li class="fragment" data-fragment-index="0" style="padding-bottom:1% !important">The phone numbers are useless as they are assigned randomly. But from the area code, we can draw conclusions about the country of residence.</li>
+		            <li style="padding-bottom: 1% !important;">From how much annual income a person earns per age, conclusions can perhaps be drawn about the person's ambitions.</li>
+		            <li style="padding-bottom: 1% !important;">We <b>construct a new attribute</b> income / age.</li>
+		            <li class="fragment" data-fragment-index="0">The phone numbers are useless as they are assigned randomly. But from the area code, we can draw conclusions about the country of residence.</li>
 		        </ul>
 		        <div class="r-stack">
 		            <img class="fragment fade-out" data-fragment-index="0" src="img/feature_eng_example_4.svg" width="100%">
@@ -223,16 +223,16 @@
 		        <div class="container3to2">
 		            <div class="column3to2_1">
 		                <p class="fragment" data-fragment-index="0" style="padding-bottom:1% !important"><b>Problem 1: Large Data Volumes</b></p>
-		                <p class="fragment" data-fragment-index="0" style="padding-bottom:4% !important">Let's recall the example with the text:</p>
+		                <p class="fragment" data-fragment-index="0" style="padding-bottom:2% !important">Let's recall the example with the text:</p>
 		                <ul class="outside">
-		                    <li class="fragment" data-fragment-index="0" style="padding-bottom:4% !important">There are around 600,000 words in the Oxford English Dictionary.</li>
-		                    <li class="fragment" data-fragment-index="0" style="padding-bottom:4% !important">To represent a sentence with 6 words, we need a 600,000 x 6 cell table.</li>
+		                    <li class="fragment" data-fragment-index="0" style="padding-bottom:2% !important">There are around 600,000 words in the Oxford English Dictionary.</li>
+		                    <li class="fragment" data-fragment-index="0" style="padding-bottom:2% !important">To represent a sentence with 6 words, we need a 600,000 x 6 cell table.</li>
 		                    <li class="fragment" data-fragment-index="0" >This would occupy 600,000 x 6 x 32 / 8 / 1024 / 1024 = 13.7 Megabytes of memory<sup>*</sup> &rarr; very inefficient.</li>
 		                </ul>
-		                 <div class="reference" style="padding-top: 8% !important;"><span class="fragment" data-fragment-index="0" ><sup>*</sup>Even if we store the numbers not as 32-bit integers but only as 2-bit boolean values, it's still 0.86 MB!</span></div>
+		                 <div class="reference" style="padding-top: 1% !important;"><span class="fragment" data-fragment-index="0" ><sup>*</sup>Even if we store the numbers not as 32-bit integers but only as 2-bit boolean values, it's still 0.86 MB!</span></div>
 		            </div>
 		            <div class="column3to2_2">
-		                <img class="fragment" data-fragment-index="0" src="img/text.svg" width="70%">
+		                <img class="fragment" data-fragment-index="0" src="img/text.svg" width="60%">
 		            </div>
 		        </div>
 		    </section>
@@ -258,14 +258,14 @@
 		            </div>
 		        </div>
 		    </section>
-		    <section>
+		    <section style="font-size: 93%;">
 		        <div class="heading">Solution: Dimensionality Reduction</div>
 		        <div class="container3to2">
 		            <div class="column3to2_2">
 		                <ul class="outside">
-		                    <li style="padding-bottom: 3% !important"><b>Feature Selection</b>: Remove features that do not carry important information.</li>
-		                    <li class="fragment" data-fragment-index="0" style="padding-bottom: 3% !important"><b>Projection</b>: We search for a projection of the data points into a space where differences between data points are maximized.</li>
-		                    <li class="fragment" data-fragment-index="1" style="padding-bottom: 3% !important">One method by which this can be achieved is <b>Principal Component Analysis</b> (PCA).</li>
+		                    <li style="padding-bottom: 2% !important"><b>Feature Selection</b>: Remove features that do not carry important information.</li>
+		                    <li class="fragment" data-fragment-index="0" style="padding-bottom: 2% !important"><b>Projection</b>: We search for a projection of the data points into a space where differences between data points are maximized.</li>
+		                    <li class="fragment" data-fragment-index="1" style="padding-bottom: 2% !important">One method by which this can be achieved is <b>Principal Component Analysis</b> (PCA).</li>
 		                    <li class="fragment" data-fragment-index="1" style="padding-bottom: 1% !important">The result of a PCA is a projection of the data into a space where the <b>variance of the data points is concentrated in a few dimensions</b>.</li>
 		                </ul>
 		            </div>
@@ -286,26 +286,26 @@
 		        </div>
 		    </section>
 		    <section>
-		        <img src="img/cow_example.svg" width="75%">
+		        <img src="img/cow_example.svg" width="70%">
 		        <div class="reference" style="text-align: center;">Note: Here we actually used a different  dimensionality reduction technique (<a href="https://medium.com/@anastasiac1203/a-high-level-explanation-of-uniform-manifold-approximation-and-projection-umap-algorithm-7f9c74e621cd">UMAP</a>). The difference is that PCA is a linear combination of dimensions whereas UMAP allows for nonlinear combinations.</div>
 		    </section>
 		</section>
 
 		<section>
 		    <section style="font-size: 90%;">
-		        <div class="heading">Summary</div>
+		        <div class="heading" style="padding-bottom: 0 !important;">Summary</div>
 		        <ul class="outside">
-		            <li><b>Feature Engineering</b> helps us get the most out of our data and avoid problems with machine learning algorithms or legal requirements. Techniques include:</li>
+		            <li style="padding-bottom: 0.5% !important;"><b>Feature Engineering</b> helps us get the most out of our data and avoid problems with machine learning algorithms or legal requirements. Techniques include:</li>
 		            <ul class="outside">
-		                <li>One-hot encoding</li>
-		                <li>Construction of new attributes</li>
-		                <li>Standardization</li>
+		                <li style="padding-bottom: 0.5% !important;">One-hot encoding</li>
+		                <li style="padding-bottom: 0.5% !important;">Construction of new attributes</li>
+		                <li style="padding-bottom: 0.5% !important;">Standardization</li>
 		                <li style="padding-bottom: 1% !important;">Deletion of features</li>
 		            </ul>
-		            <li class="fragment" data-fragment-index="0"><b>Dimensionality Reduction</b> helps us to avoid problems with too many features (Curse of Dimensionality). Problems include:</li>
+		            <li class="fragment" data-fragment-index="0" style="padding-bottom: 0.5% !important;"><b>Dimensionality Reduction</b> helps us to avoid problems with too many features (Curse of Dimensionality). Problems include:</li>
 		            <ul class="outside">
-		                <li class="fragment" data-fragment-index="0">High menory and computation requirements</li>
-		                <li class="fragment" data-fragment-index="0">Overfitting</li>
+		                <li class="fragment" data-fragment-index="0" style="padding-bottom: 0.5% !important;">High menory and computation requirements</li>
+		                <li class="fragment" data-fragment-index="0" style="padding-bottom: 0.5% !important;">Overfitting</li>
 		                <li class="fragment" data-fragment-index="0" style="padding-bottom: 1% !important;">Difficulty of finding clusters when using distance measures</li>
 		            </ul>
 		            <li class="fragment" data-fragment-index="1">Principal Component Analysis (PCA) is an approach to dimensionality reduction. It concentrates the variance contained in the data into a few dimensions, allowing us to delete the rest.</li>
