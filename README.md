@@ -62,32 +62,56 @@ Note that the materials are provided in German are not fully consistent with the
  
 ## Course
 ### English
-Work in progress
+* Course 1
+  * [Introduction to Jupyter Notebooks](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/01_jupyter_intro-EN.ipynb)
+  * [Python basics 1](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/01_python_basics_1-EN.ipynb)
+  * [Homework](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/01_homework-EN.ipynb)
+
+* Course 2
+  * [Python basics 2](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/02_python_basics_2-EN.ipynb)
+  * [Python basics 3](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/02_python_basics_3-EN.ipynb)
+  * [Homework](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/02_homework-EN.ipynb)
+
+* Course 3
+  * [Python basics 4](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/03_python_basics_4-EN.ipynb)
+  * [Supervised learning 1](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/03_supervised_learning_1-EN.ipynb)
+  * [Homework](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/03_homework-EN.ipynb)
+
+* Course 4
+  * [Supervised learning 2](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/04_supervised_learning_2-EN.ipynb)
+  * [Homework](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/04_homework-EN.ipynb)
+
+* Course 5
+  * [Unsupervised learning](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/05_unsupervised_learning-EN.ipynb)
+  * [Homework](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/05_homework-EN.ipynb)
+
+* Course 6
+  * [Natural language processing](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/english/06_natural_language_processing-EN.ipynb)
 
 ### German
 * Course 1
-  * [Einführung in Jupyter Notebooks](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/01_jupyter_intro.ipynb)
-  * [Python Grundlagen 1](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/01_python_grundlagen_1.ipynb)
-  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/01_hausaufgaben.ipynb)
+  * [Einführung in Jupyter Notebooks](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/01_jupyter_intro.ipynb)
+  * [Python Grundlagen 1](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/01_python_grundlagen_1.ipynb)
+  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/01_hausaufgaben.ipynb)
 
 * Course 2
-  * [Python Grundlagen 2](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/02_python_grundlagen_2.ipynb)
-  * [Python Grundlagen 3](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/02_python_grundlagen_3.ipynb)
-  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/03_hausaufgaben.ipynb)
+  * [Python Grundlagen 2](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/02_python_grundlagen_2.ipynb)
+  * [Python Grundlagen 3](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/02_python_grundlagen_3.ipynb)
+  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/03_hausaufgaben.ipynb)
 
 * Course 3
-  * [Python Grundlagen 4](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/03_python_grundlagen_4.ipynb)
-  * [Überwachtes Lernen 1](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/03_ueberwachtes_lernen_1.ipynb)
-  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/03_hausaufgaben.ipynb)
+  * [Python Grundlagen 4](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/03_python_grundlagen_4.ipynb)
+  * [Überwachtes Lernen 1](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/03_ueberwachtes_lernen_1.ipynb)
+  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/03_hausaufgaben.ipynb)
 
 * Course 4
-  * [Überwachtes Lernen 2](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/04_ueberwachtes_lernen_2.ipynb)
-  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/04_hausaufgaben.ipynb)
+  * [Überwachtes Lernen 2](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/04_ueberwachtes_lernen_2.ipynb)
+  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/04_hausaufgaben.ipynb)
 
 * Course 5
-  * [Unüberwachtes Lernen](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/05_unueberwachtes_lernen.ipynb)
-  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/05_hausaufgaben.ipynb)
+  * [Unüberwachtes Lernen](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/05_unueberwachtes_lernen.ipynb)
+  * [Hausaufgaben](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/05_hausaufgaben.ipynb)
 
 * Course 6
-  * [Natürliche Sprachverarbeitung](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/06_natural_language_processing.ipynb)
+  * [Natürliche Sprachverarbeitung](https://github.com/IDeaLab-uni-graz/MD-AI-and-society_technical-aspects/blob/main/course/german/06_natural_language_processing.ipynb)
 
